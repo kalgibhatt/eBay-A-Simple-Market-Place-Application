@@ -1,0 +1,90 @@
+.body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.main {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.top {
+	background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 30px;
+    box-sizing: initial;
+    -webkit-box-shadow: 0px 1px 5px #888888;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  	-moz-box-shadow: 0px 1px 5px #888888;  /* Firefox 3.5 - 3.6 */
+  	box-shadow: 0px 1px 4px #888888;
+  	display: block;
+}
+
+.top-l {
+	display: inline-block;
+    font-size: 12px;
+}
+
+.top-r {
+	display: inline-block;
+    font-size: 12px;
+}
+
+.image {
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+}
+
+.search {
+	border-bottom: 1px solid #ccc;
+    width: 100%;
+    position: relative;
+    top: 0;
+    height: 70px;
+    box-sizing: initial;
+  	display: block;
+}
+
+.ebay-icon {
+	width: 120px;
+	height: 50px;
+	margin-left: 20px;
+}
+
+#top-first {
+	font-size: 12px;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 5px 17px 6px 10px;
+    border: 1px solid #fff;
+    border-width: 2px 1px 0;
+    text-decoration: none;
+    position: relative;
+    left: -10px;
+    margin-top: 1px;
+    margin-left: 100px;
+}
+
+#top-font.top-font-guest {
+    padding-right: 5px;
+}
+
+#top-font {
+	font-size: 12px;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 5px 17px 6px 10px;
+    border: 1px solid #fff;
+    border-width: 2px 1px 0;
+    text-decoration: none;
+    position: relative;
+    left: -10px;
+    margin: auto;
+}
