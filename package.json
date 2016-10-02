@@ -13,6 +13,7 @@
     "express": "~4.13.4",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
-    "nodemon": "*"
+    "nodemon": "*",
+    "winston": "~2.2.0"
   }
 }

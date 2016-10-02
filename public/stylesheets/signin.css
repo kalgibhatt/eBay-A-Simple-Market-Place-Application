@@ -62,9 +62,6 @@ a {
 }
 
 .signinbtn {
-	margin-top: 5px;
-	margin-left: 20px;
-	margin-right: 20px;
 	width: 90%;
 	height: 45px;
 	font-weight: bold;
@@ -76,9 +73,9 @@ a {
 	background: #00509d;
 }
 
-.check {
-	margin:auto;
-	
+.check {	
+	margin:auto;	
+	padding: !important;
 }
 
 .forgotpassword {
@@ -89,9 +86,8 @@ a {
 
 .signininfo {
 	font-size: 13px;	
-	margin-left: 20px;	
-	margin-top: 10px;
-	margin-bottom: 20px;
+	margin:auto;
+	font-weight: 400;
 }
 
 .footbox {

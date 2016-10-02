@@ -1,13 +1,15 @@
 var express = require('express');
+var logger = require('./log.js');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+	console.log("here");
+	logger.log("debug","Kalgi");
 });
 
-router.get('/signin', function(req, res, next) {
-	res.render('signin', { title: 'Sign In' });
+router.get('/signup', function(req, res, next) {
+	
 });
 
 module.exports = router;
