@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign in or Register | eBay</title>
+
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <link rel='stylesheet' href='/stylesheets/account.css' />
+    <script src="/angularjs/account.js"></script>
+  </head>
+<body class="body full-body" ng-app="eBay" ng-controller="account">
+	<div class="container-fluid">
+		<div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-3 col-xs-1"></div>
+		<div class="col-md-4 col-lg-4 col-sm-6 col-xs-10" align="center">
+   
+    		<img src="http://www.symbols.com/gi.php?type=1&id=2032&i=1" class="ebay-icon spacer">
+            
+      		<div ng-show="isSignin" ng-controller="signinController">
+      			<div class="box">
+	         		<div class="button">
+	                    <ul class="nav nav-tabs nav-justified">
+	   					<li class="active" ng-click="changeToSignin()" style="cursor: pointer">
+	                    <img src="http://www.clipartbest.com/cliparts/4Tb/4zA/4Tb4zAaTg.png" class="sp" style=""><span class="text">Sign in</span><span class="regshd" style="visibility: hidden"></span></li>
+	        			<li class="inactive" ng-click="changeToRegister()" style="cursor: pointer"><span class="regshd"></span>
+	                    <img src="https://image.freepik.com/free-icon/plus-addition-sign-circle_318-86082.png" class="sp"><span class="text" style="color:#0654ba;">Register</span></li>
+	    				</ul>
+	                </div>
+	                <div ng-if="message">
+	                	<span class="error">{{message}}</span>
+	                </div>
+	    			<div class="form-group emailbox">
+	     			<input type="text" class="form-control" ng-model="userID" id="email" placeholder="Email or Username" style="background-color:#faffbd">
+	    			</div>
+	    			<div class="form-group passbox">
+	      			<input type="password" class="form-control" id="pwd" ng-model="password" placeholder="Password" style="background-color:#faffbd">
+	   				</div>
+	                <button class="btn btn-primary signinbtn" ng-click="signin()">Sign in</button>
+	    			<div class="checkbox row">
+	    			<div class="col-md-12" style="margin-left: 4%;">
+	      			<label class="check"><input type="checkbox"> Stay signed in</label>
+	                <span class="forgotpassword" ng-click="changeToForgot()" style="cursor: pointer; color: #0654BA">Forgot your password?</span>
+	                </div>
+	    			</div> 
+	                <div>
+	                	<div class="signininfo"> Using a public or shared device? Uncheck to protect your account.
+	                    <a href="learnmore" style="color:#0654ba;">Learn more </a></div>
+	                </div>
+	    		</div>
+      		</div>
+            
+            <div ng-show="isSignup" ng-controller="registerController">
+	            <div class="box">
+	         		<div class="button">
+	                    <ul class="nav nav-tabs nav-justified">
+	   					<li class="inactive" ng-click="changeToSignin()" style="cursor: pointer">
+	                    <img src="http://www.clipartbest.com/cliparts/4Tb/4zA/4Tb4zAaTg.png" class="sp" style=""><span class="text" style="color:#0654ba;">Sign in</span></a><span class="signinshd" style="visibility: hidden"></span></li>
+	        			<li class="active" ng-click="changeToRegister()" style="cursor: pointer"><span class="signinshd"></span>
+	                     <img src="https://image.freepik.com/free-icon/plus-addition-sign-circle_318-86082.png" class="sp"><span class="text">Register</span></a></li>
+	    				</ul>
+	                </div>
+	                <div ng-if="message">
+	                	<span class="error">{{message}}</span>
+	                </div>
+	    			<div class="form-group regemailbox">
+	     			<input type="email" class="form-control" id="email" ng-model="email" placeholder="Email">
+	    			</div>
+	                <div class="form-group regemailbox">
+	     			<input type="text" class="form-control" id="username" ng-model="username" placeholder="Username">
+	    			</div>
+	    			<div class="form-group regpassbox">
+	      			<input type="password" class="form-control" id="pwd" ng-model="password" placeholder="Password">
+	                <!--<div id="checkbox"><input type="checkbox"><span style="cursor: pointer;"> Show</span></div>-->
+	   				</div>
+	  				<div class="form-group name">
+	    			<input type="text" class="form-control firstname" id="firstname" ng-model="fname" placeholder="First name">
+	                <input type="text" class="form-control lastname" id="lastname" ng-model="lname" placeholder="Last name">
+	  				</div>
+	                <div class="form-group regpassbox">
+				    <input type="text" class="form-control" id="usr" ng-model="contact" placeholder="Mobile phone">
+	    			</div>
+	                 <div>
+	                	<p class="reginfo"> By <strong>Registering</strong>, you agree that you've read and accepted our <a href="Agreement" class="text-primary agreementtext" style="text-decoration: underline; color: #0654ba;">User Agreement</a>, you're at least 18 years old, and you consent to our <a href="learnmore" class="text-primary" style="text-decoration: underline; color: #0654ba;">Privacy Notice</a> and receiving marketing communications from us.
+	                </div> 
+	                <button type="submit" class="btn btn-primary regbtn" ng-click="register()">Register</button>              
+	    		</div>
+            </div>
+            
+            <div ng-show="isForgot" ng-controller="forgotController">
+	            <div class="box" style="width:400px;">
+	            	<h4 style="text-align: left;">Reset your password</h4>
+	                <form>
+	                <div class="form-group resetemailbox">
+	      			<label style="font-weight:400; float: left;">Enter your email or username</label>
+	      			<input type="email" class="form-control" id="email">
+	    			</div>
+	                <button type="submit" class="form-control btn btn-primary nextbtn">Next</button> 
+	                 <div>
+	                	<p class="resetinfo">Or <span style="cursor: pointer; color:#0654ba; text-decoration:none;">use your PayPal login info to change your eBay password</span></p>
+	                </div>              
+	  				</form>
+	    		</div>
+	    	</div>
+            
+		<div class="col-md-4 col-lg-4 col-sm-3 col-xs-1"></div>
+   	</div>
+    
+    <div ng-show="isForgot">
+    	<div class="row">
+    	<div class="col-md-12 resetfootbox">
+        	<div> Can't reset your password? </div>
+            <div><span ng-click="changeToRegister()" class="link"> Register for a new account </span></div>       
+        </div>
+    	</div>
+    </div>
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="footbox">
+            	<p> Copyright &copy; 1995-2016 eBay Inc. All Rights Reserved. User Agreement, Privacy, Cookies and AdChoice </p>
+        	</div>
+        </div>
+    </div>
+    
+    </div>
+    </div>
+  </body>
+</html>
