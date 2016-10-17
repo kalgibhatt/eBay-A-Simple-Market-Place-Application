@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>eBay</title>
+		
+		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="modules/angular-notification-icons/dist/angular-notification-icons.css"/>
+		<link rel='stylesheet' href='css/viewItem.css' />
+		
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="modules/jquery/dist/jquery.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="modules/angular/angular.min.js"></script>
+		<script src="modules/angular-animate/angular-animate.js"></script>
+		<script src="modules/ng-focus-if/focusIf.min.js"></script>
+		<script src="modules/angular-sanitize/angular-sanitize.js"></script>
+		<script src="modules/angular-notification-icons/dist/angular-notification-icons.js"></script>
+		
+		<script src="ngjs/viewItem.js"></script>
+	</head>
+	<body ng-app="eBay" ng-controller="viewItem" ng-cloak>
+		<div class="container-fluid">
+	    	<div class="row">
+	        	<div class="col-md-12 full-body">
+	                <div class="row head-start">
+	                    <div class="col-md-12">
+	                        <div class="row">
+	                        	<div class="col-md-6 header-item-box">
+	                                <div class="row">
+	                                	<div class="col-md-12">
+	                                		<span ng-hide="user_fname">
+	                                			<div class="header-item">Hi! <span ng-click="signinClicked()" class="link">Sign in</span> or <span ng-click="registerClicked()" class="link">register</span></div>
+	                                		</span>
+		                                	<span ng-show="user_fname">
+		                                		<div class="header-item usernameDisplay">Hi <span ng-mouseover="show_user_profile_menu = true"><strong>{{user_fname}}!&nbsp;</strong><span class="glyphicon glyphicon-menu-down"></span></span></div>
+		                                		<div id="user_profile_menu" ng-show="show_user_profile_menu" ng-mouseleave="show_user_profile_menu = false" class="user_profile_details" ng-class="{show: show_user_profile_menu}">
+		                                			<div class="row user-menu-row link" ng-click="userProfile()">
+		                                				<div class="col-md-5 profile-image-bound">
+				                							<img src="/images/products/iPhone-7.jpg" class="profile-image">
+				                						</div>
+				                						<div class="col-md-7 profile-name">
+				                							<span>{{user_fname}}&nbsp;{{user_lname}}</span>
+				                							<span>@{{user_name}}</span>
+				                						</div>
+		                                			</div>
+		                                			<div class="row user-menu-row link" ng-click="showTransactions()">
+		                                				<div class="col-md-12 link">My Collections</div>
+		                                			</div>
+		                                			<div class="row user-menu-row" ng-click="showAccount()">
+		                                				<div class="col-md-12 link">Account settings</div>
+		                                			</div>
+		                                			<div class="row user-menu-row link" ng-click="signout()">
+		                                				<div class="col-md-12 link">Sign out</div>
+		                                			</div>
+		                                		</div>
+		                                	</span>
+		                                    <div class="header-item">Daily Deals</div>
+		                                    <div class="header-item">Gift Cards</div>
+		                                    <span ng-hide="user_fname"><div class="header-item">Sell</div></span>
+		                                    <span ng-show="user_fname"><div class="header-item link" ng-click="sellAnItem()">Sell</div></span>
+		                                    <div class="header-item help-content">Help &amp; Content</div>
+	                                	</div>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-2">
+	                                <!-- Temporary Sale Image Goes here-->
+	                            </div>
+	                            <div class="col-md-4 pull-right right-header">
+	                                <div class="header-item right-header">My eBay</div>
+	                                <notification-icon count='notificationCount' animation='bounce' ng-click="show_notifications = !show_notifications" disappear-animation='fade'>
+	                                	<div class="header-item right-header glyphicon glyphicon-bell black-link"></div>
+	                                </notification-icon>
+                                	<div id="notifications" ng-show="show_notifications" ng-click="hideNotifications()" class="notifications-bar" ng-class="{show: show_notifications}">
+                            			<div ng-repeat="notification in notifications">
+	                            			<div class="row">
+	                            				<div class="col-md-12 notification-detail">
+	                            					<div class="notifications-item-detail">{{$index + 1}}</div>
+			                                		<div class="notifications-item-detail">{{notification.notification_text}}</div>
+	                            				</div>
+	                            			</div>
+	                            			<hr class="seperator"/>
+                            			</div>
+                            		</div>
+	                                <notification-icon count='cartItemCount' animation='bounce' disappear-animation='fade' ng-click="gotoCart()">
+	                                	<div class="header-item right-header glyphicon glyphicon-shopping-cart black-link"></div>
+	                                </notification-icon>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row middle-body">
+	                    <div class="col-md-12">
+	                    	<div class="row search-row">
+	                        	<div class="col-md-2">
+	                            	<div class="row" align="center">
+	                                	<div class="ebay-logo img-responsive link" ng-click="homepageClicked()">
+		                                </div>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-8">
+	                            	<div class="row">
+	                                	<input type="text" class="form-control search-box" ng-model="searchString" focus-if ng-enter="search()"/>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-2">
+	                            	<div class="row">
+	                                	<div class="col-md-12"><button class="form-control btn btn-primary search-button" ng-click="search()">Search</button></div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <hr class="seperator"/>
+	                        <div class="row message" ng-show="message" ng-click="message = ''" align="center">
+	                        	<div class="col-md-12">
+	                        		<span ng-class="{true:'alert alert-success', false:'alert alert-danger'}[success]">{{message}}</span>
+	                        	</div>
+	                        </div>
+	                        <div class="row" style="padding-top:20px;">
+	                        	<div class="col-md-5">
+	                        		<div class="row">
+                						<div class="col-md-12 sale-image-bound">
+                							<img src="/images/products/iPhone-7.jpg" class="image-display">
+                						</div>
+                					</div>
+	                        	</div>
+	                        	<div class="col-md-7 sale-details-text-bound">
+	                        		<div class="row">
+	                        			<div class="col-md-12 title-bar">
+	                        				<span class="sale-title">{{item_title}}</span>
+	                        			</div>
+	                        		</div>
+	                        		<hr class="seperator"/>
+	                        		<div class="row" ng-show="is_bid">
+	                        			<div class="col-md-12">
+	                        				<span class="remaining-bid-time">Remaining Bid Time: {{countdownTime}}</span>
+	                        			</div>
+	                        		</div>
+	                        		<hr class="seperator" ng-show="is_bid"/>
+	                        		<div class="row detail-pair">
+	                        			<div class="col-md-2">
+	                        				<span class="details-key">eBay Item ID:</span>
+	                        			</div>
+	                        			<div class="col-md-10">
+	                        				<span class="details-value">{{item_id}}</span>
+	                        			</div>
+	                        		</div>
+	                        		<div class="row detail-pair">
+	                        			<div class="col-md-2">
+	                        				<span class="details-key">Item Condition:</span>
+	                        			</div>
+	                        			<div class="col-md-10">
+	                        				<span class="details-value">{{item_condition}}</span>
+	                        			</div>
+	                        		</div>
+	                        		<div class="row detail-pair">
+	                        			<div class="col-md-2">
+	                        				<span class="details-key">Quantity:</span>
+	                        			</div>
+	                        			<div class="col-md-10">
+	                        				<div class="row details-value">
+	                        					<div class="col-md-3">
+	                        						<div class="row">
+	                        							<input type="number" ng-model="cart_qty" focus-if class="form-control"/>
+	                        						</div>
+	                        					</div>
+	                        					<div class="col-md-9 sold-available">
+	                        						<span class="sold-quantity">&nbsp;{{total_sold}} sold</span><span class="available-qty">{{available_quantity}} available /</span>
+	                        					</div>
+	                        				</div>
+	                        			</div>
+	                        		</div>
+	                        		<div class="row detail-pair">
+	                        			<div ng-show="is_bid" class="col-md-3">
+	                        				<span class="details-key">Current Maximum Bid:</span>
+	                        			</div>
+	                        			<div ng-hide="is_bid" class="col-md-2">
+	                        				<span class="details-key">Item Price:</span>
+	                        			</div>
+	                        			<div class="col-md-9">
+	                        				<div class="row details-value">
+	                        					<div class="col-md-2">
+	                        						<div class="row">
+	                        							<span class="details-value">${{current_price}}</span>
+	                        						</div>
+	                        					</div>
+	                        					<div class="col-md-10 bids-text" ng-show="is_bid">
+	                        						<span ng-click="openBids()" class="bids-count link">[ Bids: {{number_of_bids}} so far ]</span>
+	                        					</div>
+	                        					<div id="bid_details_window" ng-show="show_bid_details" ng-mouseleave="show_bid_details = false" class="bid-details-box" ng-class="{show: show_bid_details}">
+	                        						<span class="section-title ">All Bids on {{item_title}}</span>
+		                                			<div ng-repeat="bid in bid_details">
+		                                				<div class="row">
+		                                					<div class="col-md-12 bid-detail">
+		                                						<div class="notifications-item-detail">{{$index + 1}}</div>
+			                                					<div class="notifications-item-detail">${{bid.bid_amount}}</div>
+			                                					<div class="notifications-item-detail"> by </div>
+			                                					<div ng-click="showUser(bid.user_name)" class="link notifications-item-detail">@{{bid.user_name}}</div>
+			                                					<div class="notifications-item-detail">for</div>
+			                                					<div class="notifications-item-detail">{{bid.bid_qty}} quantities</div>
+		                                					</div>
+		                                				</div>
+		                                			</div>
+		                                		</div>
+	                        				</div>
+	                        			</div>
+	                        		</div>
+	                        		<div class="row detail-pair">
+	                        			<div class="col-md-2">
+	                        				<span class="details-key">Seller:</span>
+	                        			</div>
+	                        			<div class="col-md-10" ng-click="showUser(item_seller_handle)">
+	                        				<div class="col-md-4">
+	                        					<span class="details-value link">{{item_seller_fname}} {{item_seller_lname }} ( @{{item_seller_handle}} )</span>
+	                        				</div>
+	                        				<div class="col-md-8">
+	                        					<span class="seller">Experienced seller</span>
+	                        				</div>
+	                        			</div>
+	                        		</div>
+	                        		<div class="row detail-pair">
+	                        			<div class="col-md-4" ng-hide="is_bid">
+            								<button class="btn btn-primary form-control buy-button" ng-click="addToCart()">Add To Cart</span>
+            							</div>
+            							<div class="col-md-4" ng-hide="is_bid">
+                							<button class="btn btn-primary form-control buy-button" ng-click="buyAndCheckout()">Buy It Now</span>
+            							</div>
+            							<div class="col-md-4" ng-show="is_bid">
+                							<button class="btn btn-primary form-control buy-button" ng-click="bid()">Bid</span>
+            							</div>
+            							<div class="col-md-4" ng-show="is_bid">
+            								<input type="text" ng-model="bid_price" class="form-control bid-price" ng-enter="bid()"/>
+            							</div>
+	                        		</div>
+	                        	</div>
+	                        </div>
+	                        <hr class="seperator"/>
+	                        <span class="section-title">Detailed Item Description</span>
+	                        <div class="row">
+	                        	<div class="col-md-12">
+	                        		<p ng-bind-html="item_description" class="descripion-text"></p>
+	                        	</div>
+	                        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

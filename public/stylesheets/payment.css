@@ -1,0 +1,710 @@
+@charset "utf-8";
+/* CSS Document */
+.full-body {
+	background-image:
+		url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAKCAYAAAB10jRKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBJREFUeNpEyqERADAIBMGbbwSH+qhA/6URXMyqBUhFBLIP6ip0ezk2zExqC58nwACVZwX67tO41gAAAABJRU5ErkJggg=="),
+		url("data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABVAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgTWFjaW50b3NoIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjM5RDRDOEYzQ0QzNjExRTFBRTIwRkUzMzM4MTZCOEQzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjM5RDRDOEY0Q0QzNjExRTFBRTIwRkUzMzM4MTZCOEQzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzlENEM4RjFDRDM2MTFFMUFFMjBGRTMzMzgxNkI4RDMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MzlENEM4RjJDRDM2MTFFMUFFMjBGRTMzMzgxNkI4RDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAACAQEBAQECAQECAwIBAgMDAgICAgMDAwMDAwMDBQMEBAQEAwUFBQYGBgUFBwcICAcHCgoKCgoMDAwMDAwMDAwMAQICAgQDBAcFBQcKCAcICgwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAAkACADAREAAhEBAxEB/8QAYwABAQEBAAAAAAAAAAAAAAAAAAECCQEBAAAAAAAAAAAAAAAAAAAAABABAAEDAgUDAwUAAAAAAAAAAREhAhIAMfBBYSIyUaETsfFiccFCggMRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AO7clpAhbVm52g330EItG1cY2PRd3f25aCN6DyBneh1WePoFvcWRxibt5x3Jo1H04AXXBbyMav49YmpoDfbatygWmRWIGksJOgJbOUtpbNyz4+q1roF1y0tO47pOSi5RPN5cAR/0ttEUyt7m6dq71emgo3TksJ3JK4k7+VR9NBcriniFd9q7oPtoM8isNvd3MxMzc1J/TQLh/wAysW2i3TPi1J326aCyQj2x7MzO+gWsXYzEBcfjNDnz46AVtFaB4k+LUlh9uADnT49pccs4y+2gM/w8o7fKc6z+0fbQZPlxcfCH45zjOXj6aDT8s2/HM/2jLrFNB//Z");
+	background-repeat: repeat-x, repeat, repeat;
+	background-position: 0px 30px, 0% 0%, 0% 0%;
+	cursor: default;
+	overflow: visible;
+	font-family: "Helvetica";
+	font-size: 12px;
+}
+
+.head-start {
+	height: 30px;
+	background-color: #FFFFFF;
+}
+
+.header-item-box {
+	height: 100%;
+	margin-left: 15px;
+}
+
+.head-border {
+	margin: auto;
+	width: 99%;
+	border-bottom: 2px solid #ddd;
+}
+
+.header-item {
+	padding-right: 2%;
+	padding-left: 2%;
+	border-right: 1px solid black;
+	display: inline;
+	vertical-align: middle;
+	line-height: 30px;
+}
+
+.right-header {
+	text-align: right;
+	border-right: none;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+.middle-body {
+	margin: auto;
+}
+
+.search-row {
+	padding: 20px 0px;
+}
+
+.ebay-logo {
+	display: inline-block;
+	background: url('/images/image1.png') no-repeat 0 -95px;
+	width: 234px;
+	height: 94px;
+	overflow: visible;
+	zoom: 0.5;
+}
+
+.search-box {
+	border-radius: 2px;
+	font-size: 16px;
+	padding: 10px 0px 9px 8px;
+	height: 40px;
+	outline: 0;
+	box-shadow: none;
+	font-family: Helvetica Neue, Helvetica, Arial, Verdana,
+		Sans-serif !important
+}
+
+.checkout-window {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding: 30px;
+    width:95%;
+}
+
+.notifications-bar {
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding: 5px;
+    top: 29px;
+    left: -30px;
+    text-align: left;
+}
+
+.notification-detail {
+	display: inline-flex;
+	line-height: 40px;
+}
+
+.notifications-item-detail {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+.search-button {
+	height: 40px;
+	margin-left: 5px;
+	font-size: 16px;
+	background: #006EB3!important;
+}
+
+.link {
+	color: #0654BA!important;
+}
+
+.black-link:hover {
+	cursor: pointer!important;
+}
+
+.link:hover {
+	text-decoration: underline!important;
+	cursor: pointer!important;
+}
+
+.usernameDisplay:hover {
+	cursor: pointer;
+	color: #0654BA;
+}
+
+.help-content {
+	border-right: 0px!important;
+}
+
+.seperator {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+.profile-image-bound {
+	height: 50px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.profile-image {
+	border-radius: 3px;
+	max-height: 100%;
+}
+
+.bottom-footbox {
+	display: block;
+	width: 100%;
+	border: 1px solid #ccc;
+	background-color: white;
+	text-align: center;
+	height: 120px;
+	font-size: 10px;
+	color: #727272;
+	bottom: 0;
+	margin-top: 100px;
+	padding-top: 50px;
+}
+
+.footbox-gap {
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.fixed-footbox {
+	display: block;
+	width: 100%;
+	border: 1px solid #ccc;
+	background-color: white;
+	text-align: center;
+	height: 120px;
+	font-size: 10px;
+	color: #727272;
+	bottom: 0;
+	padding-top: 50px;
+	position: fixed;
+}
+
+.user_profile_details {
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+.show {
+	display: block;
+	z-index: 1;
+}
+
+.section-title {
+	line-height: 1em;
+    color: #555;
+    font-size: 1.625em;
+    font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+    line-height: 40px;
+}
+
+.user-menu-row {
+	padding: 0px 0px 10px 0px;
+	margin-left: 0px;
+}
+
+.profile-name {
+	padding-left: 0px;
+	margin-left:0px;
+}
+
+.angular-notifications-icon.overlay {
+	zoom: 50%;
+	top: -2px;
+	right: 10px;
+	font-weight: bolder;
+	font-size: 1.2em;
+}
+
+.img {
+   font-size: 40px;
+   color: #5ba71b;
+   padding-top: 12px;
+}
+
+.sign-out-text {
+	color: #5ba71b;
+    font-family: "Helvetica neue",Helvetica,Arial,Verdana,Sans-serif;
+    font-weight: 500;
+	padding-left: 15px;
+}
+
+.body {
+  font-size: 14px;
+  font-family: Helvetica neue,Helvetica,Arial,Sans-serif;
+  background-color: #f9f9f9;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.kalgi-image {
+	background: url(http://p.ebaystatic.com/aw/cmp/ds3/sprDS3Global_v4.png) no-repeat scroll -279px -2px transparent;
+    float: left;
+    height: 43px;
+    margin-top: -10px;
+    width: 46px;	
+}
+
+.cart-summary-box {
+	border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 4px 4px 1px #eee;
+    padding: 15px 15px 15px 15px;
+	margin-top: 40px;
+	height: auto;
+	margin-left: 20px;
+	width:250px;
+}
+
+.cart-box {
+	border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 4px 4px 1px #eee;
+    padding: 15px 15px 15px 15px;
+    margin-bottom: 20px;
+	margin-top: 40px;
+	height: auto;
+}
+
+.cart-second-box {
+	border: 1px solid #ddd;
+	background-color: #fcfcfc;
+	height: auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.cart-header {
+	min-height: 33px;
+    background-color: #eee;
+}
+
+.cart-body {
+	height: auto;	
+}
+
+.product-image {
+	width: 200px;
+	background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;	
+	height: 200px;
+	margin: 20px 20px 20px 20px;
+}
+
+.other-details {
+    font-family: 'Helvetica neue',Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    color: #0755ba;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+	padding-right: 10px;
+	padding-left: 10px;	
+}
+
+.save-for-later {
+	border: 0px;	
+}
+
+.foot {
+	margin-bottom:15px;
+	text-align:right;	
+}
+
+.seller-details {
+	color: #666;
+    line-height: 32px;	
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.product-title {
+	color: #0654BA;
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+	font-size: 16px;
+	float: left;
+	margin: 15px 0px 0px 0px;
+}
+
+.product-price {
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+	font-size: 16px;
+	float:right;
+	margin: 20px 20px 20px 20px;
+}
+
+.check-out-button {
+	height: 40px;
+	width: 220px;
+	float: right;
+	background: #00509d;
+	font-weight: bold;
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+	font-size: 16px;
+	margin-top:20px;
+	margin-left:20px;
+	margin-bottom: 10px;
+}
+
+.continue-button {
+	height: 40px;
+	width: 220px;
+	float: right;
+	background: #fff;
+	color: #00509d;
+	font-weight: bold;
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+	font-size: 16px;
+	margin-top:20px;
+	margin-left:20px;
+	margin-bottom: 10px;
+}
+
+.continue-button:hover {
+	cursor: pointer;
+	background: #fff;
+	color: #00509d;
+}
+
+.check-out-button:hover {
+	cursor: pointer;
+	background: #00509d;
+}
+
+.shipping {
+	padding-bottom: 10px;
+	padding-top: 5px;	
+}
+
+.total {
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;	
+	font-weight:bold;
+	font-size: 18px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+.details {
+	color: #888;	
+}
+
+.cart-summary-title {
+	font-size: 22px;
+	font-weight:bold;
+	border-bottom: 1px solid black;
+	padding-bottom: 5px;	
+}
+
+.cart-summary-total {
+	font-size:22px;
+	border:0px;
+	padding-bottom: 0px;
+}
+
+.cart-summary-info {
+	color: #666;
+	font-size: 12px;
+	font-weight: normal;
+	margin-top: 10px;
+}
+
+.learn-more {
+	color: #0654BA;
+}
+
+.item-count {
+	color: #666;
+	font-family: Verdana;
+	white-space: nowrap;
+	margin-top: 5px;
+	font-size:10px;
+	font-weight:lighter;
+}
+
+.heading {
+	color: #333;
+    font-family: "Helvetica neue",Helvetica,Arial,Verdana,Sans-serif;
+}
+
+.h4 {
+	font-weight: 300;
+	line-height: 42px;
+}
+
+.pay-with-text {
+	color: #767676;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.card-image {
+	font-size: 30px;
+	padding-top: 12px;
+	color: #707070;
+	padding-right: 10px;
+	line-height: 42px;
+}
+
+.credit-card-image {
+	margin-top: 15px;
+	float:right;
+	height: 30px;
+	width: 50px;
+	margin-right: 2px;
+}
+
+.payment-box {
+    background-color: #fff;
+	margin-top: 10px;
+	line-height: 2;
+}
+
+.card-details {
+	display: block;
+    background-color: #fff;
+	margin: auto;
+}
+
+.payment-info {
+	color: #767676;	
+	font-size: 11px;
+	margin-top: 20px;
+	font-weight: 200;
+	padding-left: 0px;
+}
+
+.billing-address-title {
+	font-size: 16px;
+	font-weight: 400;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+.billing-address {
+	font-size: 14px;
+	font-weight: 200;
+}
+
+.done-button {
+	height: 35px;
+	width: 100px;
+	background: #0654BA;
+	font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+	font-size: 16px;
+}
+
+.done-button:hover {
+	background: #0654BA;
+	opacity: 0.7;
+	cursor:pointer;
+}
+
+.cancel-button {
+	font-size: 16px;
+	font-weight:200;
+	color: #0654BA;	
+	padding-right: 5px;
+}
+
+.cancel-button:hover {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.success-message {
+	margin-top: 20px;
+}
+
+.error-message {
+	margin-top: 20px;
+}
+
+.group { 
+  	position:relative; 
+	margin-top: 30px;
+	padding-left: 0px;
+}
+
+input {
+  	font-size:12px;
+  	padding:10px 10px 5px 5px;
+  	display:block;
+  	width:100%;
+  	border:none;
+  	border-bottom: 2px solid #ddd;
+}
+
+input:focus { 
+	outline:none;
+	border-bottom:0px; 
+}
+
+label {
+  color:#76767e; 
+  font-size:15px;
+  font-weight:lighter;
+  position:absolute;
+  pointer-events:none;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-10px;
+  font-size:14px;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+	position:relative; 
+ 	display:block;
+}
+
+.bar:before, .bar:after 	{
+  content:'';
+  height:1px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#4a90e2; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#4a90e2; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#4a90e2; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#4a90e2; }
+  to 	{ width:0; background:transparent; }
+}
+
+.ng-hide-add {
+	-webkit-animation: fadeout 0.2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadeout 0.2s; /* Firefox < 16 */
+        -ms-animation: fadeout 0.2s; /* Internet Explorer */
+         -o-animation: fadeout 0.2s; /* Opera < 12.1 */
+            animation: fadeout 0.2s;
+}
+
+.ng-hide-remove {
+	-webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.5s; /* Firefox < 16 */
+        -ms-animation: fadein 0.5s; /* Internet Explorer */
+         -o-animation: fadein 0.5s; /* Opera < 12.1 */
+            animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

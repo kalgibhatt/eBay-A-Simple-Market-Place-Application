@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Start selling your stuff online | eBay</title>
+		
+		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel='stylesheet' href='css/sell.css' />
+		
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="modules/jquery/dist/jquery.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="modules/angular/angular.min.js"></script>
+		<script src="modules/angular-animate/angular-animate.js"></script>
+		<script src="modules/ng-focus-if/focusIf.min.js"></script>
+		
+		<script src="ngjs/sell.js"></script>
+	</head>
+	<body ng-app="eBay" ng-controller="sell" ng-cloak>
+		<div class="container-fluid div-box" ng-show="isLoggedIn">
+			<div class="row div-box">
+				<div class="col-xs-12 div-box">
+					<div class="row head-start div-box">
+						<div class="col-xs-12">
+							<div class="row div-box">
+								<div class="col-xs-2 ebay-logo" ng-click="straightHomepage()"><img ng-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTM0IiBoZWlnaHQ9IjU0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KIDxnPg0KICAgPHBhdGggZD0ibTI2LjkxLDI1LjE1Yy0wLjI2LC02IC01LC04LjYgLTkuNiwtOC42Yy01LDAgLTkuMywyLjYgLTEwLDguNmwyMCwwbDAsMGwwLDBsLTAuNCwwem0tMjAsNC40YzAuNCw2IDQuNSwxMCAxMC40LDkuN2M0LDAgNy41LC0xLjYgOC43LC01LjJsNywwYy0xLjMsNy4yIC04LjksOS42IC0xNS41LDkuNmMtMTIsMCAtMTcuMiwtNi42IC0xNy4yLC0xNS40YzAsLTkuNyA1LjUsLTE2IDE3LjMsLTE2YzkuNCwwIDE2LjMsNSAxNi4zLDE1LjdsMCwxLjhsLTI3LDBsMCwwIiBmaWxsPSIjRTQzMTM3IiAvPg0KICAgPHBhdGggZD0ibTUxLDM5LjA1YzYsMCAxMC40LC00LjUgMTAuNCwtMTEuMmMwLC02LjcgLTQuMiwtMTEgLTEwLjQsLTExLjJjLTYsMCAtMTEsNC41IC0xMC41LDExLjJjMCw3IDQsMTEgMTEsMTEuMmwtMC41LDB6bS0xNywtMzguN2w2LjcsMGwwLDE2LjhjMywtNCA4LC01IDEyLjIsLTVjNywwIDE2LDUgMTUuNywxNS45YzAsOSAtNi42LDE1LjcgLTE1LjgsMTUuN2MtNSwwIC05LC0yIC0xMi4yLC01LjJjMCwxLjQgLTAuMSwyLjggLTAuMiw0bC02LjYsMCIgZmlsbD0iIzAwNjNEMSIgLz4NCiAgIDxwYXRoIGQ9Im04NC41LDI4Ljc1Yy02LDAgLTEwLDEgLTkuOCw1LjNjMCwzIDIsNSA3LjMsNS40YzcsMCAxMSwtNCAxMSwtMTBsMCwtMC43Yy0yLDAgMCwwIC04LDBsLTAuNSwwem0xNSw4LjNjMCwwIDAsNCAwLjIsNS42bC02LjIsMGMwLDAgMCwwIC0wLjIsLTQuMmMtMyw0IC03LDUgLTEzLDUuM2MtOCwwIC0xMywtNCAtMTIuNiwtOS40YzAsLTcgNiwtMTAgMTYuNCwtMTBjMywwIDAsMCA4LjcsMGwwLC0xYzAsLTUgLTMsLTcgLTguNSwtNi44Yy00LDAgLTcsMiAtNy4zLDQuNWwtNywwYzEsLTcgOCwtOSAxNSwtOWM4LDAgMTUsMyAxNC42LDExIiBmaWxsPSIjRjRBRTAxIiAvPg0KICAgPHBhdGggZD0ibTEzMy41LDEzLjI1bC0yMC42LDQwLjVsLTcuNSwwbDYsLTExLjNsLTE1LjUsLTI5LjNsNy44LDBsMTEuNCwyM2wxMS40LC0yMyIgZmlsbD0iIzg1QjcxNiIgLz4NCiA8L2c+DQo8L3N2Zz4="></div>
+								<div ng-if="message" class="col-xs-9" align="center">
+									<span class="alert alert-success">{{message}}</span>
+								</div>
+								<div class="col-xs-1 helpButton link"><span class="helpText">Help</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="row div-box">
+						<div class="col-xs-12 div-box image">
+							<div ng-hide="showMore" class="row showLess">
+								<div class="col-xs-12">
+									<span class="announcement">Over 160 million shoppers</span>
+								</div>
+							</div>
+							<div ng-hide="showMore" class="row showLess">
+								<div class="col-xs-12">
+									<span class="announcement announcement-second-line">want to buy your stuff.</span>
+								</div>
+							</div>
+							<div ng-hide="showMore" class="row emptyRow showLess">
+								&nbsp;
+							</div>
+							<div ng-hide="showMore" class="row emptyRow showLess">
+								&nbsp;
+							</div>
+							<div class="row">
+								<div class="col-xs-3"></div>
+								<div class="col-xs-6 elements">
+									<div class="row div-box">
+										<span class="announcement left-align">What do you want to sell?</span>
+									</div>
+									<div class="row search-row">
+										<span>
+										<input type="text" placeholder="Give your listing a descriptive title..." ng-model="adv_title" class="form-control search-box" focus-if="!showMore" ng-enter="sell()"/>
+										<span><button class="form-control btn btn-primary search-button" ng-click="sell()">Sell it</button></span>
+										<span class="helpText link cancel-button" ng-click="homepage()">Cancel</span>
+									</div>
+									<div class="row">
+										<span class="announcement left-align example-text">Example: Men's blue adidas glide running shoes size 11</span>
+									</div>
+									<div ng-show="showMore" class="row show-more-div">
+										<div class="col-xs-12 adjust-right">
+											<select ng-model="adv_item" ng-options="item.item_name for item in items" class="form-control show-more item-select" focus-if="showMore"><option value="" disabled selected>Category</option></select>
+											<input type="text" placeholder="Quantity" ng-model="adv_qty" class="form-control quantity-box"/>
+											<select ng-model="item_condition" ng-options="condition.condition_name for condition in conditions" class="form-control show-more item-condition item-condition-box"><option value="" disabled selected>Condition</option></select>
+										</div>
+									</div>
+									<div ng-show="showMore" class="row show-more-div">
+										<div class="col-xs-12 adjust-right">
+											<textarea ng-model="adv_desc" placeholder="Details.." rows="2" class="form-control details"></textarea>
+										</div>
+									</div>
+									<div ng-show="showMore" class="row show-more-div">
+										<div class="col-xs-4">
+											<span class="listing-announcement left-align">Listing Format</span>
+										</div>
+										<div class="col-md-8 div-box">
+											<div class="is-bid">
+												<div class="[ form-group ] is-bid-box" style="height: 56px;">
+												    <div class="input-group">
+    													<div id="radioBtn" ng-model="is_bid" autocomplete="off" class="btn-group">
+    														<input type="text" class="btn btn-primary btn-sm is-bid-checkbox auction-button is-bid-text is-bid-fixed" ng-model="fixedPrice" ng-class="{notActive: is_bid}" ng-click="notBid()" placeholder="Fixed Price">
+    														<input type="text" class="btn btn-primary btn-sm is-bid-checkbox auction-button is-bid-text" ng-model="minBid" ng-class="{notActive: !is_bid}" ng-click="isBid()" placeholder="Auction">
+    													</div>
+    												</div>
+										        </div>
+											</div>
+										</div>
+									</div>
+
+									<div ng-show="showMore" class="row show-more-div">
+										<div class="col-xs-12 adjust-right">
+											<button ng-click="publish()" class="btn btn-primary form-control sell-button show-more">Sell</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-3"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

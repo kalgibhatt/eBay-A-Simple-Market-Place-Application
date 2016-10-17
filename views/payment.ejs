@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		 <title>Checkout</title>
+		
+		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" href="modules/angular-notification-icons/dist/angular-notification-icons.css"/>
+		<link rel='stylesheet' href='css/payment.css'/>
+		
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<script src="modules/jquery/dist/jquery.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="modules/angular/angular.min.js"></script>
+		<script src="modules/angular-animate/angular-animate.js"></script>
+		<script src="modules/ng-focus-if/focusIf.min.js"></script>
+		<script src="modules/angular-notification-icons/dist/angular-notification-icons.js"></script>
+		
+		<script src="ngjs/payment.js"></script>
+	</head>
+	<body ng-app="eBay" ng-controller="homepage" class="full-body" ng-cloak>
+		<div class="container-fluid">
+	    	<div class="row">
+	        	<div class="col-md-12">
+	                <div class="row head-start">
+	                    <div class="col-md-12">
+	                        <div class="row">
+	                        	<div class="col-md-6 header-item-box">
+	                                <div class="row">
+	                                	<div class="col-md-12">
+	                                		<span ng-hide="user_fname">
+	                                			<div class="header-item">Hi! <span ng-click="signinClicked()" class="link">Sign in</span> or <span ng-click="registerClicked()" class="link">register</span></div>
+	                                		</span>
+		                                	<span ng-show="user_fname">
+		                                		<div class="header-item usernameDisplay">Hi <span ng-mouseover="show_user_profile_menu = true"><strong>{{user_fname}}!&nbsp;</strong><span class="glyphicon glyphicon-menu-down"></span></span></div>
+		                                		<div id="user_profile_menu" ng-show="show_user_profile_menu" ng-mouseleave="show_user_profile_menu = false" class="user_profile_details" ng-class="{show: show_user_profile_menu}">
+		                                			<div class="row user-menu-row link" ng-click="userProfile()">
+		                                				<div class="col-md-5 profile-image-bound">
+				                							<img src="/images/products/iPhone-7.jpg" class="profile-image">
+				                						</div>
+				                						<div class="col-md-7 profile-name">
+				                							<span>{{user_fname}}&nbsp;{{user_lname}}</span>
+				                							<span>@{{user_name}}</span>
+				                						</div>
+		                                			</div>
+		                                			<div class="row user-menu-row link" ng-click="showTransactions()">
+		                                				<div class="col-md-12 link">My Collections</div>
+		                                			</div>
+		                                			<div class="row user-menu-row" ng-click="showAccount()">
+		                                				<div class="col-md-12 link">Account settings</div>
+		                                			</div>
+		                                			<div class="row user-menu-row link" ng-click="signout()">
+		                                				<div class="col-md-12 link">Sign out</div>
+		                                			</div>
+		                                		</div>
+		                                	</span>
+		                                    <div class="header-item">Daily Deals</div>
+		                                    <div class="header-item">Gift Cards</div>
+		                                    <span ng-hide="user_fname"><div class="header-item">Sell</div></span>
+		                                    <span ng-show="user_fname"><div class="header-item link" ng-click="sellAnItem()">Sell</div></span>
+		                                    <div class="header-item help-content">Help &amp; Content</div>
+	                                	</div>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-2">
+	                                <!-- Temporary Sale Image Goes here-->
+	                            </div>
+	                            <div class="col-md-4 pull-right right-header">
+	                                <div class="header-item right-header">My eBay</div>
+	                                <notification-icon count='notificationCount' animation='bounce' ng-click="show_notifications = !show_notifications" disappear-animation='fade'>
+	                                	<div class="header-item right-header glyphicon glyphicon-bell black-link"></div>
+	                                </notification-icon>
+                                	<div id="notifications" ng-show="show_notifications" ng-click="hideNotifications()" class="notifications-bar" ng-class="{show: show_notifications}">
+                            			<div ng-repeat="notification in notifications">
+	                            			<div class="row">
+	                            				<div class="col-md-12 notification-detail">
+	                            					<div class="notifications-item-detail">{{$index + 1}}</div>
+			                                		<div class="notifications-item-detail">{{notification.notification_text}}</div>
+	                            				</div>
+	                            			</div>
+	                            			<hr class="seperator"/>
+                            			</div>
+                            		</div>
+	                                <notification-icon count='cartItemCount' animation='bounce' disappear-animation='fade' ng-click="gotoCart()">
+	                                	<div class="header-item right-header glyphicon glyphicon-shopping-cart black-link"></div>
+	                                </notification-icon>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="row middle-body">
+	                    <div class="col-md-12">
+	                    	<div class="row search-row">
+	                        	<div class="col-md-2">
+	                            	<div class="row" align="center">
+	                                	<div class="ebay-logo img-responsive link" ng-click="homepageClicked()">
+		                                </div>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-8">
+	                            	<div class="row">
+	                                	<input type="text" class="form-control search-box" ng-model="searchString" focus-if ng-enter="search()"/>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-2">
+	                            	<div class="row">
+	                                	<div class="col-md-12"><button class="form-control btn btn-primary search-button" ng-click="search()">Search</button></div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                       	<div class="row success-message" ng-hide="success.length === 0" align="center">
+			        			<div class="col-md-12">
+			        				<div ng-repeat="message in success">
+			        					<div class="row">
+			        						<div class="col-md-12">
+			        							<span class="alert alert-success">{{message}}</span>
+			        						</div>
+			        					</div>
+			        				</div>
+			        			</div>
+			        		</div>
+	                        <hr class="seperator"/>
+	                        <div class="row">
+							    <div class="col-md-3"></div>
+							    <div class="col-md-7">
+							        <div class="row checkout-window">
+							        	<span class="pay-with-text">Pay with</span>
+									    <div class="col-md-12 payment-box">
+									    	<div class="row head-border">
+									            <div class="col-md-6" style="display:flex;">
+									            	<div class="glyphicon glyphicon-credit-card card-image"></div>
+													<div class="heading h4">Credit or debit card</div>
+									            </div>
+									            <div class="col-md-6">
+									            	<img class="credit-card-image" src="https://pbs.twimg.com/profile_images/747394758285365248/XuBsjokt.jpg">
+									                <img class="credit-card-image" src="http://frequentmiler.boardingarea.com/wp-content/uploads/2015/09/Discover.jpg">
+									                <img class="credit-card-image" src="http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-Download-PNG.png">
+									            	<img class="credit-card-image" src="http://www.pittsburghpolicefcu.com/wp/wp-content/uploads/2014/09/visa.jpg">            
+									            </div>
+									        </div>
+									        <div class="row">
+									        	<div class="col-md-12">
+									        		<div class="row error-message" ng-hide="messages.length === 0" align="center">
+									        			<div class="col-md-12">
+									        				<div ng-repeat="message in messages">
+									        					<div class="row">
+									        						<div class="col-md-12">
+									        							<span class="alert alert-danger">{{message}}</span>
+									        						</div>
+									        					</div>
+									        				</div>
+									        			</div>
+									        		</div>
+									            	<div class="row payment-box card-details">
+									                    <div class="col-md-6">
+									                        <div class="row">
+									                            <div class="col-md-12 group">     
+									                                <input type="text" ng-model="cardNumber" required>
+									                                <span class="highlight"></span>
+									                                <span class="bar"></span>
+									                                <label>Card Number</label>
+									                             </div>
+									                         </div>
+									                     </div>
+									                     <div class="col-md-6"></div>
+									            	</div>
+									            	<div class="row payment-box card-details" style="border:0px;">
+									                    <div class="col-md-6">
+									                        <div class="row">
+									                            <div class="col-md-12 group">     
+									                                <input type="text" ng-model="expiryDate" required>
+									                                <span class="highlight"></span>
+									                                <span class="bar"></span>
+									                                <label>Expiration Date</label>
+									                             </div>
+									                         </div>
+									                     </div>
+									                     <div class="col-md-6">
+									                        <div class="row">
+									                            <div class="col-md-12 group">     
+									                                <input type="text" ng-model="cvvNumber" required>
+									                                <span class="highlight"></span>
+									                                <span class="bar"></span>
+									                                <label>Security Code</label>
+									                             </div>
+									                         </div>
+									                     </div>
+									                </div>
+									            	<div class="row payment-box card-details" style="border:0px;">
+									                    <div class="col-md-6">
+									                        <div class="row">
+									                            <div class="col-md-12 group">     
+									                                <input type="text" ng-model="card_holder_fname" required>
+									                                <span class="highlight"></span>
+									                                <span class="bar"></span>
+									                                <label>First Name</label>
+									                             </div>
+									                         </div>
+									                     </div>
+									                     <div class="col-md-6">
+									                        <div class="row">
+									                            <div class="col-md-12 group">     
+									                                <input type="text" ng-model="card_holder_lname" required>
+									                                <span class="highlight"></span>
+									                                <span class="bar"></span>
+									                                <label>Last Name</label>
+									                             </div>
+									                         </div>
+									                     </div>
+									            	</div>
+									                <div class="row payment-box card-details" style="border:0px;">
+									                    <div class="col-md-12">
+									                        <div class="row">
+									                         	<div class="billing-address-title">Address</div>
+									                        </div>
+									                     </div>
+									                     <div class="col-md-12">
+									                        <div ng-repeat="address in addresses">
+									                        	<div class="row billing-address">
+										                        	<div class="col-md-12">
+											                        	<hr class="seperator"/>
+										                        		<div class="row">
+										                        			<div class="col-md-1">
+										                        				<input type="radio" name="default_address" value="$index" ng-model="default_address" />
+										                        			</div>
+										                        			<div class="col-md-11">
+																    			<div class="row">
+																    				{{address.f_name}}&nbsp;{{address.l_name}}	
+																    			</div>
+																    			<div class="row">
+																    				{{address.st_address}}&nbsp;{{address.apt}}
+																    			</div>
+																    			<div class="row">
+																    				{{address.city}}&nbsp;{{address.state}}&nbsp;{{address.zip}}
+																    			</div>
+																    			<div class="row">
+																    				{{address.country}}
+																    			</div>
+										                        			</div>
+										                        		</div>
+											                        </div>
+										                        </div>
+									                        </div>
+									                     </div>
+									            	</div>
+									                <div class="row payment-box card-details" style="border:0px;margin-bottom: 15px;">
+									                    <div class="col-md-6"></div>
+									                    <div class="col-md-6" style="text-align:right;">
+									                    	<span class="cancel-button" ng-click="cancel()">Cancel</span>
+									                    	<button type="submit" class="btn btn-primary done-button" ng-click="checkout()">Done</button>
+									                    </div>
+									            	</div>
+									            </div>
+									      	</div>  
+									    </div>
+									</div>
+							    </div>
+	                        </div>	                        
+	                        </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 footbox-gap">
+							<div class="bottom-footbox">
+								<p>Copyright &copy; 1995-2016 eBay Inc. All Rights Reserved. User Agreement, Privacy, Cookies and AdChoice</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
