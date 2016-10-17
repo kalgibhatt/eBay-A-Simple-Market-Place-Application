@@ -12,7 +12,7 @@ Please follow the instructions in order to access my application.
 
 ## Usage
 
-*Make sure everything is set up.
+* Make sure everything is set up.
 
 Let's make sure that we have MySQL installed and ready to go on your machine. Follow this page to make sure that you have MySQL installed and running.
 
