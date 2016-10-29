@@ -13,6 +13,10 @@ var session = require('express-session');
 
 var dao = require('./utils/dao');
 
+var mongo = require("./routes/mongo");
+var mongoSessionConnectURL = "mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application";
+var mongoStore = require("connect-mongo")(session);
+
 // Nice library on dynamic calls REST application: https://github.com/deitch/booster
 
 // view engine setup
@@ -31,6 +35,18 @@ app.use('/css', express.static(path.join(__dirname, 'public/stylesheets')));
 app.use('/js', express.static(path.join(__dirname, 'public/stylesheets')));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use('/ngjs', express.static(path.join(__dirname, 'public/angularjs')));
+
+app.use(session({
+	secret: 'cmpe273_teststring',
+	resave: false,  //don't save session if unmodified
+	saveUninitialized: false,	// don't create session until something stored
+	duration: 30 * 60 * 1000,    
+	cookie: { secure: !true },
+	activeDuration: 5 * 60 * 1000,
+	store: new mongoStore({
+		url: mongoSessionConnectURL
+	})
+}));
 
 // Using HTTPS for server: http://blog.ayanray.com/2015/06/adding-https-ssl-to-express-4-x-applications/
 

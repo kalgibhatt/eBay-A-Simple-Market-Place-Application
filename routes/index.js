@@ -5,6 +5,7 @@ var logger = require("../utils/logger");
 var schedule = require('node-schedule');
 var sjcl = require('sjcl');
 var bcrypt = require("bcrypt");
+var mongo = require('./mongo');
 
 // TODO: Nice Utility for scheduled tasks: https://github.com/ncb000gt/node-cron -- Done
 // TODO: Nice tool for scheduling bid end job: https://github.com/node-schedule/node-schedule -- Done
@@ -382,7 +383,7 @@ router.post('/removeAddress', function(req, res, next) {
 			dao.executeQuery("delete from location_details where profile = ? and location_id = ?", [results[0].profile_id, req.body.location_id], function(results) {
 				res.send({ });
 			});
-		})
+		});
 	} else {
 		res.redirect('/');
 	}
@@ -437,7 +438,7 @@ router.post('/addToCart', function(req, res, next) {
 					}
 				});
 			}
-		})
+		});
 	} else {
 		res.send({
 			"status_code"	:	301
@@ -570,7 +571,11 @@ router.post('/register', function(req, res, next) {
 	}
 	if(status_code === 200) {
 		logger.log("info", "Valid parameters");
-		var insertParameters = {
+		
+		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+			var collection = db.collection('userAccount');
+		
+		collection.insert( {
 				"user_name"	:	username,
 				"f_name"	:	firstname,
 				"l_name"	:	lastname,
@@ -578,14 +583,15 @@ router.post('/register', function(req, res, next) {
 				"secret"	:	bcrypt.hashSync(secret, salt),
 				"salt"		:	salt,
 				"last_login":	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
-			};
-		dao.insertData("user_account", insertParameters, function(rows) {
-			if(rows.affectedRows === 1) {
-				dao.insertData("user_profile", {
+			}, function(err,rows) {
+			if(rows.result.ok === 1) {
+				var collection = db.collection('user_profile');
+				collection.insert( {
 					"contact"	:	phone,
-					"user"		:	rows.insertId
-				}, function(rows) {
-					if(rows.affectedRows === 1) {
+					"user"		:	rows.insertedIds
+				}, function(err,rows) {
+					console.log(rows);
+					if(rows.result.ok === 1) {
 						success_messages.push("User " + firstname + " created successfully !");
 						res.send({
 							"status_code"	:	status_code,
@@ -607,6 +613,7 @@ router.post('/register', function(req, res, next) {
 				});
 			}
 		});
+	});
 	} else {
 		res.send({
 			"status_code"	:	status_code,
@@ -625,7 +632,11 @@ router.post('/publishSale', function(req, res, next) {
 	var price = req.body.advertise_price;
 	var quantity = req.body.advertise_quantity;
 	var description = req.body.advertise_desc;
-	dao.insertData("sale_details", {
+	
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var collection = db.collection('sale_details');
+	
+	collection.insert( {
 		"seller"	:	req.session.loggedInUser.user_id,
 		"item"		:	item,
 		"condition"	:	condition.condition_id,
@@ -636,6 +647,7 @@ router.post('/publishSale', function(req, res, next) {
 		"sale_qty"	:	quantity,
 		"active"	:	1
 	}, function(rows) {
+		console.log(rows);
 		if(rows.affectedRows === 1) {
 //			var today = new Date();
 //			var j = schedule.scheduleJob(today.addDays(4), );
@@ -686,6 +698,7 @@ router.post('/publishSale', function(req, res, next) {
 			});
 		}
 	});
+	});
 });
 
 router.get('/forgotPassword', function(req, res, next) {
@@ -733,33 +746,47 @@ router.post('/signin', function(req, res, next) {
 	var passwordpassword = req.body.passwordpassword;
 	var username = sjcl.decrypt(req.body.passwordpassword, req.body.userID);
 	var password = sjcl.decrypt(req.body.passwordpassword, req.body.password);
-	console.log(password);
-	dao.executeQuery('SELECT user_id, secret, salt FROM user_account WHERE user_name = ? OR email = ?', [username, username], function(id_details) {
-		if(bcrypt.hashSync(password, id_details[0].salt) === id_details[0].secret) {
-			dao.fetchData("*", "user_account", {
-				"user_id"	:	id_details[0].user_id
-			}, function(user_details) {
-				logger.log('info','User with user ID ' + id_details[0].user_id + ' has signed in.');
-				req.session.loggedInUser = user_details[0];
-				dao.updateData("user_account", {
-					"last_login"	:	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
-				}, {
-					"user_id"		:	id_details[0].user_id
-				}, function(update_status) {
-					if(update_status.affectedRows === 1) {
-						res.send({
-							"valid"			:	true,
-							"last_login"	:	user_details[0].last_login
+	
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('userAccount').findOne({
+			"user_name"	:	username
+		}, function(err,id_details) {
+			if(bcrypt.hashSync(password, id_details.salt) === id_details.secret) {
+				req.session.username = id_details.user_name;
+				req.session.email	=	id_details.email;
+				req.session.fname	=	id_details.f_name;
+				req.session.lname	=	id_details.l_name;
+				mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+					var user = db.collection('userAccount').findOne({
+						"user_name"	:	id_details.user_name
+					}, function(err, user_details) {
+						logger.log('info','User with user ID ' + id_details.user_name + ' has signed in.');
+						req.session.loggedInUser = user_details;
+						mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+							var user = db.collection('userAccount').update({
+								'user_name'		: 	req.session.username
+								}, {
+									$set:	{
+										"last_login"	:	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
+									}
+								}, function(err,update_status) {
+									if(update_status.result.ok === 1) {
+										res.send({
+											"valid"			:	true,
+											"last_login"	:	id_details.last_login
+										});
+									}
+								});
+							});
 						});
-					}
-				});
+					});
+				} else {
+					res.send({
+						"valid"	:	false
+					});
+				}
 			});
-		} else {
-			res.send({
-				"valid"	:	false
-			});
-		}		
+		});
 	});
-});
 
 module.exports = router;
