@@ -62,16 +62,23 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	dao.fetchData("count(user_id) as userCount", "user_account", {
-		"user_name"	:	req.originalUrl.substring(1)
-	}, function(results) {
-		if(results[0].userCount === 0) {
-			var err = new Error('Not Found');
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('userAccount').find({
+			"user_name"	:	req.originalUrl.substring(1)
+		}, function(err,profile) {
+		profile.toArray(function(err, results) {
+	//dao.fetchData("count(user_id) as userCount", "user_account", {
+	//	"user_name"	:	req.originalUrl.substring(1)
+	//}, function(results) {
+		if(results.length === 0) {
+			err = new Error('Not Found');
 			err.status = 404;
 			next(err);
 		} else {
 			res.render('userProfile', {  });
 		}
+		});
+		});
 	});
 });
 

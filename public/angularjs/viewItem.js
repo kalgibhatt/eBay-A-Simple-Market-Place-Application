@@ -146,7 +146,7 @@ eBay.controller('viewItem', function($scope, $http, $location, $window, $interva
 			method	:	"POST",
 			url		:	"/addToCart",
 			data	:	{
-				"itemid"	:	$scope.item_id,
+				"itemid"	:	$location.search().itemid,
 				"qty"		:	$scope.cart_qty
 			}
 		}).success(function(data) {
@@ -277,5 +277,5 @@ eBay.factory('Util', [function() {
 			seconds = t % 60;
 			return [days + 'd', hours + 'h', minutes + 'm', seconds + 's'].join(' ');
 		}
-	}
+	};
 }]);

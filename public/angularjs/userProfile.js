@@ -214,6 +214,7 @@ eBay.controller('userProfile', function($scope, $http, $location, $window) {
 	};
 	
 	$scope.fetchUserProfile = function() {
+		console.log($scope.user_id);
 		$http({
 			method	:	"POST",
 			url 	:	"/fetchUserProfile",
@@ -222,8 +223,8 @@ eBay.controller('userProfile', function($scope, $http, $location, $window) {
 			}	
 		}).success(function(data) {
 			$scope.user_id = data.user_id;
-			$scope.fname = data.fname;
-			$scope.lname = data.lname;
+			$scope.fname = data.f_name;
+			$scope.lname = data.l_name;
 			$scope.profile_name = data.user_name;
 			$scope.contact = data.contact;
 			$scope.dob = new Date(data.dob);

@@ -6,6 +6,7 @@ var schedule = require('node-schedule');
 var sjcl = require('sjcl');
 var bcrypt = require("bcrypt");
 var mongo = require('./mongo');
+var autoIncrement = require("mongodb-autoincrement");
 
 // TODO: Nice Utility for scheduled tasks: https://github.com/ncb000gt/node-cron -- Done
 // TODO: Nice tool for scheduling bid end job: https://github.com/node-schedule/node-schedule -- Done
@@ -37,25 +38,36 @@ router.get('/cart', function(req, res, next) {
 router.get('/viewItem', function(req, res, next) {
 	logger.log('info','Inside item page get method');
 	if(req.session.loggedInUser) {
-		logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' visited page of ' + req.param('itemid'));
-		dao.executeQuery("SELECT count(suggestion_id) as entries FROM suggestion_details WHERE user = ? AND suggestion_item = ?", [req.session.loggedInUser.user_id, Number(req.param('itemid'))], function(rows) {
+		logger.log('info','User with user ID ' + req.session.loggedInUser.user_name + ' visited page of ' + req.body.itemid);
+		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('suggestion_details').find({
+			"user"	:	req.session.loggedInUser.user_name,
+			"suggestion_item"	:	req.body.itemid
+		}, function(err,rows) {
+		//dao.executeQuery("SELECT count(suggestion_id) as entries FROM suggestion_details WHERE user = ? AND suggestion_item = ?", [req.session.loggedInUser.user_id, Number(req.param('itemid'))], function(rows) {
 			if(rows.entries !== 0) {
-				dao.executeQuery("DELETE FROM suggestion_details WHERE user=? AND suggestion_item=?", [req.session.loggedInUser.user_id, Number(req.param('itemid'))], function(suggestionDetails) {
-					dao.insertData("suggestion_details", {
-						"user"				:	req.session.loggedInUser.user_id,
-						"suggestion_item"	:	Number(req.param('itemid'))
-					}, function(rows) {
+				var user = db.collection('suggestion_details').find({
+					"user"	:	req.session.loggedInUser.user_name,
+					"suggestion_item"	:	req.body.itemid
+				}, function(err,suggestionDetails) {
+				//dao.executeQuery("DELETE FROM suggestion_details WHERE user=? AND suggestion_item=?", [req.session.loggedInUser.user_id, Number(req.param('itemid'))], function(suggestionDetails) {
+					var collection = db.collection('suggestion_details');
+					collection.remove( {
+						"user"				:	req.session.loggedInUser.user_name,
+						"suggestion_item"	:	req.body.itemid
+					}, function(err,rows) {
 						// Do nothing
 					});
 				});
 			} else {
-				dao.insertData("suggestion_details", {
-					"user"				:	req.session.loggedInUser.user_id,
-					"suggestion_item"	:	Number(req.param('itemid'))
+				var collection = db.collection('suggestion_details');
+				collection.insert( {
+					"suggestion_item"	:	req.body.itemid
 				}, function(rows) {
 					// Do nothing
 				});
 			}
+		});
 		});
 	}
 	res.render('viewItem', {  });
@@ -64,18 +76,28 @@ router.get('/viewItem', function(req, res, next) {
 router.post('/placeBid', function(req, res, next) {
 	logger.log('info','Inside Bid page post method');
 	if(req.session.loggedInUser) {
-		dao.insertData("bid_details", {
+		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var collection = db.collection('bid_details');
+		collection.insert( {
 			"sale"			:	req.body.bid_item,
-			"bidder"		:	req.session.loggedInUser.user_id,
+			"bidder"		:	req.session.loggedInUser.user_name,
 			"bid_amount"	:	req.body.bid_price,
 			"bid_qty"		:	req.body.bid_qty
-		}, function(rows) {
-			dao.executeQuery("update sale_details set sale_price = ? where sale_id = ?", [req.body.bid_price, req.body.bid_item], function() {
+		}, function(err,rows) {
+			var user = db.collection('sale_details').update({
+				"sale_id"		:	req.body.bid_item
+				}, {
+					$set:	{
+						"sale_price"	:	req.body.bid_price
+					}
+				}, function() {
+			//dao.executeQuery("update sale_details set sale_price = ? where sale_id = ?", [req.body.bid_price, req.body.bid_item], function() {
 				logger.log('info','Bid on ' + req.body.bid_item + ' by user with user ID ' + req.session.loggedInUser.user_id + 'for' + req.body.bid_price + 'price');
 				res.send({
 					"status_code"	:	200
 				});
 			});
+		});
 		});
 	} else {
 		res.send({
@@ -101,15 +123,24 @@ router.post('/emailIDAvailable', function(req, res, next) {
 
 router.post('/fetchBidDetails', function(req, res, next) {
 	logger.log('info','Inside fetch bid details page post method');
-	dao.executeQuery("SELECT bid.*, bidder.user_name FROM bid_details AS bid, user_account AS bidder WHERE bid.bidder = bidder.user_id AND sale = ? order by bid.bid_amount desc", [req.body.itemid], function(results) {
-		dao.executeQuery("select sale_time from sale_details where sale_id = ?", [req.body.itemid], function(remainingTime) {
-			var saleDate = new Date(remainingTime[0].sale_time);
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('bid_details').find({
+			"bidder"	:	req.session.loggedInUser.user_name,
+			"sale"	:	req.body.itemid
+		}, function(err,results) {
+	//dao.executeQuery("SELECT bid.*, bidder.user_name FROM bid_details AS bid, user_account AS bidder WHERE bid.bidder = bidder.user_id AND sale = ? order by bid.bid_amount desc", [req.body.itemid], function(results) {
+			var user = db.collection('sale_details').find({
+				"sale_id"	:	req.body.itemid
+			}, function(err,remainingTime) {
+			//dao.executeQuery("select sale_time from sale_details where sale_id = ?", [req.body.itemid], function(remainingTime) {
+			var saleDate = new Date(remainingTime.sale_time);
 			var bidEnd = Math.abs(saleDate.getTime() + 345600000);
 			res.send({
 				"results"		:	results,
 				"futureTime"	:	new Date(bidEnd)
 			});
 		});
+	});
 	});
 });
 
@@ -147,59 +178,85 @@ router.post('/updateDOB', function(req, res, next) {
 
 router.post('/fetchUserProfile', function(req, res, next) {
 	logger.log('info','Inside fetch user profile page post method');
-	var user_id;
-	var user_name;
+	var username;
 	var lname;
 	var fname;
 	var contact;
 	var dob;
-	dao.executeQuery("select user_name, f_name, l_name, user_id from user_account where user_name = ?", [req.body.username], function(userProfile) {
-		logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' visited profile of user with user ID ' + userProfile[0].user_id);
-		user_id = userProfile[0].user_id;
-		user_name = userProfile[0].user_name;
-		fname = userProfile[0].f_name;
-		lname = userProfile[0].l_name;
-		dao.executeQuery("select contact, dob from user_profile where user = ?", [userProfile[0].user_id], function(profile_details) {
-			if(profile_details.length) {
-				contact = profile_details[0].contact;
-				dob = profile_details[0].dob;
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+	var user = db.collection('userAccount').find({
+		"user_name"		:	req.body.username
+	}, function(err,results) {
+		results.toArray(function(err,userProfile){
+	//dao.executeQuery("select user_name, f_name, l_name, user_id from user_account where user_name = ?", [req.body.username], function(userProfile) {
+		//logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' visited profile of user with user ID ' + userProfile[0].user_id);
+		username = userProfile.user_name;
+		fname = userProfile.f_name;
+		lname = userProfile.l_name;
+		var profile_details = db.collection('user_profile').find({
+			"user"		:	userProfile.user_name
+		}, function(err,results) {
+			results.toArray(function(err,profile_details){
+				console.log("-----------",profile_details);
+		//dao.executeQuery("select contact, dob from user_profile where user = ?", [userProfile[0].user_id], function(profile_details) {
+			if(profile_details.length !== 0) {
+				contact = profile_details.contact;
+				dob = profile_details.dob;
 			}
 			res.send({
-				"user_id"		:	user_id,
-				"user_name"		:	user_name,
-				"lname"			:	lname,
-				"fname"			:	fname,
+				"user_name"		:	username,
+				"l_name"			:	lname,
+				"f_name"			:	fname,
 				"contact"		:	contact,
 				"dob"			:	dob
 			});
+			});
 		});
+	});
+	});
 	});
 });
 
 router.post('/fetchSoldByUser', function(req, res, next) {
 	logger.log('info','Inside fetch sold by user page post method');
-	dao.executeQuery("select sale_details.title, txn_details.txn_qty, txn_details.transaction_price, txn_details.txn_time from txn_details, sale_details where txn_details.sale = sale_details.sale_id and sale_details.seller = ?", [req.body.user], function(soldItems) {
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+	var user = db.collection('txn_details').findOne({
+		"user_name"		:	req.body.username
+	}, function(err,soldItems) {
+	//dao.executeQuery("select sale_details.title, txn_details.txn_qty, txn_details.transaction_price, txn_details.txn_time from txn_details, sale_details where txn_details.sale = sale_details.sale_id and sale_details.seller = ?", [req.body.user], function(soldItems) {
 		res.send({
 			"soldItems"	:	soldItems
 		});
+	});
 	});
 });
 
 router.post('/fetchBoughtByUser', function(req, res, next) {
 	logger.log('info','Inside fetch bought by user page post method');
-	dao.executeQuery("select sale_details.title, txn_details.txn_qty, txn_details.transaction_price, txn_details.txn_time from txn_details, sale_details where txn_details.sale = sale_details.sale_id and txn_details.buyer = ?", [req.body.user], function(boughtItems) {
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+	var user = db.collection('txn_details').findOne({
+		"user_name"		:	req.body.username
+	}, function(err,boughtItems) {
+	//dao.executeQuery("select sale_details.title, txn_details.txn_qty, txn_details.transaction_price, txn_details.txn_time from txn_details, sale_details where txn_details.sale = sale_details.sale_id and txn_details.buyer = ?", [req.body.user], function(boughtItems) {
 		res.send({
 			"boughtItems"	:	boughtItems
 		});
+	});
 	});
 });
 
 router.post('/fetchSaleByUser', function(req, res, next) {
 	logger.log('info','Inside fetch sale by user page post method');
-	dao.executeQuery("select title, sale_price, sale_qty, description, sale_time from sale_details where seller = ? and active=1;", [req.body.user], function(saleItems) {
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('sale_details').findOne({
+			"seller"	:	req.session.loggedInUser.user_name,
+			"active"	:	1
+		}, function(err,saleItems) {
+	//dao.executeQuery("select title, sale_price, sale_qty, description, sale_time from sale_details where seller = ? and active=1;", [req.body.user], function(saleItems) {
 		res.send({
 			"saleItems"	:	saleItems
 		});
+	});
 	});
 });
 
@@ -244,23 +301,34 @@ router.post('/checkout', function(req, res, next) {
 	logger.log('info','Inside checkout page post method');
 	if(req.session.loggedInUser) {
 		var success = true;
-		dao.executeQuery("select cart_details.sale_item as sale, cart_details.user as buyer, sale_details.sale_price as transaction_price,  cart_details.cart_qty as txn_qty from cart_details, sale_details where cart_details.sale_item = sale_details.sale_id and user = ?", [req.session.loggedInUser.user_id], function(results) {
-			results.forEach(function(purchase) {
-				dao.insertData("txn_details", purchase, function(rows) {
+		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('sale_details').find({
+			"user"			:	req.session.loggedInUser.user_name,
+			"sale_item"		:	req.body.itemid
+		}, function(err,results) {
+		//dao.executeQuery("select cart_details.sale_item as sale, cart_details.user as buyer, sale_details.sale_price as transaction_price,  cart_details.cart_qty as txn_qty from cart_details, sale_details where cart_details.sale_item = sale_details.sale_id and user = ?", [req.session.loggedInUser.user_id], function(results) {
+			results.forEach(function(err,purchase) {
+				var collection = db.collection('txn_details');
+				collection.insert(purchase, function(err,rows) {
 					logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' purchased ' + purchase[0].sale + '.');
-					if(rows.affectedRows !== 1) {
+					if(rows.result.ok !== 1) {
 						success = false;
 					}
 				});
 			});
 		});
 		if(success) {
-			dao.executeQuery("delete from cart_details where user = ?", [req.session.loggedInUser.user_id], function(results) {
+			var collection = db.collection('cart_details');
+			collection.remove( {
+				"user"	:	req.session.loggedInUser.user_name,
+			}, function(err,results) {
+			//dao.executeQuery("delete from cart_details where user = ?", [req.session.loggedInUser.user_id], function(results) {
 				res.send({
 					"status_code" : 200
 				});
 			});
 		}
+		});
 	} else {
 		res.redirect('/');
 	}
@@ -268,10 +336,15 @@ router.post('/checkout', function(req, res, next) {
 
 router.post('/addAddress', function(req, res, next) {
 	logger.log('info','Inside add address page post method');
-	dao.fetchData("profile_id", "user_profile", {
-		"user"	:	req.body.user_id
-	}, function(profile_ids) {
-		dao.insertData("location_details", {
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('user_profile').find({
+			"sale_id"		:	req.body.itemid
+		}, function(err,profile_ids) {
+			var collection = db.collectio('location_details');
+	//dao.fetchData("profile_id", "user_profile", {
+	//	"user"	:	req.body.user_id
+	//}, function(profile_ids) {
+		collection.insert( {
 			"st_address"		:	req.body.st_address,
 			"apt"		:	req.body.apt,
 			"city"		:	req.body.city,
@@ -279,8 +352,8 @@ router.post('/addAddress', function(req, res, next) {
 			"country"	:	req.body.country,
 			"zip"		:	req.body.zip,
 			"profile"	:	profile_ids[0].profile_id
-		}, function(rows) {
-			if(rows.affectedRows === 1) {
+		}, function(err,rows) {
+			if(rows.result.ok === 1) {
 				res.send({
 					"status_code"	:	200
 				});
@@ -291,27 +364,40 @@ router.post('/addAddress', function(req, res, next) {
 			}
 		});
 	});
+	});
 });
 
 router.post('/fetchItemDetails', function(req, res, next) {
 	logger.log('info','Inside fetch item details page post method');
-	dao.executeQuery("select is_bid from sale_details where sale_id = ?", [req.body.itemid], function(results) {
-		if(results[0].is_bid) {
-			dao.executeQuery("select active from sale_details where sale_id = ?", [req.body.itemid], function(activeStatus) {
-				if(activeStatus[0].active === 1) {
-					dao.executeQuery("SELECT sale.*, seller.f_name, seller.l_name, seller.user_name, seller.user_id, cond.condition_name FROM sale_details AS sale, user_account AS seller, item_conditions AS cond WHERE sale.condition = cond.condition_id AND sale.seller = seller.user_id AND sale_id = ?", [req.body.itemid], function(results) {
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('sale_details').find({
+			"sale_id"		:	req.body.itemid
+		}, function(err,results) {
+	//dao.executeQuery("select is_bid from sale_details where sale_id = ?", [req.body.itemid], function(results) {	
+		if(results.is_bid) {
+			var user = db.collection('sale_details').find({
+				"sale_id"		:	req.body.itemid
+			}, function(err,activeStatus) {
+			//dao.executeQuery("select active from sale_details where sale_id = ?", [req.body.itemid], function(activeStatus) {
+				if(activeStatus.active === 1) {
+					var user = db.collection('sale_details').find({
+						"seller"	:	{$ne:req.session.loggedInUser.user_name},
+						"sale_id"	:	req.body.itemid,
+						"condition"	:	req.body.condition
+					}, function(err,results) {
+					//dao.executeQuery("SELECT sale.*, seller.f_name, seller.l_name, seller.user_name, seller.user_id, cond.condition_name FROM sale_details AS sale, user_account AS seller, item_conditions AS cond WHERE sale.condition = cond.condition_id AND sale.seller = seller.user_id AND sale_id = ?", [req.body.itemid], function(results) {
 						res.send({
-							"item_id" : results[0].sale_id,
-							"item_title" : results[0].title,
-							"item_description" : results[0].description,
-							"item_condition" : results[0].condition_name,
-							"available_quantity" : results[0].sale_qty,
-							"is_bid" : results[0].is_bid,
-							"current_price" : results[0].sale_price,
-							"item_seller_fname" : results[0].f_name,
-							"item_seller_lname" : results[0].l_name,
-							"item_seller_handle" : results[0].user_name,
-							"item_seller_id" : results[0].user_id
+							"item_id" : results.sale_id,
+							"item_title" : results.title,
+							"item_description" : results.description,
+							"item_condition" : results.condition,
+							"available_quantity" : results.sale_qty,
+							"is_bid" : results.is_bid,
+							"current_price" : results.sale_price,
+							"item_seller_fname" : results.f_name,
+							"item_seller_lname" : results.l_name,
+							"item_seller_handle" : results.user_name,
+							"item_seller_id" : results.user_id
 						});
 					});
 				} else {
@@ -321,31 +407,45 @@ router.post('/fetchItemDetails', function(req, res, next) {
 				}
 			});
 		} else {
-			dao.executeQuery("SELECT sale.*, seller.f_name, seller.l_name, seller.user_name, seller.user_id, cond.condition_name FROM sale_details AS sale, user_account AS seller, item_conditions AS cond WHERE sale.condition = cond.condition_id AND sale.seller = seller.user_id AND sale_id = ?", [req.body.itemid], function(results) {
+			var result = db.collection('sale_details').find({
+				"sale_id"	:	req.body.itemid,
+				"condition"	:	req.body.condition
+			}, function(err,saleDetails) {
+				saleDetails.toArray(function(err, results) {
+			//dao.executeQuery("SELECT sale.*, seller.f_name, seller.l_name, seller.user_name, seller.user_id, cond.condition_name FROM sale_details AS sale, user_account AS seller, item_conditions AS cond WHERE sale.condition = cond.condition_id AND sale.seller = seller.user_id AND sale_id = ?", [req.body.itemid], function(results) {
 				res.send({
-					"item_id" : results[0].sale_id,
-					"item_title" : results[0].title,
-					"item_description" : results[0].description,
-					"item_condition" : results[0].condition_name,
-					"available_quantity" : results[0].sale_qty,
-					"is_bid" : results[0].is_bid,
-					"current_price" : results[0].sale_price,
-					"item_seller_fname" : results[0].f_name,
-					"item_seller_lname" : results[0].l_name,
-					"item_seller_handle" : results[0].user_name,
-					"item_seller_id" : results[0].user_id
+					"item_id" : results.sale_id,
+					"item_title" : results.title,
+					"item_description" : results.description,
+					"item_condition" : results.condition,
+					"available_quantity" : results.sale_qty,
+					"is_bid" : results.is_bid,
+					"current_price" : results.sale_price,
+					"item_seller_fname" : results.f_name,
+					"item_seller_lname" : results.l_name,
+					"item_seller_handle" : results.user_name,
+					"item_seller_id" : results.user_id
 				});
 			});
+				});
 		}
+	});
 	});
 });
 
 router.post('/fetchTransactions', function(req, res, next) {
 	logger.log('info','Inside fetch transactions page post method');
-	dao.executeQuery("select sum(txn_id) as totalCount from txn_details where sale = ?", [req.body.itemid], function(results) {
-		res.send({
-			"total_sold" : results[0].totalCount
+	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var user = db.collection('txn_details').find({
+			"sale_id"		:	req.body.itemid
+		}, function(err,result) {
+	//dao.executeQuery("select sum(txn_id) as totalCount from txn_details where sale = ?", [req.body.itemid], function(results) {
+		result.toArray(function(err, trans_details) {
+			res.send({
+				"total_sold" : trans_details.length
+			});
 		});
+	});
 	});
 });
 
@@ -354,8 +454,7 @@ router.post('/fetchCart', function(req, res, next) {
 	if(req.session.loggedInUser) {
 		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
 		var user = db.collection('cart_details').find({
-			"seller"	:	req.session.loggedInUser.user_name,
-			"sale_item"		:	sale_id
+			"user"	:	req.session.loggedInUser.user_name,
 		}, function(err,result) {
 		//dao.executeQuery("SELECT seller.user_name, sale.sale_id, sale.title, condi.condition_name, cart.cart_qty, sale.sale_price FROM cart_details AS cart, sale_details AS sale, user_account AS seller, item_conditions AS condi WHERE condi.condition_id = sale.condition AND cart.sale_item = sale.sale_id AND seller.user_id = sale.seller AND cart.user = ?", [req.session.loggedInUser.user_id], function(results) {
 			result.toArray(function(err, cart_items) {
@@ -375,9 +474,16 @@ router.post('/fetchCart', function(req, res, next) {
 router.post('/removeFromCart', function(req, res, next) {
 	logger.log('info','Inside remove from cart page post method');
 	if(req.session.loggedInUser) {
-		dao.executeQuery("delete from cart_details where user = ? and sale_item = ?", [req.session.loggedInUser.user_id, req.body.item], function(results) {
-			logger.log('info',req.session.loggedInUser.user_id + ' removed ' + req.body.item + ' from cart.');
+		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		var collection = db.collection('cart_details');
+		collection.remove( {
+			"user"	:	req.session.loggedInUser.user_name,
+			"sale_item"		:	req.body.itemid
+		}, function(err,results) {
+		//dao.executeQuery("delete from cart_details where user = ? and sale_item = ?", [req.session.loggedInUser.user_id, req.body.item], function(results) {
+			logger.log('info',req.session.loggedInUser.user_name + ' removed ' + req.body.item + ' from cart.');
 			res.send({ });
+		});
 		});
 	} else {
 		res.redirect('/');
@@ -417,11 +523,24 @@ router.post('/fetchNotifications', function(req, res, next) {
 router.post('/addToCart', function(req, res, next) {
 	logger.log('info','Inside add to cart page post method');
 	if(req.session.loggedInUser) {
-		dao.executeQuery("SELECT count(cart_item_id) as entries FROM cart_details WHERE user = ? AND sale_item = ?", [req.session.loggedInUser.user_id, req.body.itemid], function(results) {
-			if(results[0].entries > 0) {
-				dao.executeQuery("UPDATE cart_details SET `cart_qty` = ? WHERE `user` = ? AND `sale_item` = ?", [Number(results[0].entries) + Number(req.body.qty), req.session.loggedInUser.user_id, req.body.itemid], function(update_status) {
+		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+			var user = db.collection('cart_details').find({
+				"user"	:	req.session.loggedInUser.user_name,
+				"sale_item"		:	req.body.itemid
+			}, function(err,results) {
+			//dao.executeQuery("SELECT count(cart_item_id) as entries FROM cart_details WHERE user = ? AND sale_item = ?", [req.session.loggedInUser.user_id, req.body.itemid], function(results) {
+			if(results.entries > 0) {
+				var user = db.collection('cart_details').update({
+					"user"	:	req.session.loggedInUser.user_name,
+					"sale_item"		:	req.body.itemid
+					}, {
+						$set:	{
+							"cart_qty"	:	Number(results[0].entries) + Number(req.body.qty)
+						}
+					}, function(err,update_status) {
+				//dao.executeQuery("UPDATE cart_details SET `cart_qty` = ? WHERE `user` = ? AND `sale_item` = ?", [Number(results[0].entries) + Number(req.body.qty), req.session.loggedInUser.user_id, req.body.itemid], function(update_status) {
 					logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' added ' + req.body.itemid + ' to cart.');
-					if(update_status.affectedRows === 1) {
+					if(update_status.result.ok === 1) {
 						res.send({
 							"status_code"	:	200
 						});
@@ -432,12 +551,13 @@ router.post('/addToCart', function(req, res, next) {
 					}
 				});
 			} else {
-				dao.insertData("cart_details", {
-					"user"		:	req.session.loggedInUser.user_id,
+				var collection = db.collection('cart_details');				
+				collection.insert( {
+					"user"		:	req.session.loggedInUser.user_name,
 					"sale_item"	:	req.body.itemid,
 					"cart_qty"	:	req.body.qty
-				}, function(rows) {
-					if(rows.affectedRows === 1) {
+				}, function(err,rows) {
+					if(rows.result.ok === 1) {
 						res.send({
 							"status_code"	:	200
 						});
@@ -448,6 +568,7 @@ router.post('/addToCart', function(req, res, next) {
 					}
 				});
 			}
+		});
 		});
 	} else {
 		res.send({
@@ -460,7 +581,7 @@ router.post('/fetchSales', function(req, res, next) {
 	logger.log('info','Inside fetch sales page post method');
 	if(req.session.loggedInUser) {
 		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('userAccount').find({
+		var user = db.collection('sale_details').find({
 			"seller"	:	{$ne:req.session.loggedInUser.user_name},
 			"active"	:	1
 		}, function(err,result) {
@@ -636,9 +757,8 @@ router.post('/register', function(req, res, next) {
 				var collection = db.collection('user_profile');
 				collection.insert( {
 					"contact"	:	phone,
-					"user"		:	rows.insertedIds
+					"user"		:	username
 				}, function(err,rows) {
-					console.log(rows);
 					if(rows.result.ok === 1) {
 						success_messages.push("User " + firstname + " created successfully !");
 						res.send({
@@ -682,12 +802,14 @@ router.post('/publishSale', function(req, res, next) {
 	var description = req.body.advertise_desc;
 	
 	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
+		autoIncrement.getNextSequence(db, 'sale_details', function (err, autoIndex) {
 		var collection = db.collection('sale_details');
 	
 	collection.insert( {
-		"seller"	:	req.session.loggedInUser.user_id,
-		"item"		:	item,
-		"condition"	:	condition.condition_id,
+		"sale_id"	:	autoIndex,
+		"seller"	:	req.session.loggedInUser.user_name,
+		"item"		:	item.item,
+		"condition"	:	condition.condition,
 		"sale_price":	price,
 		"title"		:	title,
 		"description"		:	description,
@@ -727,14 +849,14 @@ router.post('/publishSale', function(req, res, next) {
 												var collection = db.collection('txn_details');
 												collection.insert( {
 													"sale"				:	rows.insertedIds,
-													"buyer"				:	top_bid[0].bidder,
-													"transaction_price"	:	top_bid[0].bid_amount,
-													"txn_qty"			:	top_bid[0].bid_qty
+													"buyer"				:	top_bid.bidder,
+													"transaction_price"	:	top_bid.bid_amount,
+													"txn_qty"			:	top_bid.bid_qty
 												}, function(err,rows) {
 													var collection = db.collection('notification_details');
 													collection.insert( {
 														"notification_msg"	:	"Your won the highest bid !!! " + title,
-														"user_id"			:	top_bid[0].bidder
+														"user_id"			:	top_bid.bidder
 													}, function(err,rows) {
 														//Do nothing
 													});
@@ -755,6 +877,7 @@ router.post('/publishSale', function(req, res, next) {
 				"status_code"	:	"500"
 			});
 		}
+	});
 	});
 	});
 });

@@ -75,7 +75,7 @@
 									</div>
 									<div ng-show="showMore" class="row show-more-div">
 										<div class="col-xs-12 adjust-right">
-											<select ng-model="adv_item" ng-options="item.item_name for item in items" class="form-control show-more item-select" focus-if="showMore"><option value="" disabled selected>Category</option></select>
+											<select ng-model="adv_item.item_id" ng-options="item.item for item in items" class="form-control show-more item-select" focus-if="showMore"><option value="" disabled selected>Category</option></select>
 											<input type="text" placeholder="Quantity" ng-model="adv_qty" class="form-control quantity-box"/>
 											<select ng-model="item_condition" ng-options="condition.condition for condition in conditions" class="form-control show-more item-condition item-condition-box"><option value="" disabled selected>Condition</option></select>
 										</div>

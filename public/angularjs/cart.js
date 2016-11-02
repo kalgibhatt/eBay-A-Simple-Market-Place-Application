@@ -88,12 +88,12 @@ eBay.controller('homepage', function($scope, $http, $window, $location, $anchorS
 		});
 	};
 	
-	$scope.remove = function(item_id) {
+	$scope.remove = function(sale_item) {
 		$http({
 			method	:	"POST",
 			url		:	"/removeFromCart",
 			data	:	{
-				"item"	:	item_id
+				"itemid"	:	sale_item
 			}
 		}).success(function(data) {
 			$scope.fetchCart();
