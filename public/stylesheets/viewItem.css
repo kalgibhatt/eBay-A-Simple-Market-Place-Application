@@ -10,17 +10,27 @@
 	font-size: 12px;
 }
 
-.head-start {
+.top-row {
 	height: 30px;
 	background-color: #FFFFFF;
 }
 
-.help-content {
+.extreme-right {
 	border-right: 0px!important;
 }
 
 .middle-body {
 	margin: auto;
+}
+
+.head-link {
+	color: BLACK;
+}
+
+.head-link:hover {
+	text-decoration: underline!important;
+	cursor: pointer!important;
+	color: #0654BA!important;
 }
 
 .search-button {
@@ -30,7 +40,7 @@
 	background: #006EB3!important;
 }
 
-.search-box {
+.search-bar {
 	border-radius: 2px;
 	font-size: 16px;
 	padding: 10px 0px 9px 8px;
@@ -54,7 +64,7 @@
 	zoom: 0.5;
 }
 
-.header-item-box {
+.header-item-container {
 	height: 100%;
 	margin-left: 15px;
 }
@@ -86,26 +96,26 @@
 	color: #0654BA;
 }
 
-.user_profile_details {
+.user_profile_menu_content {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    padding: 10px;
 }
 
-.bid-details-box {
+.bid-details-window {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 300px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-    padding-left: 10px;
+    padding: 30px;
     top: -60px;
-    border: 4px solid #ddd;
 }
 
-.notifications-bar {
+.notifications-window {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -126,7 +136,7 @@
 	display: inline-flex;
 }
 
-.notifications-item-detail {
+.detail-item {
 	margin-right: 5px;
 	margin-left: 5px;
 }
@@ -134,11 +144,6 @@
 .user-menu-row {
 	padding: 0px 0px 10px 0px;
 	margin-left: 0px;
-}
-
-.profile-name {
-	padding-left: 0px;
-	margin-left:0px;
 }
 
 .profile-image-bound {
@@ -152,7 +157,12 @@
 	max-height: 100%;
 }
 
-.right-header {
+.profile-names {
+	padding-left: 0px;
+	margin-left:0px;
+}
+
+.right-panel {
 	text-align: right;
 	border-right: none;
 	margin-right: 15px;
@@ -194,14 +204,19 @@
 	padding-right:300px;
 }
 
-.detail-pair {
-	margin-top: 30px;
+.title-bar {
+	margin-bottom: 15px;
+}
+
+.detail-tuple {
+	margin-top: 20px;
 }
 
 .details-key {
 	font-family: "Helvetica neue",Helvetica,Verdana,Sans-serif;
 	font-size: small;
     text-align: right;
+    float: right;
     color: #666;
     font-weight: normal;
     word-wrap: break-word;
@@ -236,7 +251,7 @@
 	padding-right: 330px;
 }
 
-.sold-quantity {
+.sold-qty {
 	line-height: 34px;
 	float: right;
 	text-align: right;

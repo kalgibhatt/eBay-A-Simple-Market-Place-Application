@@ -1,5 +1,4 @@
-/* USER PROFILE PAGE */
- .card {
+.card {
     margin-top: 20px;
     padding: 30px;
     background-color: rgba(214, 224, 226, 0.2);
@@ -13,6 +12,20 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+.edit-text {
+	float: right;
+	font-weight: 300;
+}
+
+.edit-input {
+	padding: 0px;
+}
+
+.messages {
+	margin-top: 20px;
+}
+
 .card.hovercard {
     position: relative;
     padding-top: 0;
@@ -61,6 +74,7 @@
     font-size: 20px;
     line-height: 1;
     color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
@@ -96,12 +110,12 @@
 	font-size: 12px;
 }
 
-.head-start {
+.top-row {
 	height: 30px;
 	background-color: #FFFFFF;
 }
 
-.help-content {
+.extreme-right {
 	border-right: 0px!important;
 }
 
@@ -113,10 +127,9 @@
 	height: 40px;
 	margin-left: 5px;
 	font-size: 16px;
-	background: #006EB3!important;
 }
 
-.search-box {
+.search-bar {
 	border-radius: 2px;
 	font-size: 16px;
 	padding: 10px 0px 9px 8px;
@@ -140,7 +153,8 @@
 	zoom: 0.5;
 }
 
-.header-item-box {
+
+.header-item-container {
 	height: 100%;
 	margin-left: 15px;
 }
@@ -197,7 +211,7 @@
 	color: #0654BA;
 }
 
-.user_profile_details {
+.user_profile_menu_content {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -206,13 +220,8 @@
 }
 
 .user-menu-row {
-	padding: 0px 0px 10px 0px;
+	padding: 00px 0px 10px 0px;
 	margin-left: 0px;
-}
-
-.profile-name {
-	padding-left: 0px;
-	margin-left:0px;
 }
 
 .profile-image-bound {
@@ -226,14 +235,20 @@
 	max-height: 100%;
 }
 
-.right-header {
+.profile-names {
+	padding-left: 0px;
+	margin-left:0px;
+}
+
+.right-panel {
 	text-align: right;
+	float: right;
 	border-right: none;
 	margin-right: 15px;
 	margin-left: 15px;
 }
 
-.seperator {
+.separator {
 	height: 10px;
 	border: 0;
 	box-shadow: 0 10px 10px -10px #8c8b8b inset;
@@ -241,7 +256,7 @@
 	margin-bottom: 10px;
 }
 
-.details-seperator { 
+.details-separator { 
   	border-top: 1px dashed #8c8b8b;
 }
 
@@ -275,7 +290,7 @@
 	z-index: 1;
 }
 
-.notifications-bar {
+.notifications-window {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -292,7 +307,7 @@
 	line-height: 40px;
 }
 
-.notifications-item-detail {
+.detail-item {
 	margin-right: 5px;
 	margin-left: 5px;
 }
@@ -336,7 +351,7 @@
 	cursor:pointer;
 }
 
-.add-address-box {
+.add-address-block {
 	border: 3px solid #ccc;
 	border-radius: 10px;
 	padding: 0px 20px 20px 20px;
@@ -400,7 +415,7 @@ input:focus {
 	border-bottom:0px; 
 }
 
-label {
+label 				 {
   color:#76767e; 
   font-size:15px;
   font-weight:lighter;

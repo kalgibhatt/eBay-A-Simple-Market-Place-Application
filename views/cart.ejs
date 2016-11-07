@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		 <title>Your eBay Shopping Cart</title>
+		<title>A Simple Market Place | eBay</title>
 		
 		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.min.css"/>
@@ -13,8 +13,8 @@
 		<link rel='stylesheet' href='css/cart.css'/>
 		
 		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<script src="modules/html5shiv/dist/html5shiv.min.js"></script>
+		<script src="modules/respond.js/dest/respond.min.js"></script>
 		<![endif]-->
 		
 		<script src="modules/jquery/dist/jquery.min.js"></script>
@@ -29,197 +29,213 @@
 	</head>
 	<body ng-app="eBay" ng-controller="homepage" ng-cloak>
 		<div class="container-fluid">
-	    	<div class="row">
-	        	<div class="col-md-12 full-body">
-	                <div class="row head-start">
-	                    <div class="col-md-12">
-	                        <div class="row">
-	                        	<div class="col-md-6 header-item-box">
-	                                <div class="row">
-	                                	<div class="col-md-12">
-	                                		<span ng-hide="user_fname">
-	                                			<div class="header-item">Hi! <span ng-click="signinClicked()" class="link">Sign in</span> or <span ng-click="registerClicked()" class="link">register</span></div>
-	                                		</span>
-		                                	<span ng-show="user_fname">
-		                                		<div class="header-item usernameDisplay">Hi <span ng-mouseover="show_user_profile_menu = true"><strong>{{user_fname}}!&nbsp;</strong><span class="glyphicon glyphicon-menu-down"></span></span></div>
-		                                		<div id="user_profile_menu" ng-show="show_user_profile_menu" ng-mouseleave="show_user_profile_menu = false" class="user_profile_details" ng-class="{show: show_user_profile_menu}">
-		                                			<div class="row user-menu-dropdown link" ng-click="userProfile()">
-		                                				<div class="col-md-5 profile-image-display">
-				                							<img src="/images/products/iPhone-7.jpg" class="profile-image">
-				                						</div>
-				                						<div class="col-md-7 profile-name">
-				                							<span>{{user_fname}}&nbsp;{{user_lname}}</span>
-				                							<span>@{{user_name}}</span>
-				                						</div>
-		                                			</div>
-		                                			<div class="row user-menu-dropdown link" ng-click="showTransactions()">
-		                                				<div class="col-md-12 link">My Collections</div>
-		                                			</div>
-		                                			<div class="row user-menu-dropdown" ng-click="showAccount()">
-		                                				<div class="col-md-12 link">Account settings</div>
-		                                			</div>
-		                                			<div class="row user-menu-dropdown link" ng-click="signout()">
-		                                				<div class="col-md-12 link">Sign out</div>
-		                                			</div>
-		                                		</div>
-		                                	</span>
-		                                    <div class="header-item">Daily Deals</div>
-		                                    <div class="header-item">Gift Cards</div>
-		                                    <span ng-hide="user_fname"><div class="header-item">Sell</div></span>
-		                                    <span ng-show="user_fname"><div class="header-item link" ng-click="sellAnItem()">Sell</div></span>
-		                                    <div class="header-item help-content">Help &amp; Content</div>
-	                                	</div>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-2">
-	                                <!-- Temporary Sale Image Goes here-->
-	                            </div>
-	                            <div class="col-md-4 pull-right right-header">
-	                                <div class="header-item right-header">My eBay</div>
-	                                <notification-icon count='notificationCount' animation='bounce' ng-click="show_notifications = !show_notifications" disappear-animation='fade'>
-	                                	<div class="header-item right-header glyphicon glyphicon-bell black-link"></div>
-	                                </notification-icon>
-                                	<div id="notifications" ng-show="show_notifications" ng-click="hideNotifications()" class="notifications-bar" ng-class="{show: show_notifications}">
-                            			<div ng-repeat="notification in notifications">
-	                            			<div class="row">
-	                            				<div class="col-md-12 notification-detail">
-	                            					<div class="notifications-item-detail">{{$index + 1}}</div>
-			                                		<div class="notifications-item-detail">{{notification.notification_msg}}</div>
-	                            				</div>
-	                            			</div>
-	                            			<hr class="seperator"/>
-                            			</div>
-                            		</div>
-	                                <notification-icon count='cartItemCount' animation='bounce' disappear-animation='fade' ng-click="gotoCart()">
-	                                	<div class="header-item right-header glyphicon glyphicon-shopping-cart black-link"></div>
-	                                </notification-icon>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="row middle-body">
-	                    <div class="col-md-12">
-	                    	<div class="row search-row">
-	                        	<div class="col-md-2">
-	                            	<div class="row" align="center">
-	                                	<div class="ebay-logo img-responsive link" ng-click="homepageClicked()">
-		                                </div>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-8">
-	                            	<div class="row">
-	                                	<input type="text" class="form-control search-box" ng-model="searchString" focus-if ng-enter="search()"/>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-2">
-	                            	<div class="row">
-	                                	<div class="col-md-12"><button class="form-control btn btn-primary search-button" ng-click="search()">Search</button></div>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <hr class="seperator"/>
-	                        
-	                        <div class="row success-message" ng-hide="success.length === 0" align="center">
-			        			<div class="col-md-12">
-			        				<div ng-repeat="message in success">
-			        					<div class="row">
-			        						<div class="col-md-12">
-			        							<span class="alert alert-success">{{message}}</span>
-			        						</div>
-			        					</div>
-			        				</div>
-			        			</div>
-			        		</div>
-	                        
-	                        <div class="row">
-							    <div class="col-md-1"></div>
-							    <div class="col-md-7 cart-box">
-							        <div ng-repeat="cart_item in cart_items">
-							            <div class="cart-second-box">
-							                <div class="cart-header">
-							                    <span class="seller-details link" ng-click="showUser(cart_item.user_name)">Seller: @{{cart_item.user_name}}</span>
-							                </div>
-							                <div class="cart-body row">
-							                    <div class="col-md-4">
-							                        <span><img src="/images/products/iPhone-7.jpg" alt="No image availabe" class="item-image"></span>
-							                    </div>
-							                    <div class="col-md-8">
-							                        <div class="row">
-							                            <div class="col-md-6">
-							                                <div class="row">
-							                                    <div class="col-md-12">
-							                                        <span class="item-title link" ng-click="shop(cart_item.sale_id)">{{cart_item.title}}</span>
-							                                    </div>
-							                                </div>
-							                                <div class="row">
-							                                    <div class="col-md-12">
-							                                        <div class="details">Condition: {{cart_item.condition_name}}</div>
-							                                    </div>
-							                                </div>
-							                                <div class="row">
-							                                    <div class="col-md-12">
-							                                        <div class="details">Quantity: {{cart_item.cart_qty}}</div>
-							                                    </div>
-							                                </div>
-							                            </div>
-							                            <div class="col-md-6">
-							                                <span class="item-price"><strong>${{cart_item.sale_price}}</strong></span>
-							                            </div>
-							                        </div>
-							                    </div>
-							                    <div class="col-md-12 foot">
-							                        <span class="other-details link" ng-click="remove(cart_item.sale_item)">Remove</span>
-							                    </div>
-							                </div>
-							            </div>
-							        </div>
-							    </div>
-							    <div class="col-md-4 cart-summary-box">
-							        <div class="cart-summary-title">Cart Summary <span class="item-count">({{cart_items.length}} items)</span></div>
-							        <div class="total cart-summary-total">Total : ${{cart_total}}</div>
-							        <div>
-							        	<button class="btn btn-primary button check-out-button" ng-click="checkout()">Proceed to checkout</button>
-							    	</div>
-							    	<div>
-							        	<img src="http://ir.ebaystatic.com/pictures/aw/pics/shoppingcart/eMBG_stacked.gif" width="150" height="35" alt="Learn more about eBay Money Back Guarantee">
-							    	</div>
-							    	<div>
-							        	<p class="cart-summary-info">Covers your purchase price plus original shipping on virtually all items. Get the item you ordered or get your money back. <span class="learn-more link">Learn more</span></p>
-							    	</div>
+			<div class="row">
+				<div class="col-md-12 full-body">
+					<div class="row top-row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6 header-item-container">
+									<div class="row">
+										<div class="col-md-12">
+											<span ng-hide="loggedInUser.f_name">
+												<div class="header-item">Hi! <span ng-click="signinClicked()" class="link">Sign in</span> or <span ng-click="registerClicked()" class="link">register</span></div>
+											</span>
+											<span ng-show="loggedInUser.f_name">
+												<div class="header-item usernameDisplay">Hi <span ng-mouseover="show_user_profile_menu = true"><strong>{{loggedInUser.f_name}}!&nbsp;</strong><span class="glyphicon glyphicon-menu-down"></span></span></div>
+												<div id="user_profile_menu" ng-show="show_user_profile_menu" ng-mouseleave="show_user_profile_menu = false" class="user_profile_menu_content" ng-class="{show: show_user_profile_menu}">
+													<div class="row user-menu-row link" ng-click="userProfile()">
+														<div class="col-md-5 profile-image-bound">
+															<img src="/images/products/iPhone-7.jpg" class="profile-image">
+														</div>
+														<div class="col-md-7 profile-names">
+															<span>{{loggedInUser.f_name}}&nbsp;{{loggedInUser.l_name}}</span>
+															<span>@{{loggedInUser.username}}</span>
+														</div>
+													</div>
+													<div class="row user-menu-row link" ng-click="userProfile()">
+														<div class="col-md-12 link">My Collections</div>
+													</div>
+													<div class="row user-menu-row link" ng-click="userProfile()">
+														<div class="col-md-12 link">Account Settings</div>
+													</div>
+													<div class="row user-menu-row link" ng-click="signout()">
+														<div class="col-md-12 link">Sign out</div>
+													</div>
+												</div>
+											</span>
+											<div class="header-item head-link">Daily Deals</div>
+											<div class="header-item head-link">Gift Cards</div>
+											<span ng-hide="loggedInUser.f_name"><div class="header-item head-link">Sell</div></span>
+											<span ng-show="loggedInUser.f_name"><div class="header-item link" ng-click="sellAnItem()">Sell</div></span>
+											<div class="header-item extreme-right head-link">Help &amp; Content</div>
+										</div>
+									</div>
 								</div>
-	                        </div>
-	                        <div class="row">
-							    <div class="col-md-3"></div>
-							    <div class="col-md-5 cart-box" style="margin-top:10px;">
-							        <div class="row">
-							            <div class="col-md-2"></div>
-							            <div class="col-md-10" style="text-align:right;">
-							                <div> Subtotal (2 items): ${{cart_total}}</div>
-							                <div class="shipping-cost"> Shipping: $0.00</div>
-							                <div class="total">Total : ${{cart_total}} </div>
-							            </div>
-							        </div>
-							        <div class="row">
-							            <div class="col-md-12">
-							                <button type="submit" class="btn btn-primary continue-button" ng-click="homepageClicked()">Continue Shopping</button>
-							                <button type="submit" class="btn btn-primary check-out-button" ng-click="checkout()">Proceed to Checkout</button>
-							            </div>
-							        </div>
-							    </div>
-							    <div class="col-md-4"></div>
+								<div class="col-md-2">
+									<!-- Temporary Sale Image Goes here-->
+								</div>
+								<div class="col-md-4 pull-right right-panel">
+									<div class="header-item right-panel">My eBay</div>
+									<notification-icon count='loggedInUser.notifications.length' animation='bounce' ng-click="show_notifications = !show_notifications" disappear-animation='fade'>
+									<div class="header-item right-panel glyphicon glyphicon-bell black-link"></div>
+									</notification-icon>
+									<div id="notifications" ng-show="show_notifications" ng-click="hideNotifications()" class="notifications-window" ng-class="{show: show_notifications}">
+										<div ng-repeat="notification in loggedInUser.notifications">
+											<div class="row">
+												<div class="col-md-12 notification-detail">
+													<div class="detail-item">{{$index + 1}}</div>
+													<div class="detail-item">{{notification.notification}}</div>
+												</div>
+											</div>
+											<hr class="separator"/>
+										</div>
+									</div>
+									<notification-icon count='loggedInUser.cart.length' animation='bounce' disappear-animation='fade' ng-click="gotoCart()" class="black-link">
+									<div class="header-item right-panel glyphicon glyphicon-shopping-cart black-link"></div>
+									</notification-icon>
+								</div>
 							</div>
-	                        </div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12 footbox-gap">
-							<div class="bottom-footbox">
-								<p>Copyright &copy; 1995-2016 eBay Inc. All Rights Reserved. User Agreement, Privacy, Cookies and AdChoice</p>
+					<div class="row success-message" ng-hide="outer_messages.length === 0" align="center">
+						<div class="col-md-12">
+							<div ng-repeat="message in outer_messages">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="alert alert-warning">{{message}}</span>
+									</div>
+								</div>
 							</div>
+						</div>
+					</div>
+					<div class="row middle-body">
+						<div class="col-md-12">
+							<div class="row search-row">
+								<div class="col-md-2">
+									<div class="row" align="center">
+										<div class="ebay-logo img-responsive link" ng-click="homepageClicked()">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<div class="row">
+										<input type="text" class="form-control search-bar" ng-model="searchString" focus-if ng-enter="search()"/>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="row">
+										<div class="col-md-12"><button class="form-control btn btn-primary search-button" ng-click="search()">Search</button></div>
+									</div>
+								</div>
+							</div>
+							<hr class="separator"/>
+							
+							<div class="row success-message" ng-hide="success.length === 0" align="center">
+								<div class="col-md-12">
+									<div ng-repeat="message in success">
+										<div class="row">
+											<div class="col-md-12">
+												<span class="alert alert-success">{{message}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-1"></div>
+								<div class="col-md-7 cart-box">
+									<div class="row success-message" ng-show="loggedInUser.cart.length === 0" align="center">
+										<div class="col-md-12">
+											<span class="alert alert-warning">Nothing added to cart! Go shop something...!!!</span>
+										</div>
+									</div>
+									<div ng-repeat="cart_item in loggedInUser.cart">
+										<div class="cart-second-box">
+											<div class="cart-header">
+												<span class="seller-details link" ng-click="showUser(cart_item.seller)">Seller: @{{cart_item.seller}}</span>
+											</div>
+											<div class="cart-body row">
+												<div class="col-md-4">
+													<img src="images/products/iPhone-7.jpg" alt="No image availabe" class="product-image">
+												</div>
+												<div class="col-md-8">
+													<div class="row">
+														<div class="col-md-6">
+															<div class="row">
+																<div class="col-md-12">
+																	<span class="product-title link" ng-click="shop(cart_item._id)">{{cart_item.title}}</span>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-md-12">
+																	<div class="details">Condition: {{cart_item.condition.condition}}</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-md-12">
+																	<div class="details">Quantity: {{cart_item.sale_qty}}</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<span class="product-price"><strong>${{cart_item.sale_price}}</strong></span>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12 foot">
+													<span class="other-details link" ng-click="remove(cart_item._id)">Remove</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 cart-summary-box">
+									<div class="cart-summary-title">Cart Summary <span class="item-count">({{loggedInUser.cart.length}} <span ng-show="loggedInUser.cart.length !== 1">items</span><span ng-hide="loggedInUser.cart.length !== 1">item</span>)</span></div>
+									<div class="total cart-summary-total">Total : ${{cart_total}}</div>
+									<div>
+										<button class="btn btn-primary button check-out-button" ng-click="checkout()">Proceed to checkout</button>
+									</div>s
+									<div>
+										<img src="images/moneybackguarantee.gif" width="150" height="35" alt="Learn more about eBay Money Back Guarantee">
+									</div>
+									<div>
+										<p class="cart-summary-info">Covers your purchase price plus original shipping on virtually all items. Get the item you ordered or get your money back. <span class="learn-more link">Learn more</span></p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-5 cart-box" style="margin-top:10px;">
+									<div class="row">
+										<div class="col-md-2"></div>
+										<div class="col-md-10" style="text-align:right;">
+											<div> Subtotal ({{loggedInUser.cart.length}} <span ng-show="loggedInUser.cart.length !== 1">items</span><span ng-hide="loggedInUser.cart.length !== 1">item</span>): ${{cart_total}}</div>
+											<div class="shipping"> Shipping: $0.00</div>
+											<div class="total">Total : ${{cart_total}} </div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<button type="submit" class="btn btn-primary continue-button" ng-click="homepageClicked()">Continue Shopping</button>
+											<button type="submit" class="btn btn-primary check-out-button" ng-click="checkout()">Proceed to Checkout</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4"></div>
+							</div>					
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 footbox-gap">
+						<div class="bottom-footbox">
+							<p>Copyright &copy; 1995-2016 eBay Inc. All Rights Reserved. User Agreement, Privacy, Cookies and AdChoice</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

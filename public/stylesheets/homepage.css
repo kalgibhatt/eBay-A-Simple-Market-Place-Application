@@ -12,14 +12,21 @@
 	font-size: 12px;
 }
 
-.head-start {
+.top-row {
 	height: 30px;
 	background-color: #FFFFFF;
 }
 
-.header-item-box {
+.header-item-container {
 	height: 100%;
 	margin-left: 15px;
+}
+
+.current-sale {
+	background: url("../images/currentsale.jpg") no-repeat;
+	height: 30px;
+	overflow: visible;
+	zoom: 0.8;
 }
 
 .header-item {
@@ -31,15 +38,11 @@
 	line-height: 30px;
 }
 
-.right-header {
+.right-panel {
 	text-align: right;
 	border-right: none;
 	margin-right: 15px;
 	margin-left: 15px;
-}
-
-.icon {
-	color: #555555;
 }
 
 .middle-body {
@@ -59,7 +62,7 @@
 	zoom: 0.5;
 }
 
-.search-box {
+.search-bar {
 	border-radius: 2px;
 	font-size: 16px;
 	padding: 10px 0px 9px 8px;
@@ -70,7 +73,7 @@
 		Sans-serif !important
 }
 
-.notifications-bar {
+.notifications-window {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -87,7 +90,7 @@
 	line-height: 40px;
 }
 
-.notifications-item-detail {
+.detail-item {
 	margin-right: 5px;
 	margin-left: 5px;
 }
@@ -127,7 +130,11 @@
 	color: #0654BA;
 }
 
-.help-content {
+.emptyRow {
+	height: 2%;
+}
+
+.extreme-right {
 	border-right: 0px!important;
 }
 
@@ -151,7 +158,7 @@
 }
 
 .image-display {
-	width: 100%;
+	max-width: 100%;
 }
 
 .image-display:hover {
@@ -180,12 +187,7 @@
 	cursor: pointer;
 }
 
-.profile-name {
-	padding-left: 0px;
-	margin-left:0px;
-}
-
-.profile-image-display {
+.profile-image-bound {
 	height: 50px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -245,7 +247,7 @@
 	border: 0px;
 }
 
-.footbox-gap {
+.cover-screen-width {
 	padding-right: 0px;
 	padding-left: 0px;
 	margin-right: 0px;
@@ -279,7 +281,7 @@
 	position: fixed;
 }
 
-.user_profile_details {
+.user_profile_menu_content {
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -305,7 +307,7 @@
 	margin-bottom: 50px;
 }
 
-.user-menu-dropdown {
+.user-menu-row {
 	padding: 0px 0px 10px 0px;
 	margin-left: 0px;
 }
@@ -343,16 +345,23 @@
 	opacity: 0.8;
 }
 
-.img {
-   font-size: 40px;
-   color: #5ba71b;
-   padding-top: 12px;
-}
-
 .no-item-img {
 	font-size: 40px;
    	color: #0654BA;
    	padding-top: 12px;
+}
+
+.no-item-text {
+	color: #0654BA;
+    font-family: "Helvetica neue",Helvetica,Arial,Verdana,Sans-serif;
+    font-weight: 500;
+	padding-left: 15px;
+}
+
+.img {
+   font-size: 40px;
+   color: #5ba71b;
+   padding-top: 12px;
 }
 
 .sign-out-text {
@@ -362,11 +371,9 @@
 	padding-left: 15px;
 }
 
-.no-item-text {
-	color: #0654BA;
-    font-family: "Helvetica neue",Helvetica,Arial,Verdana,Sans-serif;
-    font-weight: 500;
-	padding-left: 15px;
+.profile-names {
+	padding-left: 0px;
+	margin-left:0px;
 }
 
 .ng-hide-add {

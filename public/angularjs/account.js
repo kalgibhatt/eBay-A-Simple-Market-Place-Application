@@ -73,13 +73,12 @@ eBay.controller('signinController', function($scope, $http, $window, $location) 
 				url		:	"/signin",
 				data	:	{
 					"userID"			:	$scope.userID,
-					"password"			:	$scope.password,
-					"passwordpassword"	:	$scope.$parent.randomPassword
+					"password"			:	$scope.password
 				}
 			}).success(function(data) {
 				if(Boolean(data.valid)) {
 					if($location.search().redir === undefined) {
-						$window.location.href = "/?Last_Login=" + data.last_login;
+						$window.location.href = "/?last_login="+data.last_login;
 					} else {
 						var redir = $location.search().redir.split("-");
 						if(redir.length > 1) {
@@ -114,6 +113,7 @@ eBay.controller('registerController', function($scope, $http, $location) {
 					"fname"				:	$scope.fname,
 					"lname"				:	$scope.lname,
 					"contact"			:	$scope.contact,
+					"dob"				:	$scope.dob,
 					"passwordpassword"	:	$scope.$parent.randomPassword
 				}
 			}).success(function(data) {
@@ -206,6 +206,19 @@ eBay.controller('registerController', function($scope, $http, $location) {
 			} else {
 				$scope.validContact = false;
 			}
+		}
+	});
+
+	$scope.$watch('dob', function() {
+		// var contact_validator = new RegExp(/^(\d{11,12})$/);
+		if($scope.dob !== undefined && $scope.dob !== "") {
+			// if($scope.dob.match(contact_validator) !== null) {
+				$scope.validDob = true;
+			// } else {
+				// $scope.validContact = false;
+			// }
+		} else {
+			// $scope.validDob = false;
 		}
 	});
 	

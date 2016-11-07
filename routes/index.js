@@ -1,105 +1,96 @@
+
 var express = require('express');
 var router = express.Router();
-var dao = require('../utils/dao');
 var logger = require("../utils/logger");
 var schedule = require('node-schedule');
 var sjcl = require('sjcl');
-var bcrypt = require("bcrypt");
-var mongo = require('./mongo');
-var autoIncrement = require("mongodb-autoincrement");
+
+var common_bo = require('../bos/common_bo');
+var homepage_bo = require('../bos/homepage_bo');
+var accounts_bo = require('../bos/accounts_bo');
+var sell_bo = require('../bos/sell_bo');
+var cart_bo = require('../bos/cart_bo');
+var profile_bo = require('../bos/profile_bo');
+var item_bo = require('../bos/item_bo');
 
 // TODO: Nice Utility for scheduled tasks: https://github.com/ncb000gt/node-cron -- Done
 // TODO: Nice tool for scheduling bid end job: https://github.com/node-schedule/node-schedule -- Done
 
+router.get('/payment', function(req, res, next) {
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/payment");
+	} else {
+		logger.logRouteEntry(0, "GET", "/payment");
+	}
+	cart_bo.payment(res);
+});
+
 router.get('/', function(req, res, next) {
-	logger.log('info','Inside homepage get method');
-	res.render('index', {  });
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/");
+	} else {
+		logger.logRouteEntry(0, "GET", "/");
+	}
+	homepage_bo.homepage(res);
+});
+
+router.get('/account', function(req, res, next) {
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/account");
+	} else {
+		logger.logRouteEntry(0, "GET", "/account");
+	}
+	accounts_bo.accounts(res);
 });
 
 router.get('/sell', function(req, res, next) {
-	logger.log('info','Inside sell page get method');
-	res.render('sell', {  });
-});
-
-router.get('/payment', function(req, res, next) {
-	logger.log('info','Inside payment page get method');
-	res.render('payment', { });
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/sell");
+	} else {
+		logger.logRouteEntry(0, "GET", "/sell");
+	}
+	sell_bo.sell(res);
 });
 
 router.get('/cart', function(req, res, next) {
-	logger.log('info','Inside cart page get method');
 	if(req.session.loggedInUser) {
-		res.render('cart', {  });
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/cart");
+	} else {
+		logger.logRouteEntry(0, "GET", "/cart");
+	}
+	if(req.session.loggedInUser) {
+		cart_bo.cart(res);
 	} else {
 		res.redirect('/');
 	}
 });
 
 router.get('/viewItem', function(req, res, next) {
-	logger.log('info','Inside item page get method');
 	if(req.session.loggedInUser) {
-		logger.log('info','User with user ID ' + req.session.loggedInUser.user_name + ' visited page of ' + req.body.itemid);
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('suggestion_details').find({
-			"user"	:	req.session.loggedInUser.user_name,
-			"suggestion_item"	:	req.body.itemid
-		}, function(err,rows) {
-		//dao.executeQuery("SELECT count(suggestion_id) as entries FROM suggestion_details WHERE user = ? AND suggestion_item = ?", [req.session.loggedInUser.user_id, Number(req.param('itemid'))], function(rows) {
-			if(rows.entries !== 0) {
-				var user = db.collection('suggestion_details').find({
-					"user"	:	req.session.loggedInUser.user_name,
-					"suggestion_item"	:	req.body.itemid
-				}, function(err,suggestionDetails) {
-				//dao.executeQuery("DELETE FROM suggestion_details WHERE user=? AND suggestion_item=?", [req.session.loggedInUser.user_id, Number(req.param('itemid'))], function(suggestionDetails) {
-					var collection = db.collection('suggestion_details');
-					collection.remove( {
-						"user"				:	req.session.loggedInUser.user_name,
-						"suggestion_item"	:	req.body.itemid
-					}, function(err,rows) {
-						// Do nothing
-					});
-				});
-			} else {
-				var collection = db.collection('suggestion_details');
-				collection.insert( {
-					"suggestion_item"	:	req.body.itemid
-				}, function(rows) {
-					// Do nothing
-				});
-			}
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/viewItem");
+		item_bo.addItemToUserSuggestion(req.session.loggedInUser._id, Number(req.param('itemid')), req);
+	} else {
+		logger.logRouteEntry(0, "GET", "/viewItem");
 	}
-	res.render('viewItem', {  });
+	item_bo.viewItem(res);
+	
+});
+
+router.get('/forgotPassword', function(req, res, next) {
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "GET", "/forgotPassword");
+	} else {
+		logger.logRouteEntry(0, "GET", "/forgotPassword");
+	}
+	accounts_bo.handleForgotRequest(req.param('email'), res);
 });
 
 router.post('/placeBid', function(req, res, next) {
-	logger.log('info','Inside Bid page post method');
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var collection = db.collection('bid_details');
-		collection.insert( {
-			"sale"			:	req.body.bid_item,
-			"bidder"		:	req.session.loggedInUser.user_name,
-			"bid_amount"	:	req.body.bid_price,
-			"bid_qty"		:	req.body.bid_qty
-		}, function(err,rows) {
-			var user = db.collection('sale_details').update({
-				"sale_id"		:	req.body.bid_item
-				}, {
-					$set:	{
-						"sale_price"	:	req.body.bid_price
-					}
-				}, function() {
-			//dao.executeQuery("update sale_details set sale_price = ? where sale_id = ?", [req.body.bid_price, req.body.bid_item], function() {
-				logger.log('info','Bid on ' + req.body.bid_item + ' by user with user ID ' + req.session.loggedInUser.user_id + 'for' + req.body.bid_price + 'price');
-				res.send({
-					"status_code"	:	200
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/placeBid");
+		item_bo.placeUserBid(req.session.loggedInUser._id, req.session.loggedInUser.username, req.body.bid_item, Number(req.body.bid_price), req.body.bid_qty, res);
 	} else {
+		logger.logRouteEntry(0, "POST", "/placeBid");
 		res.send({
 			"status_code"	:	301
 		});
@@ -107,470 +98,193 @@ router.post('/placeBid', function(req, res, next) {
 });
 
 router.post('/emailIDAvailable', function(req, res, next) {
-	logger.log('info','Inside email ID available page post method');
-	dao.executeQuery("SELECT COUNT(email) as count FROM user_account WHERE email like ?", [req.body.email], function(result) {
-		if(result[0].count === 0) {
-			res.send({
-				"available"	:	true
-			});
-		} else {
-			res.send({
-				"available"	:	false
-			});
-		}
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/emailIDAvailable");
+	} else {
+		logger.logRouteEntry(0, "POST", "/emailIDAvailable");
+	}
+	accounts_bo.checkEmailAvailability(req.body.email, res);
 });
 
 router.post('/fetchBidDetails', function(req, res, next) {
-	logger.log('info','Inside fetch bid details page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('bid_details').find({
-			"bidder"	:	req.session.loggedInUser.user_name,
-			"sale"	:	req.body.itemid
-		}, function(err,results) {
-	//dao.executeQuery("SELECT bid.*, bidder.user_name FROM bid_details AS bid, user_account AS bidder WHERE bid.bidder = bidder.user_id AND sale = ? order by bid.bid_amount desc", [req.body.itemid], function(results) {
-			var user = db.collection('sale_details').find({
-				"sale_id"	:	req.body.itemid
-			}, function(err,remainingTime) {
-			//dao.executeQuery("select sale_time from sale_details where sale_id = ?", [req.body.itemid], function(remainingTime) {
-			var saleDate = new Date(remainingTime.sale_time);
-			var bidEnd = Math.abs(saleDate.getTime() + 345600000);
-			res.send({
-				"results"		:	results,
-				"futureTime"	:	new Date(bidEnd)
-			});
-		});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchBidDetails");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchBidDetails");
+	}
+	item_bo.sendBidDetails(req.body.itemid, res);
 });
 
 router.post('/updateContact', function(req, res, next) {
-	logger.log('info','Inside update contact page post method');
-	dao.updateData("user_profile", {
-		"contact"	:	req.body.contact
-	}, {
-		"user"	:	req.body.user
-	}, function(update_status) {
-		dao.executeQuery("select contact from user_profile where user = ?", [req.body.user], function(profile_details) {
-			logger.log('info','User with user ID ' + req.body.user + ' updated contact.');
-			res.send({
-				"contact"		:	profile_details[0].contact
-			});
-		});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/updateContact");
+	} else {
+		logger.logRouteEntry(0, "POST", "/updateContact");
+	}
+	profile_bo.updateUserContact(req.body.user, req.body.contact, res);
 });
 
 router.post('/updateDOB', function(req, res, next) {
-	logger.log('info','Inside update DOB page post method');
-	dao.updateData("user_profile", {
-		"dob"	:	req.body.dob
-	}, {
-		"user"	:	req.body.user
-	}, function(update_status) {
-		dao.executeQuery("select dob from user_profile where user = ?", [req.body.user], function(profile_details) {
-			logger.log('info','User with user ID ' + req.body.user + ' updated date of birth.');
-			res.send({
-				"dob"		:	profile_details[0].dob
-			});
-		});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/updateDOB");
+	} else {
+		logger.logRouteEntry(0, "POST", "/updateDOB");
+	}
+	profile_bo.updateUserDOB(req.body.user, req.body.dob, res);
 });
 
 router.post('/fetchUserProfile', function(req, res, next) {
-	logger.log('info','Inside fetch user profile page post method');
-	var username;
-	var lname;
-	var fname;
-	var contact;
-	var dob;
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-	var user = db.collection('userAccount').find({
-		"user_name"		:	req.body.username
-	}, function(err,results) {
-		results.toArray(function(err,userProfile){
-	//dao.executeQuery("select user_name, f_name, l_name, user_id from user_account where user_name = ?", [req.body.username], function(userProfile) {
-		//logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' visited profile of user with user ID ' + userProfile[0].user_id);
-		username = userProfile.user_name;
-		fname = userProfile.f_name;
-		lname = userProfile.l_name;
-		var profile_details = db.collection('user_profile').find({
-			"user"		:	userProfile.user_name
-		}, function(err,results) {
-			results.toArray(function(err,profile_details){
-				console.log("-----------",profile_details);
-		//dao.executeQuery("select contact, dob from user_profile where user = ?", [userProfile[0].user_id], function(profile_details) {
-			if(profile_details.length !== 0) {
-				contact = profile_details.contact;
-				dob = profile_details.dob;
-			}
-			res.send({
-				"user_name"		:	username,
-				"l_name"			:	lname,
-				"f_name"			:	fname,
-				"contact"		:	contact,
-				"dob"			:	dob
-			});
-			});
-		});
-	});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchUserProfile");
+		profile_bo.sendUserProfile(req.body.username, res);
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchUserProfile");
+		profile_bo.sendUserProfile(req.body.username, res);
+	}
 });
 
 router.post('/fetchSoldByUser', function(req, res, next) {
-	logger.log('info','Inside fetch sold by user page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-	var user = db.collection('txn_details').findOne({
-		"user_name"		:	req.body.username
-	}, function(err,soldItems) {
-	//dao.executeQuery("select sale_details.title, txn_details.txn_qty, txn_details.transaction_price, txn_details.txn_time from txn_details, sale_details where txn_details.sale = sale_details.sale_id and sale_details.seller = ?", [req.body.user], function(soldItems) {
-		res.send({
-			"soldItems"	:	soldItems
-		});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchSoldByUser");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchSoldByUser");
+	}
+	profile_bo.sendUserSoldItems(req.body.user, res);
 });
 
 router.post('/fetchBoughtByUser', function(req, res, next) {
-	logger.log('info','Inside fetch bought by user page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-	var user = db.collection('txn_details').findOne({
-		"user_name"		:	req.body.username
-	}, function(err,boughtItems) {
-	//dao.executeQuery("select sale_details.title, txn_details.txn_qty, txn_details.transaction_price, txn_details.txn_time from txn_details, sale_details where txn_details.sale = sale_details.sale_id and txn_details.buyer = ?", [req.body.user], function(boughtItems) {
-		res.send({
-			"boughtItems"	:	boughtItems
-		});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchBoughtByUser");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchBoughtByUser");
+	}
+	profile_bo.sendUserBoughtItems(req.body.user, res);
 });
 
 router.post('/fetchSaleByUser', function(req, res, next) {
-	logger.log('info','Inside fetch sale by user page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').findOne({
-			"seller"	:	req.session.loggedInUser.user_name,
-			"active"	:	1
-		}, function(err,saleItems) {
-	//dao.executeQuery("select title, sale_price, sale_qty, description, sale_time from sale_details where seller = ? and active=1;", [req.body.user], function(saleItems) {
-		res.send({
-			"saleItems"	:	saleItems
-		});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchSaleByUser");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchSaleByUser");
+	}
+	profile_bo.sendUserSaleItems(req.body.user, res);
 });
 
 router.post('/usernameAvailable', function(req, res, next) {
-	logger.log('info','Inside username available page post method');
-	dao.executeQuery("SELECT COUNT(user_name) as count FROM user_account WHERE user_name like ?", [sjcl.decrypt(req.body.passwordpassword, req.body.username)], function(result) {
-		if(result[0].count === 0) {
-			res.send({
-				"available"	:	true
-			});
-		} else {
-			res.send({
-				"available"	:	false
-			});
-		}
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/usernameAvailable");
+	} else {
+		logger.logRouteEntry(0, "POST", "/usernameAvailable");
+	}
+	accounts_bo.checkUserAvailability(sjcl.decrypt(req.body.passwordpassword, req.body.username), res);
 });
 
 router.post('/loggedInUser', function(req, res, next) {
-	logger.log('info','Inside logged in user page post method');
 	if(req.session.loggedInUser) {
-		res.send({
-			"userBO"	:	req.session.loggedInUser
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/loggedInUser");
+		common_bo.sendLoggedInUser(req, res);
 	} else {
+		logger.logRouteEntry(0, "POST", "/loggedInUser");
 		res.send({
-			"userBO"	:	{}
+			"loggedInUser"	:	{}
 		});
 	}
 });
 
+router.post('/checkCartQtyAvailable', function(req, res, next) {
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/checkCartQtyAvailable");
+		cart_bo.sendCartAvailability(req.session.loggedInUser._id, res);
+	} else {
+		logger.logRouteEntry(0, "POST", "/checkCartQtyAvailable");
+		res.redirect('/');
+	}
+});
+
 router.post('/fetchAddresses', function(req, res, next) {
-	logger.log('info','Inside fetch addresses page post method');
-	dao.executeQuery("SELECT user_account.f_name, user_account.l_name, location_details.* FROM location_details, user_profile, user_account WHERE location_details.profile = user_profile.profile_id AND user_profile.user = user_account.user_id AND user_account.user_id = ?", [req.body.user], function(results) {
-		res.send({
-			"addresses"	:	results
-		});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchAddresses");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchAddresses");
+	}
+	common_bo.sendAddresses(req.body.user, res);
 });
 
 router.post('/checkout', function(req, res, next) {
-	logger.log('info','Inside checkout page post method');
 	if(req.session.loggedInUser) {
-		var success = true;
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').find({
-			"user"			:	req.session.loggedInUser.user_name,
-			"sale_item"		:	req.body.itemid
-		}, function(err,results) {
-		//dao.executeQuery("select cart_details.sale_item as sale, cart_details.user as buyer, sale_details.sale_price as transaction_price,  cart_details.cart_qty as txn_qty from cart_details, sale_details where cart_details.sale_item = sale_details.sale_id and user = ?", [req.session.loggedInUser.user_id], function(results) {
-			results.forEach(function(err,purchase) {
-				var collection = db.collection('txn_details');
-				collection.insert(purchase, function(err,rows) {
-					logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' purchased ' + purchase[0].sale + '.');
-					if(rows.result.ok !== 1) {
-						success = false;
-					}
-				});
-			});
-		});
-		if(success) {
-			var collection = db.collection('cart_details');
-			collection.remove( {
-				"user"	:	req.session.loggedInUser.user_name,
-			}, function(err,results) {
-			//dao.executeQuery("delete from cart_details where user = ?", [req.session.loggedInUser.user_id], function(results) {
-				res.send({
-					"status_code" : 200
-				});
-			});
-		}
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/checkout");
+		cart_bo.checkout(req.session.loggedInUser._id, req, res);
 	} else {
+		logger.logRouteEntry(0, "POST", "/checkout");
 		res.redirect('/');
 	}
 });
 
 router.post('/addAddress', function(req, res, next) {
-	logger.log('info','Inside add address page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('user_profile').find({
-			"sale_id"		:	req.body.itemid
-		}, function(err,profile_ids) {
-			var collection = db.collectio('location_details');
-	//dao.fetchData("profile_id", "user_profile", {
-	//	"user"	:	req.body.user_id
-	//}, function(profile_ids) {
-		collection.insert( {
-			"st_address"		:	req.body.st_address,
-			"apt"		:	req.body.apt,
-			"city"		:	req.body.city,
-			"state"		:	req.body.state,
-			"country"	:	req.body.country,
-			"zip"		:	req.body.zip,
-			"profile"	:	profile_ids[0].profile_id
-		}, function(err,rows) {
-			if(rows.result.ok === 1) {
-				res.send({
-					"status_code"	:	200
-				});
-			} else {
-				res.send({
-					"status_code"	:	500
-				});
-			}
-		});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/addAddress");
+	} else {
+		logger.logRouteEntry(0, "POST", "/addAddress");
+	}
+	profile_bo.addUserAddress(req.body.user_id, req.body.st_address, req.body.apt, req.body.city, req.body.state, req.body.country, req.body.zip, res);
 });
 
 router.post('/fetchItemDetails', function(req, res, next) {
-	logger.log('info','Inside fetch item details page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').find({
-			"sale_id"		:	req.body.itemid
-		}, function(err,results) {
-	//dao.executeQuery("select is_bid from sale_details where sale_id = ?", [req.body.itemid], function(results) {	
-		if(results.is_bid) {
-			var user = db.collection('sale_details').find({
-				"sale_id"		:	req.body.itemid
-			}, function(err,activeStatus) {
-			//dao.executeQuery("select active from sale_details where sale_id = ?", [req.body.itemid], function(activeStatus) {
-				if(activeStatus.active === 1) {
-					var user = db.collection('sale_details').find({
-						"seller"	:	{$ne:req.session.loggedInUser.user_name},
-						"sale_id"	:	req.body.itemid,
-						"condition"	:	req.body.condition
-					}, function(err,results) {
-					//dao.executeQuery("SELECT sale.*, seller.f_name, seller.l_name, seller.user_name, seller.user_id, cond.condition_name FROM sale_details AS sale, user_account AS seller, item_conditions AS cond WHERE sale.condition = cond.condition_id AND sale.seller = seller.user_id AND sale_id = ?", [req.body.itemid], function(results) {
-						res.send({
-							"item_id" : results.sale_id,
-							"item_title" : results.title,
-							"item_description" : results.description,
-							"item_condition" : results.condition,
-							"available_quantity" : results.sale_qty,
-							"is_bid" : results.is_bid,
-							"current_price" : results.sale_price,
-							"item_seller_fname" : results.f_name,
-							"item_seller_lname" : results.l_name,
-							"item_seller_handle" : results.user_name,
-							"item_seller_id" : results.user_id
-						});
-					});
-				} else {
-					res.send({
-						"item_id"	:	-1
-					});
-				}
-			});
-		} else {
-			var result = db.collection('sale_details').find({
-				"sale_id"	:	req.body.itemid,
-				"condition"	:	req.body.condition
-			}, function(err,saleDetails) {
-				saleDetails.toArray(function(err, results) {
-			//dao.executeQuery("SELECT sale.*, seller.f_name, seller.l_name, seller.user_name, seller.user_id, cond.condition_name FROM sale_details AS sale, user_account AS seller, item_conditions AS cond WHERE sale.condition = cond.condition_id AND sale.seller = seller.user_id AND sale_id = ?", [req.body.itemid], function(results) {
-				res.send({
-					"item_id" : results.sale_id,
-					"item_title" : results.title,
-					"item_description" : results.description,
-					"item_condition" : results.condition,
-					"available_quantity" : results.sale_qty,
-					"is_bid" : results.is_bid,
-					"current_price" : results.sale_price,
-					"item_seller_fname" : results.f_name,
-					"item_seller_lname" : results.l_name,
-					"item_seller_handle" : results.user_name,
-					"item_seller_id" : results.user_id
-				});
-			});
-				});
-		}
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchItemDetails");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchItemDetails");
+	}
+	console.log(">>>>>>>>>>>>>>>>>");
+	console.log("req.body.itemid ", req.body.itemid);
+	item_bo.sendItemDetails(Number(req.body.itemid), res);
 });
 
 router.post('/fetchTransactions', function(req, res, next) {
-	logger.log('info','Inside fetch transactions page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('txn_details').find({
-			"sale_id"		:	req.body.itemid
-		}, function(err,result) {
-	//dao.executeQuery("select sum(txn_id) as totalCount from txn_details where sale = ?", [req.body.itemid], function(results) {
-		result.toArray(function(err, trans_details) {
-			res.send({
-				"total_sold" : trans_details.length
-			});
-		});
-	});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchTransactions");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchTransactions");
+	}
+	item_bo.sendTotalSold(Number(req.body.itemid), res);
 });
 
 router.post('/fetchCart', function(req, res, next) {
-	logger.log('info','Inside fetch cart page post method');
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('cart_details').find({
-			"user"	:	req.session.loggedInUser.user_name,
-		}, function(err,result) {
-		//dao.executeQuery("SELECT seller.user_name, sale.sale_id, sale.title, condi.condition_name, cart.cart_qty, sale.sale_price FROM cart_details AS cart, sale_details AS sale, user_account AS seller, item_conditions AS condi WHERE condi.condition_id = sale.condition AND cart.sale_item = sale.sale_id AND seller.user_id = sale.seller AND cart.user = ?", [req.session.loggedInUser.user_id], function(results) {
-			result.toArray(function(err, cart_items) {
-				res.send({
-					"cart_items" : cart_items
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchCart");
+		common_bo.sendUserCartItems(req.session.loggedInUser._id, res);
 	} else {
-		res.send({
-			"cart_items" : []
-		});
-	}           
-});
-
-router.post('/removeFromCart', function(req, res, next) {
-	logger.log('info','Inside remove from cart page post method');
-	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var collection = db.collection('cart_details');
-		collection.remove( {
-			"user"	:	req.session.loggedInUser.user_name,
-			"sale_item"		:	req.body.itemid
-		}, function(err,results) {
-		//dao.executeQuery("delete from cart_details where user = ? and sale_item = ?", [req.session.loggedInUser.user_id, req.body.item], function(results) {
-			logger.log('info',req.session.loggedInUser.user_name + ' removed ' + req.body.item + ' from cart.');
-			res.send({ });
-		});
-		});
-	} else {
-		res.redirect('/');
+		logger.logRouteEntry(0, "POST", "/fetchCart");
+		common_bo.sendCartItems(res);
 	}
 });
 
-router.post('/removeAddress', function(req, res, next) {
-	logger.log('info','Inside remove address page post method');
+router.post('/removeFromCart', function(req, res, next) {
 	if(req.session.loggedInUser) {
-		dao.executeQuery("select profile_id from user_profile where user = ?", [req.session.loggedInUser.user_id], function(results) {
-			dao.executeQuery("delete from location_details where profile = ? and location_id = ?", [results[0].profile_id, req.body.location_id], function(results) {
-				res.send({ });
-			});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/removeFromCart");
+		cart_bo.removeFromCart(req.session.loggedInUser._id, req.body.item, req, res);
 	} else {
+		logger.logRouteEntry(0, "POST", "/removeFromCart");
 		res.redirect('/');
 	}
 });
 
 router.post('/fetchNotifications', function(req, res, next) {
-	logger.log('info','Inside fetch notifications page post method');
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		db.collection('notification_details').find().toArray(function(err,results) {
-			res.send({
-				"notifications" : results
-			});
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchNotifications");
+		common_bo.sendUserNotifications(req.session.loggedInUser._id, res);
 	} else {
-		res.send({
-			"notifications" : []
-		});
+		logger.logRouteEntry(0, "POST", "/fetchNotifications");
+		common_bo.sendNotifications(res);
 	}
 });
 
 router.post('/addToCart', function(req, res, next) {
-	logger.log('info','Inside add to cart page post method');
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-			var user = db.collection('cart_details').find({
-				"user"	:	req.session.loggedInUser.user_name,
-				"sale_item"		:	req.body.itemid
-			}, function(err,results) {
-			//dao.executeQuery("SELECT count(cart_item_id) as entries FROM cart_details WHERE user = ? AND sale_item = ?", [req.session.loggedInUser.user_id, req.body.itemid], function(results) {
-			if(results.entries > 0) {
-				var user = db.collection('cart_details').update({
-					"user"	:	req.session.loggedInUser.user_name,
-					"sale_item"		:	req.body.itemid
-					}, {
-						$set:	{
-							"cart_qty"	:	Number(results[0].entries) + Number(req.body.qty)
-						}
-					}, function(err,update_status) {
-				//dao.executeQuery("UPDATE cart_details SET `cart_qty` = ? WHERE `user` = ? AND `sale_item` = ?", [Number(results[0].entries) + Number(req.body.qty), req.session.loggedInUser.user_id, req.body.itemid], function(update_status) {
-					logger.log('info','User with user ID ' + req.session.loggedInUser.user_id + ' added ' + req.body.itemid + ' to cart.');
-					if(update_status.result.ok === 1) {
-						res.send({
-							"status_code"	:	200
-						});
-					} else {
-						res.send({
-							"status_code"	:	500
-						});
-					}
-				});
-			} else {
-				var collection = db.collection('cart_details');				
-				collection.insert( {
-					"user"		:	req.session.loggedInUser.user_name,
-					"sale_item"	:	req.body.itemid,
-					"cart_qty"	:	req.body.qty
-				}, function(err,rows) {
-					if(rows.result.ok === 1) {
-						res.send({
-							"status_code"	:	200
-						});
-					} else {
-						res.send({
-							"status_code"	:	500
-						});
-					}
-				});
-			}
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/addToCart");
+		item_bo.addItemToCart(req.session.loggedInUser._id, req.body.item, req.body.qty, req, res);
 	} else {
+		logger.logRouteEntry(0, "POST", "/addToCart");
 		res.send({
 			"status_code"	:	301
 		});
@@ -578,385 +292,97 @@ router.post('/addToCart', function(req, res, next) {
 });
 
 router.post('/fetchSales', function(req, res, next) {
-	logger.log('info','Inside fetch sales page post method');
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').find({
-			"seller"	:	{$ne:req.session.loggedInUser.user_name},
-			"active"	:	1
-		}, function(err,result) {
-			result.sort({sale_id: -1}).toArray(function(err, saleDetails) {
-				res.send({
-					"saleDetails"	:	saleDetails
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchSales");
+		homepage_bo.sendUserSaleListing(req.session.loggedInUser._id, res);
 	} else {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').find({
-			"active"	:	1
-		}, function(err,result) {
-			result.sort({sale_id: -1}).toArray(function(err, saleDetails) {
-				res.send({
-					"saleDetails"	:	saleDetails
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(0, "POST", "/fetchSales");
+		homepage_bo.sendSaleListing(res);
 	}
 });
 
 router.post('/searchSales', function(req, res, next) {
-	logger.log('info','Inside search sales page post method');
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').find({
-			'seller'	:	{$ne:req.session.loggedInUser.user_name},
-		    'title'		:	req.body.searchString
-		}, function(err,result) {
-			result.sort({sale_id: -1}).toArray(function(err, saleDetails) {
-				res.send({
-					"saleDetails"	:	saleDetails
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/searchSales");
+		homepage_bo.sendUserSearchResults(req.body.searchString, req.session.loggedInUser._id, res);
 	} else {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('sale_details').find({
-			'title'		:	req.body.searchString
-		}, function(err,result) {	
-			result.sort({sale_id: -1}).toArray(function(err, saleDetails) {
-				res.send({
-					"saleDetails"	:	saleDetails
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(0, "POST", "/searchSales");
+		homepage_bo.sendSearchResults(req.body.searchString, res);
 	}
 });
 
-router.post('/fetchSuggestions', function(req, res, next) {
-	logger.log('info','Inside fetch suggestions page post method');
+router.post('/fetchCategories', function(req, res, next) {
 	if(req.session.loggedInUser) {
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('suggestion_details').find({
-			"seller"	:	req.session.loggedInUser.user_name,
-			"active"	:	1
-		}, function(err,result) {
-		//dao.executeQuery("SELECT user.user_name, sale.* FROM user_account as user, sale_details as sale, suggestion_details as suggestions WHERE seller = user_id AND seller <> ? AND suggestions.user = ? AND sale.active = 1 AND suggestions.suggestion_item = sale.sale_id order by sale_id desc LIMIT 4", [req.session.loggedInUser.user_id, req.session.loggedInUser.user_id], function(suggestionDetails) {
-			result.sort({sale_id: -1}, {limit: 4}).toArray(function(err, suggestionDetails) {
-				res.send({
-					"suggestionDetails"	:	suggestionDetails
-				});
-			});
-		});
-		});
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchItems");
 	} else {
-		res.send({
-			"saleDetails"	:	[]
-		});
+		logger.logRouteEntry(0, "POST", "/fetchItems");
 	}
-});
-
-router.post('/fetchItems', function(req, res, next) {
-	logger.log('info','Inside fetch items page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('item_type').find().toArray(function(err, rows) {
-			res.send({
-				"result"	:	rows
-			});
-		});
-	});
+	sell_bo.sendCategories(res);
 });
 
 router.post('/fetchConditions', function(req, res, next) {
-	logger.log('info','Inside fetch conditions page post method');
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('item_conditions').find().toArray(function(err, rows) {
-			res.send({
-				"result"	:	rows
-			});
-		});
-	});
-});
-
-router.get('/account', function(req, res, next) {
-	logger.log('info','Inside account page post method');
-	res.render('account', {  });
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/fetchConditions");
+	} else {
+		logger.logRouteEntry(0, "POST", "/fetchConditions");
+	}
+	sell_bo.sendConditions(res);
 });
 
 router.post('/register', function(req, res, next) {
-	logger.log('info','Inside register page post method');
-	var error_messages = [];
-	var status_code = 200;
-	var success_messages = [];
-	var salt = bcrypt.genSaltSync(10);
-	var username = sjcl.decrypt(req.body.passwordpassword, req.body.username);
-	var email = req.body.email;
-	var secret = sjcl.decrypt(req.body.passwordpassword, req.body.password);
-	var firstname = req.body.fname;
-	var lastname = req.body.lname;
-	var phone = req.body.contact;
-	var username_validator = new RegExp("^[a-z0-9_-]{3,16}$");
-	// TODO: Password Validator for Angular: /^[a-z0-9_-]{6,18}$/ -- Done
-	var email_validator = new RegExp("^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,24})$");
-	var firstname_validator = new RegExp("^[a-zA-Z ,.'-]+$");
-	var lastname_validator = new RegExp("^[a-zA-Z ,.'-]+$");
-	var phone_validator = new RegExp(/^(\d{11,12})$/);
-	// TODO: Input Mask for Phone Number: https://github.com/RobinHerbots/Inputmask -- Done
-	// TODO: Continued: http://digitalbush.com/projects/masked-input-plugin/ -- Done
-	// TODO: Continued: http://filamentgroup.github.io/politespace/demo/demo.html -- Done
-	
-	if(username.match(username_validator) === null) {
-		logger.log("info", "Invalid username: " + username);
-		error_messages.push("'" + username + "' is not a valid username.");
-		status_code = 400;
-	}
-	
-	if(email.match(email_validator) === null) {
-		logger.log("info", "Invalid email: " + email);
-		error_messages.push("'" + email + "' is not a valid email.");
-		status_code = 400;
-	}
-	
-	if(firstname.match(firstname_validator) === null) {
-		logger.log("info", "Invalid firstname: " + firstname);
-		error_messages.push("'" + firstname + "' is not a valid name.");
-		status_code = 400;
-	}
-	
-	if(lastname.match(lastname_validator) === null) {
-		logger.log("info", "Invalid lastname: " + lastname);
-		error_messages.push("'" + lastname + "' is not a valid name.");
-		status_code = 400;
-	}
-	
-	if(phone.match(phone_validator) === null) {
-		logger.log("info", "Invalid phone: " + phone);
-		error_messages.push("'" + phone + "' is not a valid phone.");
-		status_code = 400;
-	}
-	if(status_code === 200) {
-		logger.log("info", "Valid parameters");
-		
-		mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-			var collection = db.collection('userAccount');
-		
-		collection.insert( {
-				"user_name"	:	username,
-				"f_name"	:	firstname,
-				"l_name"	:	lastname,
-				"email"		:	email,
-				"secret"	:	bcrypt.hashSync(secret, salt),
-				"salt"		:	salt,
-				"last_login":	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
-			}, function(err,rows) {
-			if(rows.result.ok === 1) {
-				var collection = db.collection('user_profile');
-				collection.insert( {
-					"contact"	:	phone,
-					"user"		:	username
-				}, function(err,rows) {
-					if(rows.result.ok === 1) {
-						success_messages.push("User " + firstname + " created successfully !");
-						res.send({
-							"status_code"	:	status_code,
-							"messages"		:	success_messages
-						});
-					} else {
-						error_messages.push("Internal error. Please try again..!!");
-						res.send({
-							"status_code"	:	status_code,
-							"messages"		:	error_messages
-						});
-					}
-				});
-			} else {
-				error_messages.push("Internal error. Please try again..!!");
-				res.send({
-					"status_code"	:	status_code,
-					"messages"		:	error_messages
-				});
-			}
-		});
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/register");
 	} else {
-		res.send({
-			"status_code"	:	status_code,
-			"messages"		:	error_messages
-		});
+		logger.logRouteEntry(0, "POST", "/register");
 	}
-	
+	accounts_bo.register(sjcl.decrypt(req.body.passwordpassword, req.body.username), 
+			req.body.email, sjcl.decrypt(req.body.passwordpassword, req.body.password), 
+			req.body.fname, req.body.lname, req.body.contact, req.body.dob, res);
 });
 
 router.post('/publishSale', function(req, res, next) {
-	logger.log('info','Inside publish sale page post method');
-	var title = req.body.advertise_title;
-	var item = req.body.advertise_item;
-	var condition = req.body.advertise_condition;
-	var is_bid = req.body.advertise_is_bid;
-	var price = req.body.advertise_price;
-	var quantity = req.body.advertise_quantity;
-	var description = req.body.advertise_desc;
-	
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		autoIncrement.getNextSequence(db, 'sale_details', function (err, autoIndex) {
-		var collection = db.collection('sale_details');
-	
-	collection.insert( {
-		"sale_id"	:	autoIndex,
-		"seller"	:	req.session.loggedInUser.user_name,
-		"item"		:	item.item,
-		"condition"	:	condition.condition,
-		"sale_price":	price,
-		"title"		:	title,
-		"description"		:	description,
-		"is_bid"	:	(is_bid ? 1 : 0),
-		"sale_qty"	:	quantity,
-		"active"	:	1
-	}, function(err,rows) {
-		if(rows.result.ok === 1) {
-//			var today = new Date();
-//			var j = schedule.scheduleJob(today.addDays(4), );
-			setTimeout(function() {
-				if(is_bid) {
-					mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-						var user = db.collection('sale_details').update({
-							'active'		: 	0
-							}, {
-								$set:	{
-									"sale_id"	:	rows.insertedIds
-								}
-							}, function(err,update_status) {
-								db.collection('bid_details').find({
-								    "sale"		:	rows.insertedIds
-								}).limit(1).sort({
-								    "bid_amount": -1
-								}, function(top_bid) {
-									if(top_bid.length) {
-										var user = db.collection('sale_details').find( {
-											"sale_id"	:	rows.insertedIds
-										}, function(err,sale_qty) {
-											var user = db.collection('sale_details').update({
-												"sale_qty"	:	Number(sale_qty[0].sale_qty) - Number(top_bid[0].bid_qty)
-											}, {
-												$set:	{
-												"sale_id"	:	rows.insertedIds
-												}
-											}, function(err,update_status) {
-												var collection = db.collection('txn_details');
-												collection.insert( {
-													"sale"				:	rows.insertedIds,
-													"buyer"				:	top_bid.bidder,
-													"transaction_price"	:	top_bid.bid_amount,
-													"txn_qty"			:	top_bid.bid_qty
-												}, function(err,rows) {
-													var collection = db.collection('notification_details');
-													collection.insert( {
-														"notification_msg"	:	"Your won the highest bid !!! " + title,
-														"user_id"			:	top_bid.bidder
-													}, function(err,rows) {
-														//Do nothing
-													});
-												});
-											});
-										});
-									}
-								});
-								});
-					});
-				}
-			}, 345600000);
-			res.send({
-				"status_code"	:	"200"
-			});
-		} else {
-			res.send({
-				"status_code"	:	"500"
-			});
-		}
-	});
-	});
-	});
-});
-
-router.get('/forgotPassword', function(req, res, next) {
-	logger.log('info','Inside forgot password page post method');
-	var error_messages = [];
-	var status_code = 200;
-	var success_messages = [];
-	logger.log("info", "Forgot Password form");
-	var email = req.param('email'); 
-	var email_validator = new RegExp("^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,24})$");
-	if(email.match(email_validator) !== null) {
-		dao.fetchData("count(user_id) as matches", "user_account", {
-			"email"	:	email
-		}, function(rows) {
-			if(Number(rows[0].matches) > 0) {
-				// TODO: Send an email to 
-			} else {
-				error_messages.push("Email ID not found in our records.");
-				status_code = 400;
-			}
-		});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/publishSale");
+		sell_bo.publishSale(req.session.loggedInUser._id, req.session.loggedInUser.username, req.body.advertise_title, req.body.advertise_category, 
+				req.body.advertise_condition, req.body.advertise_is_bid, req.body.advertise_price, 
+				req.body.advertise_quantity, req.body.advertise_desc, res);
 	} else {
-		error_messages.push("Not valid Email ID");
-		status_code = 400;
+		logger.logRouteEntry(0, "POST", "/publishSale");
+		res.redirect('/');
 	}
 });
 
 router.post('/signoutUser', function(req, res, next) {
-	logger.log('info','Inside sign out user page post method');
-	req.session.destroy(function(err) {
-		if(err) {
-			res.send({
-				"status_code"	:	500
-			});
-		} else {
-			res.send({
-				"status_code"	:	200
-			});
-		}
-	});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/signoutUser");
+	} else {
+		logger.logRouteEntry(0, "POST", "/signoutUser");
+	}
+	if(req.session) {
+		logger.logUserSignout(req.session.loggedInUser._id);
+		common_bo.destroySession(req, res);
+	}
 });
 
 router.post('/signin', function(req, res, next) {
-	logger.log('info','Inside sign in page post method');
-	var passwordpassword = req.body.passwordpassword;
-	var username = sjcl.decrypt(req.body.passwordpassword, req.body.userID);
-	var password = sjcl.decrypt(req.body.passwordpassword, req.body.password);
-	
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('userAccount').findOne({
-			"user_name"	:	username
-		}, function(err,id_details) {
-			if(bcrypt.hashSync(password, id_details.salt) === id_details.secret) {
-				logger.log('info','User with user ID ' + id_details.user_name + ' has signed in.');
-				req.session.loggedInUser = id_details;
-				mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-					var user = db.collection('userAccount').update({
-						'user_name'		: 	req.session.loggedInUser.user_name
-					}, {
-						$set:	{
-							"last_login"	:	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
-						}
-					}, function(err,update_status) {
-						if(update_status.result.ok === 1) {
-							res.send({
-								"valid"			:	true,
-								"last_login"	:	id_details.last_login
-							});
-						}
-					});
-				});
-			} else {
-				res.send({
-					"valid"	:	false
-				});
-			}
-		});
+	if(req.session.loggedInUser) {
+		logger.logRouteEntry(req.session.loggedInUser._id, "POST", "/signin");
+	} else {
+		logger.logRouteEntry(0, "POST", "/signin");
+	}
+	accounts_bo.signin(req.body.userID, req.body.password, req, res);
+	// accounts_bo.signin(sjcl.decrypt(req.body.passwordpassword, req.body.userID), sjcl.decrypt(req.body.passwordpassword, req.body.password), req, res);
+});
+
+router.get('/loginFailure', function(req, res, next) {
+	res.send({
+		'valid' : false
+	});
+});
+
+router.get('/loginSuccess', function(req, res, next) {
+	res.send({
+		'valid' : true
 	});
 });
 

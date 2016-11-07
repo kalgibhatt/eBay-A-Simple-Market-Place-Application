@@ -1,9 +1,9 @@
-.head-start {
+.top-row {
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
 
-.div-box {
+.my-div {
 	padding-top: 0px;
 	padding-left: 0px;
 	padding-right: 0px;
@@ -67,7 +67,7 @@
 }
 
 .image {
-	background-image: url("http://p.ebaystatic.com/aw/sell/lnd/hero_card_background.png");
+	background-image: url("../images/sellBG.png");
 	min-height: 600px;
     height: auto !important;
     height: 600px;
@@ -96,7 +96,7 @@
     text-align: center;
 }
 
-.announcement-second-line {
+.second-line {
 	margin: 0px auto;
 }
 
@@ -106,10 +106,10 @@
 
 .left-align {
 	text-align: left;
-	font-size: 220%;
+	font-size: 200%;
 }
 
-.search-box {
+.search-bar {
 	font-family: "Helvetica Neue Light","Helvetica Neue","Segoe UI",Helvetica,Arial,sans-serif!important;
 	font-size: 150%!important;
 	height: 56px;
@@ -170,7 +170,7 @@
   color: white;
 }
 
-.example-text {
+.example {
 	font-size: 105%;
 	margin: 5px 0px 0px 15px;
 	font-weight: lighter;
@@ -197,7 +197,11 @@
 	margin-top: 10px;
 }
 
-.sell-button {
+.showLess {
+	
+}
+
+.publish-button {
 	height: 56px;
 	font-size: 25px!important;
 	background: #0654BA;
@@ -206,16 +210,16 @@
 	margin-top:5px;
 }
 
-.sell-button:hover {
+.publish-button:hover {
 	background: #0654BA;
 	opacity: 1.0!important;
 }
 
-.sell-button:focus {
+.publish-button:focus {
 	background: #0654BA;
 }
 
-.sell-button:active {
+.publish-button:active {
 	background: #0654BA;
 }
 
@@ -227,7 +231,7 @@
 	margin-right: 15px;
 }
 
-.quantity-box {
+.qty-box {
 	font-family: "Helvetica Neue Light","Helvetica Neue","Segoe UI",Helvetica,Arial,sans-serif!important;
 	font-size: 150%!important;
 	height: 56px;
@@ -311,9 +315,14 @@
 	padding-right: 0px;
 }
 
-.is-bid-box {
+.is-bid-container {
 	float: right;
 	margin-bottom: 0px;
+}
+
+.price-box-container {
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
 .form-group input[type="checkbox"] {

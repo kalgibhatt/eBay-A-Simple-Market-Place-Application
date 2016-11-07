@@ -63,11 +63,11 @@
 		                                			</div>
 		                                		</div>
 		                                	</span>
-		                                    <div class="header-item">Daily Deals</div>
-		                                    <div class="header-item">Gift Cards</div>
-		                                    <span ng-hide="user_fname"><div class="header-item">Sell</div></span>
+		                                    <div class="header-item head-link">Daily Deals</div>
+		                                    <div class="header-item head-link">Gift Cards</div>
+		                                    <span ng-hide="user_fname"><div class="header-item head-link">Sell</div></span>
 		                                    <span ng-show="user_fname"><div class="header-item link" ng-click="sellAnItem()">Sell</div></span>
-		                                    <div class="header-item help-content">Help &amp; Content</div>
+		                                    <div class="header-item help-content head-link">Help &amp; Content</div>
 	                                	</div>
 	                                </div>
 	                            </div>
@@ -224,7 +224,7 @@
 									                        </div>
 									                     </div>
 									                     <div class="col-md-12">
-									                        <div ng-repeat="address in addresses">
+									                        <div ng-repeat="address in loggedInUser.addresses">
 									                        	<div class="row billing-address">
 										                        	<div class="col-md-12">
 											                        	<hr class="seperator"/>

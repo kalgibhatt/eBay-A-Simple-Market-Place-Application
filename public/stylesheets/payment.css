@@ -28,6 +28,10 @@
 	border-bottom: 2px solid #ddd;
 }
 
+.head-link {
+	color: BLACK;
+}
+
 .header-item {
 	padding-right: 2%;
 	padding-left: 2%;

@@ -11,11 +11,11 @@ var app = express();
 
 var session = require('express-session');
 
-var dao = require('./utils/dao');
+var mongoDao = require('./utils/mongoDao');
 
-var mongo = require("./routes/mongo");
-var mongoSessionConnectURL = "mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application";
-var mongoStore = require("connect-mongo")(session);
+var passport = require('passport');
+
+require('./utils/passport')(passport);
 
 // Nice library on dynamic calls REST application: https://github.com/deitch/booster
 
@@ -32,21 +32,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
 app.use('/css', express.static(path.join(__dirname, 'public/stylesheets')));
-app.use('/js', express.static(path.join(__dirname, 'public/stylesheets')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use('/ngjs', express.static(path.join(__dirname, 'public/angularjs')));
-
-app.use(session({
-	secret: 'cmpe273_teststring',
-	resave: false,  //don't save session if unmodified
-	saveUninitialized: false,	// don't create session until something stored
-	duration: 30 * 60 * 1000,    
-	cookie: { secure: !true },
-	activeDuration: 5 * 60 * 1000,
-	store: new mongoStore({
-		url: mongoSessionConnectURL
-	})
-}));
 
 // Using HTTPS for server: http://blog.ayanray.com/2015/06/adding-https-ssl-to-express-4-x-applications/
 
@@ -58,27 +46,32 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+app.use(function(req, res, next) {
+	mongoDao.connect(next);
+});
+
+app.use(passport.initialize());
+
+app.use(function(req, res, next) {
+	req.passport = passport;
+	next();
+});
+
 app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-	mongo.connect('mongodb://localhost:27017/eBay-A-Simple-Market-Place-Application', function(db) {
-		var user = db.collection('userAccount').find({
-			"user_name"	:	req.originalUrl.substring(1)
-		}, function(err,profile) {
-		profile.toArray(function(err, results) {
-	//dao.fetchData("count(user_id) as userCount", "user_account", {
-	//	"user_name"	:	req.originalUrl.substring(1)
-	//}, function(results) {
-		if(results.length === 0) {
-			err = new Error('Not Found');
+	mongoDao.fetch('UserDetails', {
+		'username'	:	req.originalUrl.substring(1)
+	}, function(resultDoc) {
+		if(resultDoc.length === 0) {
+			var err = new Error('Not Found');
 			err.status = 404;
 			next(err);
 		} else {
 			res.render('userProfile', {  });
 		}
-		});
-		});
 	});
 });
 

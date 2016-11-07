@@ -35,9 +35,17 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12" align="center">
-					<img src="images/eBay.png" ng-click="homepage()" class="ebay-logo logo-fit">
-					<div ng-repeat="message in messages" style="margin-top:30px;">
-						<span class="alert alert-warning">{{message}}</span>
+					<img src="images/eBay.png" ng-click="homepage()" class="ebay-icon spacer">
+					<div class="row message" ng-hide="messages.length === 0" align="center">
+						<div class="col-md-12">
+							<div ng-repeat="message in messages">
+								<div class="row">
+									<div class="col-md-12">
+										<span class="alert alert-warning">{{message}}</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div ng-show="isSignin" ng-controller="signinController">
 						<div class="box">
@@ -56,10 +64,10 @@
 							</div>
 							<div class="account-form">
 								<div class="form-group">
-									<input type="text" class="form-control" ng-model="userID" id="email" placeholder="Email or Username" ng-encrypt focus-if="isSignin && !isSignup && !isForgot" ng-enter="signin()">
+									<input type="text" class="form-control" ng-model="userID" id="email" placeholder="Email or Username" focus-if="isSignin && !isSignup && !isForgot" ng-enter="signin()">
 								</div>
 								<div class="form-group">
-									<input type="password" class="form-control" id="pwd" ng-model="password" placeholder="Password" ng-encrypt ng-enter="signin()">
+									<input type="password" class="form-control" id="pwd" ng-model="password" placeholder="Password" ng-enter="signin()">
 								</div>
 								<button class="btn btn-primary form-control account-button" ng-click="signin()">Sign in</button>
 								<div class="row checkbox">
@@ -104,28 +112,33 @@
 							<div class="account-form">
 								<div class="row">
 									<div class="col-md-12 form-group">
-										<input type="email" class="form-control" id="email" ng-model="email" placeholder="Email" focus-if="!isSignin && isSignup && !isForgot" ng-enter="register()">
+										<input type="email" class="form-control" ng-class="{'unavailable':!emailAvailable && email.length}" id="email" ng-model="email" placeholder="Email" focus-if="!isSignin && isSignup && !isForgot" ng-enter="register()">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12 form-group">
-										<input type="text" class="form-control" id="username" ng-model="username" ng-encrypt placeholder="Username" ng-enter="register()">
+										<input type="text" class="form-control" ng-class="{unavailable:!userAvailable && username.length}" id="username" ng-model="username" ng-encrypt placeholder="Username" ng-enter="register()">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12 form-group">
-										<input type="password" class="form-control" id="pwd" ng-model="password" ng-encrypt placeholder="Password" ng-enter="register()">
+										<input type="password" class="form-control" ng-class="{unavailable:!validPassword && password.length}" id="pwd" ng-model="password" ng-encrypt placeholder="Password" ng-enter="register()">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12 form-group">
-										<input type="text" class="form-control name-fields" id="firstname" ng-model="fname" placeholder="First name" ng-enter="register()">
-										<input type="text" class="form-control name-fields" id="lastname" ng-model="lname" placeholder="Last name" ng-enter="register()">
+										<input type="text" class="form-control name-fields" ng-class="{unavailable:!validNames && fname.length}" id="firstname" ng-model="fname" placeholder="First name" ng-enter="register()">
+										<input type="text" class="form-control name-fields" ng-class="{unavailable:!validNames && lname.length}" id="lastname" ng-model="lname" placeholder="Last name" ng-enter="register()">
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12 form-group">
-										<input type="text" id="user" ng-model="contact" international-phone-number placeholder="Mobile phone" ng-enter="register()" class="form-control">
+										<input type="text" ng-class="{unavailable:!validContact && contact.length}" id="user" ng-model="contact" international-phone-number placeholder="Mobile phone" ng-enter="register()" class="form-control">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12 form-group">
+										<input type="date" id="user" ng-model="dob" placeholder="Date of Birth" ng-enter="register()" class="form-control">
 									</div>
 								</div>
 								<div>
