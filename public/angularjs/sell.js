@@ -43,6 +43,7 @@ eBay.controller('sell', function($scope, $http, $window) {
 				$scope.minBid !== undefined && $scope.minBid.trim() !== "") &&
 				$scope.adv_qty !== undefined && $scope.adv_qty.trim() !== "" &&
 				$scope.adv_desc !== undefined && $scope.adv_desc.trim() !== "") {
+			console.log($scope.is_bid);
 			$http({
 				method	:	"POST",
 				url		:	"/publishSale",

@@ -50,10 +50,10 @@ module.exports.publishSale = function(user_id, username, title, category, condit
 						// Do nothing
 					});
 					
-				// }, 345600000);
+				 }, 345600000);
 				// }, 120000);
-				// }, 60000);
-				}, 0);
+//				 }, 60000);
+//				}, 0);
 			}
 			res.send({
 				'status_code' : 200

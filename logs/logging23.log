@@ -1,0 +1,767 @@
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:16.223Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:01:16.236Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyu'","@timestamp":"2016-11-03T00:01:16.236Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:16.301Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:01:16.314Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyur'","@timestamp":"2016-11-03T00:01:16.315Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:29.775Z","@fields":{"level":"debug"}}
+{"@message":"Inside register page post method","@timestamp":"2016-11-03T00:01:29.790Z","@fields":{"level":"info"}}
+{"@message":"Valid parameters","@timestamp":"2016-11-03T00:01:29.791Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:34.653Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:01:34.668Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 17","@timestamp":"2016-11-03T00:01:34.768Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:34.807Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:01:34.818Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:35.471Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:35.477Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:35.479Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:35.481Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:01:35.536Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:01:35.538Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:01:35.545Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:01:35.559Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:37.952Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T00:01:37.968Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:37.979Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:01:37.992Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:38.353Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:38.357Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:38.364Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:01:38.367Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:01:38.378Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:01:38.385Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:01:38.391Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:01:38.394Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:14.261Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:04:14.310Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:16.917Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:04:16.932Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.com'","@timestamp":"2016-11-03T00:04:16.938Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:17.509Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:04:17.523Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'k'","@timestamp":"2016-11-03T00:04:17.646Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:17.649Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:04:17.661Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'ke'","@timestamp":"2016-11-03T00:04:17.663Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:17.756Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:04:17.767Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'key'","@timestamp":"2016-11-03T00:04:17.768Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:17.908Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:04:17.920Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyu'","@timestamp":"2016-11-03T00:04:17.921Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:17.960Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:04:17.972Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyur'","@timestamp":"2016-11-03T00:04:17.975Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:30.916Z","@fields":{"level":"debug"}}
+{"@message":"Inside register page post method","@timestamp":"2016-11-03T00:04:30.933Z","@fields":{"level":"info"}}
+{"@message":"Valid parameters","@timestamp":"2016-11-03T00:04:30.935Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:34.930Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:04:34.945Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:04:35.057Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:35.101Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:04:35.116Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:35.450Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:35.454Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:35.457Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:35.458Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:04:35.522Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:04:35.525Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:04:35.528Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:04:35.531Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:37.850Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T00:04:37.862Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:37.873Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:04:37.886Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:38.206Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:38.209Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:38.211Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:04:38.213Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:04:38.232Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:04:38.245Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:04:38.248Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:04:38.250Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:05:46.521Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:05:46.535Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:05:48.212Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:05:48.216Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:05:48.218Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:05:48.221Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:05:48.238Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:05:48.240Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:05:48.245Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:05:48.248Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:45.433Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:12:45.442Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:46.096Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:46.103Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:46.107Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:46.108Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:12:46.127Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:12:46.129Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:12:46.132Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:12:46.136Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:47.085Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:12:47.097Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:52.273Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:12:52.286Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:57.671Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:12:57.687Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:12:57.874Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:57.906Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:12:57.920Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:58.196Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:58.200Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:58.201Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:12:58.203Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:12:58.218Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:12:58.219Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:12:58.222Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:12:58.257Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:02.043Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T00:14:02.056Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:02.071Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:14:02.085Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:02.749Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:02.754Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:02.755Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:02.757Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:14:02.773Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:14:02.775Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:14:02.776Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:14:02.779Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:05.437Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:14:05.448Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:14.132Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:14.146Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@g'","@timestamp":"2016-11-03T00:14:14.147Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:14.256Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:14.273Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gm'","@timestamp":"2016-11-03T00:14:14.273Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:14.376Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:14.391Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gma'","@timestamp":"2016-11-03T00:14:14.391Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:14.478Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:14.494Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmai'","@timestamp":"2016-11-03T00:14:14.495Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:14.649Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:14.664Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail'","@timestamp":"2016-11-03T00:14:14.665Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:14.972Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:14.990Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.c'","@timestamp":"2016-11-03T00:14:14.990Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:15.058Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:15.070Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.co'","@timestamp":"2016-11-03T00:14:15.070Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:15.234Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:15.250Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.com'","@timestamp":"2016-11-03T00:14:15.251Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:16.009Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:16.023Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.co'","@timestamp":"2016-11-03T00:14:16.023Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:16.594Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:16.607Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.co.i'","@timestamp":"2016-11-03T00:14:16.608Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:16.769Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:14:16.786Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'keyurrgolani@gmail.co.in'","@timestamp":"2016-11-03T00:14:16.788Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:19.136Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:19.149Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'k'","@timestamp":"2016-11-03T00:14:19.264Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:19.266Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:19.279Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'ke'","@timestamp":"2016-11-03T00:14:19.280Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:19.301Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:19.314Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'key'","@timestamp":"2016-11-03T00:14:19.315Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:19.471Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:19.485Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyu'","@timestamp":"2016-11-03T00:14:19.486Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:19.561Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:19.574Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyur'","@timestamp":"2016-11-03T00:14:19.574Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:19.980Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:19.995Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurg'","@timestamp":"2016-11-03T00:14:19.996Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:20.076Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:20.087Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgo'","@timestamp":"2016-11-03T00:14:20.088Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:20.336Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:20.348Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgoa'","@timestamp":"2016-11-03T00:14:20.349Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:20.711Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:20.725Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgo'","@timestamp":"2016-11-03T00:14:20.726Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:21.301Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:21.315Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgol'","@timestamp":"2016-11-03T00:14:21.316Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:21.425Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:21.437Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgola'","@timestamp":"2016-11-03T00:14:21.438Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:21.541Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:21.554Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgolan'","@timestamp":"2016-11-03T00:14:21.555Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:21.704Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:14:21.716Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'keyurgolani'","@timestamp":"2016-11-03T00:14:21.717Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:14:55.599Z","@fields":{"level":"debug"}}
+{"@message":"Inside register page post method","@timestamp":"2016-11-03T00:14:55.610Z","@fields":{"level":"info"}}
+{"@message":"Valid parameters","@timestamp":"2016-11-03T00:14:55.611Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:18:59.820Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:18:59.834Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:18:59.926Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:18:59.957Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:18:59.969Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:19:00.601Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:19:00.604Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:19:00.605Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:19:00.608Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:19:00.627Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:19:00.629Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:19:00.632Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:19:00.635Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:12.666Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:23:12.711Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:13.502Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:13.506Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:13.507Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:13.509Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:23:13.534Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:23:13.540Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:23:13.547Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:23:13.555Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:15.824Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:23:15.839Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:21.994Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:23:22.006Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:23:22.253Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:22.308Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:23:22.326Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:22.758Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:22.767Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:22.770Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:23:22.772Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:23:22.834Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:23:22.836Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:23:22.843Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:23:22.855Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:07.182Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T00:24:07.194Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:07.208Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:24:07.219Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:07.884Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:07.891Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:07.894Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:07.896Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:24:07.913Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:24:07.924Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:24:07.935Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:24:07.944Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:09.298Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:24:09.311Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:14.170Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:24:14.182Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:24:14.373Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:14.411Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:24:14.424Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:14.755Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:14.758Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:14.759Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:24:14.762Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:24:14.778Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:24:14.781Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:24:14.784Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:24:14.794Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:12.016Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T00:27:12.031Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:12.046Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:27:12.060Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:12.710Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:12.715Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:12.717Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:12.719Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:27:12.736Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:27:12.742Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:27:12.744Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:27:12.747Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:27:59.049Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:27:59.061Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:14.199Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:28:14.211Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:14.554Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:14.559Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:14.562Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:14.563Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:28:14.580Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:28:14.581Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:28:14.585Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:28:14.587Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:19.637Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:28:19.647Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:28.762Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:28:28.776Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:28:28.981Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:29.013Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:28:29.025Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:29.302Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:29.306Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:29.307Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:29.310Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:28:29.327Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:28:29.332Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:28:29.366Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:28:29.368Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:31.720Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:28:31.731Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:32.015Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:32.021Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:32.023Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:32.025Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:28:32.046Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:28:32.047Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:28:32.053Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:28:32.056Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:41.874Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2016-11-03T00:28:41.890Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:42.197Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:42.200Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:42.202Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:28:42.215Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-03T00:28:42.219Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T00:28:42.222Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:48.317Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2016-11-03T00:28:48.329Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:48.634Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:48.636Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:48.638Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:28:48.651Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-03T00:28:48.655Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T00:28:48.658Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:55.272Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:28:55.283Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:55.576Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:55.581Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:55.583Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:28:55.584Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:28:55.604Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:28:55.606Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:28:55.607Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:28:55.609Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:31.587Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T00:29:31.598Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:31.609Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:29:31.622Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:32.275Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:32.280Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:32.282Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:32.283Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:29:32.302Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:29:32.305Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:29:32.307Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:29:32.312Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:34.147Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:29:34.159Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:40.340Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:40.354Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@g'","@timestamp":"2016-11-03T00:29:40.358Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:40.564Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:40.575Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gm'","@timestamp":"2016-11-03T00:29:40.576Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:40.763Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:40.774Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gma'","@timestamp":"2016-11-03T00:29:40.775Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:41.013Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:41.026Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gmai'","@timestamp":"2016-11-03T00:29:41.026Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:41.213Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:41.225Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gmail'","@timestamp":"2016-11-03T00:29:41.225Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:41.607Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:41.624Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gmail.c'","@timestamp":"2016-11-03T00:29:41.625Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:41.802Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:41.814Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gmail.co'","@timestamp":"2016-11-03T00:29:41.814Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:42.020Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-03T00:29:42.031Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'vedvasa@gmail.com'","@timestamp":"2016-11-03T00:29:42.031Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.213Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.225Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'v'","@timestamp":"2016-11-03T00:29:43.316Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.320Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.331Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 've'","@timestamp":"2016-11-03T00:29:43.332Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.501Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.511Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'ved'","@timestamp":"2016-11-03T00:29:43.512Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.619Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.631Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'vedv'","@timestamp":"2016-11-03T00:29:43.631Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.710Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.721Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'vedva'","@timestamp":"2016-11-03T00:29:43.722Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.782Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.793Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'vedvas'","@timestamp":"2016-11-03T00:29:43.794Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:29:43.904Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-03T00:29:43.914Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'vedvasa'","@timestamp":"2016-11-03T00:29:43.914Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:30:02.993Z","@fields":{"level":"debug"}}
+{"@message":"Inside register page post method","@timestamp":"2016-11-03T00:30:03.009Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:30:17.537Z","@fields":{"level":"debug"}}
+{"@message":"Inside register page post method","@timestamp":"2016-11-03T00:30:17.550Z","@fields":{"level":"info"}}
+{"@message":"Valid parameters","@timestamp":"2016-11-03T00:30:17.551Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:30:34.314Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T00:30:34.326Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:32:06.820Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T00:32:06.830Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T00:32:06.991Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:32:07.019Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T00:32:07.030Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:32:07.672Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:32:07.682Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:32:07.684Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T00:32:07.685Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T00:32:07.706Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T00:32:07.713Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T00:32:07.716Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T00:32:07.746Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:40.403Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:01:40.440Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:41.183Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:41.189Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:41.192Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:41.194Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:01:41.227Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:01:41.231Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:01:41.238Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:01:41.244Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:44.635Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T20:01:44.659Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:49.051Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T20:01:49.064Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T20:01:49.323Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:49.379Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:01:49.394Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:49.720Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:49.725Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:49.726Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:01:49.727Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:01:49.787Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:01:49.795Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:01:49.801Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:01:49.802Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:03:52.332Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:03:52.344Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:03:52.969Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:03:52.972Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:03:52.974Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:03:52.977Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:03:52.992Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:03:52.994Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:03:52.997Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:03:53.000Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:40.327Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:05:40.339Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:40.975Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:40.979Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:40.983Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:40.986Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:05:41.002Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:05:41.006Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:05:41.008Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:05:41.010Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:42.731Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2016-11-03T20:05:42.746Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:42.757Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:05:42.766Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:43.078Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:43.082Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:43.084Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:43.087Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:05:43.102Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:05:43.104Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:05:43.107Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:05:43.110Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:05:44.969Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-03T20:05:44.982Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:01.550Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T20:06:01.566Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:07.841Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-03T20:06:07.853Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 18","@timestamp":"2016-11-03T20:06:07.945Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:07.976Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:06:07.988Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:08.630Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:08.633Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:08.635Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:06:08.639Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:06:08.653Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:06:08.655Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:06:08.659Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:06:08.670Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:09:36.889Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:09:36.901Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:09:37.551Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:09:37.556Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:09:37.559Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:09:37.562Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:09:37.577Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:09:37.580Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:09:37.583Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:09:37.586Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.206Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:16:14.220Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.294Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:16:14.310Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.347Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:16:14.359Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.365Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:16:14.377Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.818Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.826Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.828Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:16:14.839Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:16:14.851Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:16:14.852Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.956Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.961Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.965Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:16:14.968Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:16:14.990Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:16:14.994Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:16:14.997Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:16:15.004Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:58.528Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:18:58.543Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:58.878Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:18:58.890Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:58.896Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:18:58.909Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:58.915Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:18:58.928Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:59.072Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:18:59.085Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:59.191Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:59.198Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:59.200Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:18:59.201Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:18:59.218Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:18:59.223Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:18:59.226Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:18:59.229Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.125Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:23:09.138Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.476Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:23:09.486Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.491Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:23:09.504Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.509Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:23:09.522Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.649Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:23:09.662Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.763Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.768Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.770Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:23:09.773Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:23:09.790Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:23:09.793Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:23:09.795Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:23:09.799Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.280Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:25:48.297Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.645Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:25:48.657Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.663Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:25:48.675Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.680Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:25:48.691Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.819Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:25:48.832Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.936Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.942Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.944Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:25:48.946Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:25:48.963Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:25:48.965Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:25:48.987Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:25:48.996Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:11.934Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-03T20:41:11.945Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.503Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.507Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.510Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:41:12.523Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:41:12.528Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-03T20:41:12.528Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.702Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.708Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.710Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-03T20:41:12.713Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-03T20:41:12.729Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-03T20:41:12.731Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-03T20:41:12.737Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-03T20:41:12.740Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:31.969Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-05T18:42:32.011Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.585Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.589Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.593Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:42:32.606Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:42:32.615Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:42:32.619Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.900Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.907Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.909Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:32.912Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:42:32.936Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-05T18:42:32.942Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-05T18:42:32.949Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-05T18:42:32.954Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:36.805Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-05T18:42:36.816Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:42.315Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-05T18:42:42.328Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:43.835Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-05T18:42:43.848Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:42:48.360Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-05T18:42:48.372Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:19.425Z","@fields":{"level":"debug"}}
+{"@message":"Inside account page post method","@timestamp":"2016-11-05T18:43:19.442Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:22.877Z","@fields":{"level":"debug"}}
+{"@message":"Inside email ID available page post method","@timestamp":"2016-11-05T18:43:22.891Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(email) as count FROM user_account WHERE email like 'kalgi.bhatt@yahoo.com'","@timestamp":"2016-11-05T18:43:22.893Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:23.688Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-05T18:43:23.703Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'k'","@timestamp":"2016-11-05T18:43:23.850Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:23.853Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:23.867Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-05T18:43:23.871Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'ka'","@timestamp":"2016-11-05T18:43:23.871Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-05T18:43:23.879Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'kal'","@timestamp":"2016-11-05T18:43:23.880Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:24.046Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-05T18:43:24.059Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'kalg'","@timestamp":"2016-11-05T18:43:24.060Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:24.198Z","@fields":{"level":"debug"}}
+{"@message":"Inside username available page post method","@timestamp":"2016-11-05T18:43:24.211Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT COUNT(user_name) as count FROM user_account WHERE user_name like 'kalgi'","@timestamp":"2016-11-05T18:43:24.212Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:37.674Z","@fields":{"level":"debug"}}
+{"@message":"Inside register page post method","@timestamp":"2016-11-05T18:43:37.690Z","@fields":{"level":"info"}}
+{"@message":"Valid parameters","@timestamp":"2016-11-05T18:43:37.691Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.096Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign in page post method","@timestamp":"2016-11-05T18:43:42.111Z","@fields":{"level":"info"}}
+{"@message":"UserSignin: User: 21","@timestamp":"2016-11-05T18:43:42.214Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.273Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-05T18:43:42.284Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.495Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.505Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.507Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:43:42.524Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:43:42.529Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:43:42.533Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.623Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.627Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.628Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:42.632Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:43:42.663Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-05T18:43:42.690Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-05T18:43:42.692Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-05T18:43:42.712Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:45.998Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2016-11-05T18:43:46.012Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:46.342Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:46.345Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:46.348Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:43:46.363Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-05T18:43:46.367Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:43:46.370Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:48.078Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:48.083Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:48.085Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:48.088Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:43:48.115Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-05T18:43:48.119Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-05T18:43:48.122Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-05T18:43:48.128Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:51.929Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2016-11-05T18:43:51.939Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:52.247Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:52.250Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:43:52.256Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:43:52.271Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-05T18:43:52.276Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:43:52.279Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:05.172Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:05.181Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:05.185Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:05.186Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:44:05.240Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-05T18:44:05.251Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-05T18:44:05.261Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-05T18:44:05.263Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:07.255Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:07.262Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T18:44:07.266Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T18:44:07.284Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-05T18:44:07.286Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T18:44:07.297Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.263Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-05T19:08:30.274Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.814Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.821Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.822Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:08:30.833Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:08:30.839Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:08:30.839Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.968Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.973Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.978Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:30.980Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T19:08:30.997Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-05T19:08:31.000Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-05T19:08:31.007Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-05T19:08:31.011Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:36.197Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2016-11-05T19:08:36.211Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:36.539Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:36.543Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:08:36.545Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T19:08:36.561Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-05T19:08:36.562Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:08:36.566Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:04.471Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-05T19:09:04.483Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:04.582Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:09:04.597Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:04.605Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:09:04.618Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:04.625Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:09:04.637Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:05.146Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:05.151Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:05.152Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:05.156Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T19:09:05.177Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2016-11-05T19:09:05.182Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2016-11-05T19:09:05.186Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2016-11-05T19:09:05.194Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:13.726Z","@fields":{"level":"debug"}}
+{"@message":"Inside cart page get method","@timestamp":"2016-11-05T19:09:13.740Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:09:14.095Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T19:09:14.109Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:05.062Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2016-11-05T19:10:05.075Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:05.764Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:05.768Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:05.769Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2016-11-05T19:10:05.785Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2016-11-05T19:10:05.788Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:10:05.791Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:07.307Z","@fields":{"level":"debug"}}
+{"@message":"Inside homepage get method","@timestamp":"2016-11-05T19:10:07.317Z","@fields":{"level":"info"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:07.515Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:07.517Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: connect","@timestamp":"2016-11-05T19:10:07.522Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:10:07.537Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:10:07.541Z","@fields":{"level":"debug"}}
+{"@message":"MethodEntered:  - File: mongoDao - Method: fetch","@timestamp":"2016-11-05T19:10:07.545Z","@fields":{"level":"debug"}}

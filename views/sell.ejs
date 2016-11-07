@@ -104,8 +104,8 @@
 												<div class="[ form-group ] is-bid-container" style="height: 56px;">
 													<div class="input-group">
     													<div id="radioBtn" ng-model="is_bid" autocomplete="off" class="btn-group">
-    														<input type="text" class="btn btn-primary btn-sm is-bid-checkbox auction-button is-bid-text is-bid-fixed" ng-model="fixedPrice" ng-class="{notActive: is_bid}" placeholder="Fixed Price">
-    														<input type="text" class="btn btn-primary btn-sm is-bid-checkbox auction-button is-bid-text" ng-model="minBid" ng-class="{notActive: !is_bid}" placeholder="Auction">
+    														<input type="text" class="btn btn-primary btn-sm is-bid-checkbox auction-button is-bid-text is-bid-fixed" ng-model="fixedPrice" ng-class="{notActive: is_bid}" ng-click="notBid()" placeholder="Fixed Price">
+    														<input type="text" class="btn btn-primary btn-sm is-bid-checkbox auction-button is-bid-text" ng-model="minBid" ng-class="{notActive: !is_bid}" ng-click="isBid()" placeholder="Auction">
     													</div>
     												</div>
 										        </div>
