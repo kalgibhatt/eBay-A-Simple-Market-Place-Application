@@ -76,10 +76,10 @@ eBay.controller('signinController', function($scope, $http, $window, $location) 
 					"password"			:	$scope.password,
 					"passwordpassword"	:	$scope.$parent.randomPassword
 				}
-			}).success(function(data) {
-				if(Boolean(data.valid)) {
+			}).then(function(result) {
+				if(Boolean(result.data.valid)) {
 					if($location.search().redir === undefined) {
-						$window.location.href = "/?Last_Login=" + data.last_login;
+						$window.location.href = "/?Last_Login=" + result.data.last_login;
 					} else {
 						var redir = $location.search().redir.split("-");
 						if(redir.length > 1) {
@@ -91,7 +91,7 @@ eBay.controller('signinController', function($scope, $http, $window, $location) 
 				} else {
 					$scope.$parent.messages.push("Oops, that's not a match!");
 				}
-			}).error(function(error) {
+			}, function(error) {
 				$scope.$parent.messages.push("Oops, something went wrong behind the scenes, please try again!");
 			});
 		} else {
@@ -116,8 +116,8 @@ eBay.controller('registerController', function($scope, $http, $location) {
 					"contact"			:	$scope.contact,
 					"passwordpassword"	:	$scope.$parent.randomPassword
 				}
-			}).success(function(data) {
-				if(data.status_code === 200) {
+			}).then(function(result) {
+				if(result.data.status_code === 200) {
 					if($location.search().redir) {
 						$location.url("/account?view=signin&redir="+$location.search().redir);
 					} else {
@@ -126,19 +126,19 @@ eBay.controller('registerController', function($scope, $http, $location) {
 					$scope.$parent.isSignin = true;
 					$scope.$parent.isSignup = false;
 					$scope.$parent.isForgot = false;
-					$scope.$parent.messages = data.messages;
+					$scope.$parent.messages = result.data.messages;
 				} else {
 					if($location.search().redir) {
 						$location.url("/account?view=register&redir="+$location.search().redir);
 					} else {
 						$location.url("/account?view=register");
 					}
-					$scope.$parent.messages = data.messages;
+					$scope.$parent.messages = result.data.messages;
 					$scope.$parent.isSignin = false;
 					$scope.$parent.isSignup = true;
 					$scope.$parent.isForgot = false;
 				}
-			}).error(function(error) {
+			}, function(error) {
 				$scope.$parent.messages.push("Oops, something went wrong behind the scenes, please try again!");
 			});
 		} else {
@@ -154,13 +154,13 @@ eBay.controller('registerController', function($scope, $http, $location) {
 				data	:	{
 					"email"	:	$scope.email
 				}
-			}).success(function(data) {
-				if(Boolean(data.available)) {
+			}).then(function(result) {
+				if(Boolean(result.data.available)) {
 					$scope.emailAvailable = true;
 				} else {
 					$scope.emailAvailable = false;
 				}
-			}).error(function(error) {
+			}, function(error) {
 				// Do Nothing
 			});
 		}
@@ -175,13 +175,13 @@ eBay.controller('registerController', function($scope, $http, $location) {
 					"username"			:	$scope.username,
 					"passwordpassword"	:	$scope.$parent.randomPassword
 				}
-			}).success(function(data) {
-				if(Boolean(data.available)) {
+			}).then(function(result) {
+				if(Boolean(result.data.available)) {
 					$scope.userAvailable = true;
 				} else {
 					$scope.userAvailable = false;
 				}
-			}).error(function(error) {
+			}, function(error) {
 				// Do Nothing
 			});
 		}

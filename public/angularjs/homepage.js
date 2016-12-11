@@ -29,10 +29,10 @@ eBay.controller('homepage', function($scope, $http, $window, $location, $anchorS
 		$http({
 			method : "POST",
 			url : "/fetchNotifications"
-		}).success(function(data) {
-			$scope.notifications = data.notifications;
-			$scope.notificationCount = data.notifications.length;
-		}).error(function(error) {
+		}).then(function(result) {
+			$scope.notifications = result.data.notifications;
+			$scope.notificationCount = result.data.notifications.length;
+		}, function(error) {
 			// TODO: Handle Error
 		});
 	};
@@ -41,14 +41,14 @@ eBay.controller('homepage', function($scope, $http, $window, $location, $anchorS
 		$http({
 			method : "POST",
 			url : "/fetchCart"
-		}).success(function(data) {
-			$scope.cart_items = data.cart_items;
-			$scope.cartItemCount = data.cart_items.length;
+		}).then(function(result) {
+			$scope.cart_items = result.data.cart_items;
+			$scope.cartItemCount = result.data.cart_items.length;
 			$scope.cart_total = 0;
 			for(var i = 0; i < $scope.cart_items.length; i++) {
 				$scope.cart_total = $scope.cart_total + Number($scope.cart_items[i].sale_price) * Number($scope.cart_items[i].cart_qty);
 			}
-		}).error(function(error) {
+		}, function(error) {
 			// TODO: Handle Error
 		});
 	};
@@ -99,11 +99,11 @@ eBay.controller('homepage', function($scope, $http, $window, $location, $anchorS
 			data : {
 				"searchString" : searchString
 			}
-		}).success(function(data) {
-			$scope.sales = data.saleDetails;
+		}).then(function(result) {
+			$scope.sales = result.data.saleDetails;
 			$scope.suggestions = [];
 			$scope.items_loaded = true;
-		}).error(function(error) {
+		}, function(error) {
 			// TODO: Handle Error
 		});
 	};
@@ -120,9 +120,9 @@ eBay.controller('homepage', function($scope, $http, $window, $location, $anchorS
 		$http({
 			method : "POST",
 			url : "/signoutUser"
-		}).success(function(data) {
+		}).then(function(result) {
 			$window.location.href = "/?signout=true";
-		}).error(function(error) {
+		}, function(error) {
 			// TODO: Handle Error
 		});
 	};
@@ -130,34 +130,34 @@ eBay.controller('homepage', function($scope, $http, $window, $location, $anchorS
 	$http({
 		method : "POST",
 		url : "/loggedInUser"
-	}).success(function(data) {
-		if (!angular.equals({}, data.userBO)) {
-			$scope.user_fname = data.userBO.f_name;
-			$scope.user_lname = data.userBO.l_name;
-			$scope.user_name = data.userBO.user_name;
+	}).then(function(result) {
+		if (!angular.equals({}, result.data.userBO)) {
+			$scope.user_fname = result.data.userBO.f_name;
+			$scope.user_lname = result.data.userBO.l_name;
+			$scope.user_name = result.data.userBO.user_name;
 		} else {
 
 		}
-	}).error(function(error) {
+	}, function(error) {
 		// TODO: Handle Error
 	});
 
 	$http({
 		method : "POST",
 		url : "/fetchSuggestions"
-	}).success(function(data) {
-		$scope.suggestions = data.suggestionDetails;
-	}).error(function(error) {
+	}).then(function(result) {
+		$scope.suggestions = result.data.suggestionDetails;
+	}, function(error) {
 		// TODO: Handle Error
 	});
 
 	$http({
 		method : "POST",
 		url : "/fetchSales"
-	}).success(function(data) {
-		$scope.sales = data.saleDetails;
+	}).then(function(result) {
+		$scope.sales = result.data.saleDetails;
 		$scope.items_loaded = true;
-	}).error(function(error) {
+	}, function(error) {
 		// TODO: Handle Error
 	});
 	
