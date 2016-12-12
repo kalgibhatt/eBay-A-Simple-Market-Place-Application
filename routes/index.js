@@ -9,7 +9,7 @@ var soap = require("soap");
 var option = {
 	ignoredNamespaces : true
 };
-var baseURL = "http://localhost:8080/WebServices/services/"
+var baseURL = "http://localhost:8080/eBayWebServices/services/"
 
 // TODO: Nice Utility for scheduled tasks: https://github.com/ncb000gt/node-cron -- Done
 // TODO: Nice tool for scheduling bid end job: https://github.com/node-schedule/node-schedule -- Done
@@ -718,9 +718,10 @@ router.post('/signoutUser', function(req, res, next) {
 router.post('/signin', function(req, res, next) {
 	logger.log('info','Inside sign in page post method');
 	var passwordpassword = req.body.passwordpassword;
-	var username = sjcl.decrypt(req.body.passwordpassword, req.body.userID);
-	var password = sjcl.decrypt(req.body.passwordpassword, req.body.password);
-	console.log(password);
+//	var username = sjcl.decrypt(req.body.passwordpassword, req.body.userID);
+	var username = req.body.userID;
+//	var password = sjcl.decrypt(req.body.passwordpassword, req.body.password);
+	var password = req.body.password;
 	var url = baseURL + "AccountServices?wsdl";
 	soap.createClient(url, option, function(err, client) {
 		client.authenticate({
@@ -735,7 +736,6 @@ router.post('/signin', function(req, res, next) {
 						username : username
 					}, function(error, fetchResult) {
 						if(fetchResult.fetchUserReturn) {
-							logger.logUserSignin(fetchResult.fetchUserReturn.user_id);
 							req.session.loggedInUser = JSON.parse(fetchResult.fetchUserReturn);
 							client.updateLastLogin({
 								user_id : JSON.parse(fetchResult.fetchUserReturn).user_id
