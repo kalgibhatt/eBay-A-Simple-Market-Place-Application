@@ -5,6 +5,11 @@ var logger = require("../utils/logger");
 var schedule = require('node-schedule');
 var sjcl = require('sjcl');
 var bcrypt = require("bcrypt");
+var soap = require("soap");
+var option = {
+	ignoredNamespaces : true
+};
+var baseURL = "http://localhost:8080/WebServices/services/"
 
 // TODO: Nice Utility for scheduled tasks: https://github.com/ncb000gt/node-cron -- Done
 // TODO: Nice tool for scheduling bid end job: https://github.com/node-schedule/node-schedule -- Done
@@ -382,7 +387,7 @@ router.post('/removeAddress', function(req, res, next) {
 			dao.executeQuery("delete from location_details where profile = ? and location_id = ?", [results[0].profile_id, req.body.location_id], function(results) {
 				res.send({ });
 			});
-		})
+		});
 	} else {
 		res.redirect('/');
 	}
@@ -437,7 +442,7 @@ router.post('/addToCart', function(req, res, next) {
 					}
 				});
 			}
-		})
+		});
 	} else {
 		res.send({
 			"status_code"	:	301
@@ -570,42 +575,24 @@ router.post('/register', function(req, res, next) {
 	}
 	if(status_code === 200) {
 		logger.log("info", "Valid parameters");
-		var insertParameters = {
-				"user_name"	:	username,
-				"f_name"	:	firstname,
-				"l_name"	:	lastname,
+		var url = baseURL + "AccountServices?wsdl";
+		soap.createClient(url, option, function(err, client) {
+			client.addUser({
+				"username"	:	username,
+				"firstname"	:	firstname,
+				"lastname"	:	lastname,
 				"email"		:	email,
-				"secret"	:	bcrypt.hashSync(secret, salt),
-				"salt"		:	salt,
+				"secret"	:	secret,
 				"last_login":	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
-			};
-		dao.insertData("user_account", insertParameters, function(rows) {
-			if(rows.affectedRows === 1) {
-				dao.insertData("user_profile", {
-					"contact"	:	phone,
-					"user"		:	rows.insertId
-				}, function(rows) {
-					if(rows.affectedRows === 1) {
-						success_messages.push("User " + firstname + " created successfully !");
-						res.send({
-							"status_code"	:	status_code,
-							"messages"		:	success_messages
-						});
-					} else {
-						error_messages.push("Internal error. Please try again..!!");
-						res.send({
-							"status_code"	:	status_code,
-							"messages"		:	error_messages
-						});
-					}
-				});
-			} else {
-				error_messages.push("Internal error. Please try again..!!");
-				res.send({
-					"status_code"	:	status_code,
-					"messages"		:	error_messages
-				});
-			}
+			}, function(error, result) {
+				if(result) {
+					success_messages.push("User " + firstname + " created successfully !");
+					res.send({
+						"status_code"	:	200,
+						"messages"		:	success_messages
+					});
+				}
+			});
 		});
 	} else {
 		res.send({
@@ -734,31 +721,39 @@ router.post('/signin', function(req, res, next) {
 	var username = sjcl.decrypt(req.body.passwordpassword, req.body.userID);
 	var password = sjcl.decrypt(req.body.passwordpassword, req.body.password);
 	console.log(password);
-	dao.executeQuery('SELECT user_id, secret, salt FROM user_account WHERE user_name = ? OR email = ?', [username, username], function(id_details) {
-		if(bcrypt.hashSync(password, id_details[0].salt) === id_details[0].secret) {
-			dao.fetchData("*", "user_account", {
-				"user_id"	:	id_details[0].user_id
-			}, function(user_details) {
-				logger.log('info','User with user ID ' + id_details[0].user_id + ' has signed in.');
-				req.session.loggedInUser = user_details[0];
-				dao.updateData("user_account", {
-					"last_login"	:	require('fecha').format(Date.now(),'YYYY-MM-DD HH:mm:ss')
-				}, {
-					"user_id"		:	id_details[0].user_id
-				}, function(update_status) {
-					if(update_status.affectedRows === 1) {
-						res.send({
-							"valid"			:	true,
-							"last_login"	:	user_details[0].last_login
-						});
-					}
-				});
-			});
-		} else {
-			res.send({
-				"valid"	:	false
-			});
-		}		
+	var url = baseURL + "AccountServices?wsdl";
+	soap.createClient(url, option, function(err, client) {
+		client.authenticate({
+			username : username,
+			password : password
+		}, function(error, result) {
+			if(error) {
+				throw error;
+			} else {
+				if(result.authenticateReturn) {
+					client.fetchUser({
+						username : username
+					}, function(error, fetchResult) {
+						if(fetchResult.fetchUserReturn) {
+							logger.logUserSignin(fetchResult.fetchUserReturn.user_id);
+							req.session.loggedInUser = JSON.parse(fetchResult.fetchUserReturn);
+							client.updateLastLogin({
+								user_id : JSON.parse(fetchResult.fetchUserReturn).user_id
+							}, function(error, updateResult) {
+								res.send({
+									"valid"			:	true,
+									"last_login"	:	JSON.parse(fetchResult.fetchUserReturn).last_login
+								});
+							});
+						}
+					});
+				} else {
+					res.send({
+						"valid"	:	false
+					});
+				}
+			}
+		});
 	});
 });
 
