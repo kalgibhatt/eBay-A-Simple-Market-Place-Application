@@ -7,13 +7,13 @@ eBay.controller('sell', function($scope, $http, $window) {
 	$http({
 		method : "POST",
 		url : "/loggedInUser"
-	}).success(function(data) {
-		if (angular.equals({}, data.userBO)) {
+	}).then(function(data) {
+		if (angular.equals({}, data.data.userBO)) {
 			$window.location.href = "/account?view=signin";
 		} else {
 			$scope.isLoggedIn = true;
 		}
-	}).error(function(error) {
+	}, function(error) {
 		// TODO: Handle Error
 	});
 	
@@ -22,18 +22,18 @@ eBay.controller('sell', function($scope, $http, $window) {
 	$http({
 		method	:	"POST",
 		url		:	"/fetchConditions"
-	}).success(function(data) {
-		$scope.conditions = data.result;
-	}).error(function(error) {
+	}).then(function(data) {
+		$scope.conditions = data.data.result;
+	}, function(error) {
 		
 	});
 	
 	$http({
 		method	:	"POST",
 		url		:	"/fetchItems"
-	}).success(function(data) {
-		$scope.items = data.result;
-	}).error(function(error) {
+	}).then(function(data) {
+		$scope.items = data.data.result;
+	}, function(error) {
 		
 	});
 	
@@ -51,8 +51,8 @@ eBay.controller('sell', function($scope, $http, $window) {
 				"advertise_quantity"	:	$scope.adv_qty,
 				"advertise_desc"		:	$scope.adv_desc
 			}
-		}).success(function(data) {
-			if(data.status_code === "200") {
+		}).then(function(data) {
+			if(data.data.status_code === "200") {
 					$scope.adv_title = "";
 					$scope.adv_item.item_id = "";
 					$scope.item_condition = "";
@@ -67,7 +67,7 @@ eBay.controller('sell', function($scope, $http, $window) {
 				$scope.message = "Internal Error. Please try again!";
 				$scope.showMore = false;
 			}
-		}).error(function(error) {
+		}, function(error) {
 			
 		});
 	};

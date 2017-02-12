@@ -1,0 +1,35 @@
+{"@message":"Inside fetch sales page post method","@timestamp":"2017-02-08T23:00:47.807Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT user.user_name, sale.* FROM user_account as user, sale_details as sale WHERE seller = user_id AND seller <> 3 AND sale.active = 1 order by sale.sale_id desc","@timestamp":"2017-02-08T23:00:47.808Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2017-02-08T23:00:47.812Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT seller.user_name, sale.sale_id, sale.title, condi.condition_name, cart.cart_qty, sale.sale_price FROM cart_details AS cart, sale_details AS sale, user_account AS seller, item_conditions AS condi WHERE condi.condition_id = sale.condition AND cart.sale_item = sale.sale_id AND seller.user_id = sale.seller AND cart.user = 3","@timestamp":"2017-02-08T23:00:47.813Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2017-02-08T23:00:47.817Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT * FROM notification_details WHERE user_id = 3","@timestamp":"2017-02-08T23:00:47.817Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2017-02-08T23:00:49.656Z","@fields":{"level":"info"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2017-02-08T23:00:49.935Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2017-02-08T23:00:49.937Z","@fields":{"level":"info"}}
+{"@message":"Fetch Executed: SELECT * FROM item_conditions","@timestamp":"2017-02-08T23:00:49.937Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch items page post method","@timestamp":"2017-02-08T23:00:49.941Z","@fields":{"level":"info"}}
+{"@message":"Fetch Executed: SELECT * FROM item_details","@timestamp":"2017-02-08T23:00:49.941Z","@fields":{"level":"debug"}}
+{"@message":"Inside sell page get method","@timestamp":"2017-02-08T23:02:08.057Z","@fields":{"level":"info"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2017-02-08T23:02:08.944Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch conditions page post method","@timestamp":"2017-02-08T23:02:08.949Z","@fields":{"level":"info"}}
+{"@message":"Fetch Executed: SELECT * FROM item_conditions","@timestamp":"2017-02-08T23:02:08.950Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch items page post method","@timestamp":"2017-02-08T23:02:08.954Z","@fields":{"level":"info"}}
+{"@message":"Fetch Executed: SELECT * FROM item_details","@timestamp":"2017-02-08T23:02:08.955Z","@fields":{"level":"debug"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2017-02-08T23:02:20.296Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch suggestions page post method","@timestamp":"2017-02-08T23:02:20.299Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT user.user_name, sale.* FROM user_account as user, sale_details as sale, suggestion_details as suggestions WHERE seller = user_id AND seller <> 3 AND suggestions.user = 3 AND sale.active = 1 AND suggestions.suggestion_item = sale.sale_id order by sale_id desc LIMIT 4","@timestamp":"2017-02-08T23:02:20.299Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2017-02-08T23:02:20.303Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT user.user_name, sale.* FROM user_account as user, sale_details as sale WHERE seller = user_id AND seller <> 3 AND sale.active = 1 order by sale.sale_id desc","@timestamp":"2017-02-08T23:02:20.303Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2017-02-08T23:02:20.306Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT seller.user_name, sale.sale_id, sale.title, condi.condition_name, cart.cart_qty, sale.sale_price FROM cart_details AS cart, sale_details AS sale, user_account AS seller, item_conditions AS condi WHERE condi.condition_id = sale.condition AND cart.sale_item = sale.sale_id AND seller.user_id = sale.seller AND cart.user = 3","@timestamp":"2017-02-08T23:02:20.307Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2017-02-08T23:02:20.310Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT * FROM notification_details WHERE user_id = 3","@timestamp":"2017-02-08T23:02:20.310Z","@fields":{"level":"debug"}}
+{"@message":"Inside sign out user page post method","@timestamp":"2017-02-08T23:02:34.971Z","@fields":{"level":"info"}}
+{"@message":"Inside homepage get method","@timestamp":"2017-02-08T23:02:34.991Z","@fields":{"level":"info"}}
+{"@message":"Inside logged in user page post method","@timestamp":"2017-02-08T23:02:35.652Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch suggestions page post method","@timestamp":"2017-02-08T23:02:35.656Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch sales page post method","@timestamp":"2017-02-08T23:02:35.660Z","@fields":{"level":"info"}}
+{"@message":"Query Executed: SELECT user.user_name, sale.* FROM user_account as user, sale_details as sale WHERE seller = user_id AND sale.active = 1 order by sale.sale_id desc","@timestamp":"2017-02-08T23:02:35.661Z","@fields":{"level":"debug"}}
+{"@message":"Inside fetch cart page post method","@timestamp":"2017-02-08T23:02:35.665Z","@fields":{"level":"info"}}
+{"@message":"Inside fetch notifications page post method","@timestamp":"2017-02-08T23:02:35.667Z","@fields":{"level":"info"}}
